@@ -1,23 +1,60 @@
+let image;
+let cimg = document.getElementById("canvas");
+let ctximg = cimg.getContext('2d');
+let dibujar = false;
 
 document.addEventListener("DOMContentLoaded", function() {
 
   // CARGADO DE IMAGEN
-  let image = new Image();
+  image = new Image();
   image.src = "../omnimon.jpg";
-  let cimg = document.getElementById("canvas");
-  let ctximg = cimg.getContext('2d');
-  let container = document.getElementById('canvas-container');
-  // console.log(container.offsetWidth,container.offsetHeight);
-  console.log(window.innerWidth,window.innerHeight);
+  let hRatio = canvas.width / image.width;
+  let vRatio = canvas.height / image.height;
+  let ratio  = Math.min ( hRatio, vRatio );
+  if (image.width*ratio < canvas.width){
+    ctximg.canvas.width = image.width*ratio;
+  }
+  if (image.width*ratio < canvas.width){
+    ctximg.canvas.height = image.width*ratio;
+  }
   // ctximg.canvas.width  = container.offsetWidth;
   // ctximg.canvas.height = container.offsetHeight;
-  ctximg.canvas.width = window.innerWidth;
-  ctximg.canvas.height = window.innerHeight;
+  // ctximg.canvas.width = window.innerWidth;
+  // ctximg.canvas.height = window.innerHeight;
   image.onload = function(){
-    ctximg.drawImage(this,0,0);
+    ctximg.drawImage(this, 0, 0, image.width, image.height, 0, 0, image.width*ratio, image.height*ratio);
   }
+
+  cimg.addEventListener('mousedown', function(evt) {
+    dibujar = true;
+    // ctximg.clearRect(0, 0, cimg.width, cimg.height);
+    ctximg.beginPath();
+  
+  }, false);
+  cimg.addEventListener('mouseup', function(evt) {
+    dibujar = false;
+  }, false);
+  cimg.addEventListener("mouseout", function(evt) {
+      dibujar = false;
+    }, false);
+  cimg.addEventListener("mousemove", function(evt) {
+    if (dibujar) {
+      var m = oMousePos(cimg, evt);
+      ctximg.lineTo(m.x, m.y);
+      ctximg.stroke();
+    }
+  }, false);
 });
 
+function oMousePos(canvas, evt) {
+  var ClientRect = canvas.getBoundingClientRect();
+  return { //objeto
+    x: Math.round(evt.clientX - ClientRect.left),
+    y: Math.round(evt.clientY - ClientRect.top)
+  }
+}
+
+/** SECCCION DE FILTROS */
 function filtroGris(){
   // APLICADO DE FILTRO -> ESCALA GRISES
   let cimg = document.getElementById("canvas");
@@ -39,6 +76,10 @@ function filtroGris(){
   ctximg.putImageData(data_image,0,0);
 }
 
+/* Carga imagen desde PC*/
+function cargarImagen(){
+
+}
 
 /// OBTENCION DE PIXEL-COLORS PARA IMAGEDATA
 function getRed(imageData,x,y){
