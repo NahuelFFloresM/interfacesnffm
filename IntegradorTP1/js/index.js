@@ -3,28 +3,9 @@ let cimg = document.getElementById("canvas");
 let ctximg = cimg.getContext('2d');
 let dibujar = false;
 
-document.addEventListener("DOMContentLoaded", function() {
+document.addEventListener("DOMContentLoaded", async function() {
 
-  // CARGADO DE IMAGEN
-  image = new Image();
-  image.src = "../omnimon.jpg";
-  let hRatio = canvas.width / image.width;
-  let vRatio = canvas.height / image.height;
-  let ratio  = Math.min ( hRatio, vRatio );
-  if (image.width*ratio < canvas.width){
-    ctximg.canvas.width = image.width*ratio;
-  }
-  if (image.width*ratio < canvas.width){
-    ctximg.canvas.height = image.width*ratio;
-  }
-  // ctximg.canvas.width  = container.offsetWidth;
-  // ctximg.canvas.height = container.offsetHeight;
-  // ctximg.canvas.width = window.innerWidth;
-  // ctximg.canvas.height = window.innerHeight;
-  image.onload = function(){
-    ctximg.drawImage(this, 0, 0, image.width, image.height, 0, 0, image.width*ratio, image.height*ratio);
-  }
-
+  // await loadImage('../omnimon.jpg');
   cimg.addEventListener('mousedown', function(evt) {
     dibujar = true;
     // ctximg.clearRect(0, 0, cimg.width, cimg.height);
@@ -95,4 +76,56 @@ function getBlue(imageData,x,y){
   return imageData.data[index+2];
 }
 
+// function loadImage(path){
+//  // CARGADO DE IMAGEN
+//  image = new Image();
+//  image.src = path;
+//  let hRatio = canvas.width / image.width;
+//  let vRatio = canvas.height / image.height;
+//  let ratio  = Math.min ( hRatio, vRatio );
+//  if (image.width*ratio < canvas.width){
+//    ctximg.canvas.width = image.width*ratio;
+//  }
+//  if (image.width*ratio < canvas.width){
+//    ctximg.canvas.height = image.width*ratio;
+//  }
 
+//  image.onload = function(){
+//    ctximg.drawImage(this, 0, 0, image.width, image.height, 0, 0, image.width*ratio, image.height*ratio);
+//  }
+// }
+
+function loadImage() {
+  let file, fr;
+  let input = document.getElementById('myFile');
+  file = input.files[0];
+  fr = new FileReader();
+  fr.onload = createImage;
+  fr.readAsDataURL(file);
+
+  function createImage() {
+      image = new Image();
+      image.onload = imageLoaded;
+      image.src = fr.result;
+  }
+
+  function imageLoaded() {
+    let hRatio = canvas.width / image.width;
+    let vRatio = canvas.height / image.height;
+    let ratio  = Math.min ( hRatio, vRatio );
+    if (image.width*ratio < canvas.width){
+      ctximg.canvas.width = image.width*ratio;
+    }
+    if (image.width*ratio < canvas.width){
+      ctximg.canvas.height = image.width*ratio;
+    }
+    ctximg.drawImage(image,0,0);
+  }
+
+  input.value = "";
+  toggleNavbar();
+}
+
+function toggleNavbar(){
+  document.getElementById('navbarHeader').classList.toggle('show');
+}
