@@ -1,8 +1,3 @@
-image;
-cimg = document.getElementById("canvas");
-ctximg = cimg.getContext('2d');
-dibujar = false;
-
 /** SECCCION DE FILTROS */
 function filtroGris(){
   // APLICADO DE FILTRO -> ESCALA GRISES
@@ -24,6 +19,18 @@ function filtroGris(){
   ctximg = document.getElementById("canvas").getContext('2d');
   ctximg.putImageData(data_image,0,0);
 }
+
+// function grayScale(context, canvas){
+//   let imageData = context.getImageData(0, 0, canvas.width, canvas.height);
+//   let pixels = imageData.data;
+//   for (var i = 0; i < pixels.length; i += 4) {
+//       let grayscale = (pixels[i] + pixels[i + 1] + pixels[i + 2]) / 3; //promedio de los 3 para aplicarles el mismo valor
+//       pixels[i] = grayscale; //red
+//       pixels[i + 1] = grayscale; //green
+//       pixels[i + 2] = grayscale; //blue
+//   }
+//   context.putImageData(imageData, 0, 0);
+// }
 
 function filtroNegativo(){
   //Aplicar efecto negativo al canvas
@@ -141,4 +148,18 @@ function getPromedio(imageData, index){
   }
 
   return Math.floor(suma / contador);
+}
+
+function filtroBinarizacion() {
+  //Aplicar efecto binarizacion al canvas
+  let imageData = ctximg.getImageData(0,0,cimg.width,cimg.height);
+  let pixels = imageData.data;
+
+  //A cada color si su valor esta encima de la media -> 255, sino 0
+  for (let i = 0; i < pixels.length; i += 4) {
+      pixels[i] = pixels[i] > 255/2 ? 255 : 0;
+      pixels[i+1] = pixels[i+1] > 255/2 ? 255 : 0;
+      pixels[i+2] = pixels[i+2] > 255/2 ? 255 : 0;
+  }
+  ctximg.putImageData(imageData, 0, 0);
 }
