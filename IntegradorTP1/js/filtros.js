@@ -189,3 +189,92 @@ function filtroEspejo(){
 }
   ctximg.putImageData(imageData, 0, 0);
 }
+
+function filtroContraste(contraste = 1){
+  let cimg = document.getElementById("canvas");
+  let context = cimg.getContext('2d');
+  let imageData = context.getImageData(0,0,cimg.width,cimg.height);
+  let pixels = imageData.data;
+
+  for (let i = 0; i < pixels.length; i += 4) {
+      let red = pixels[i];
+      let green = pixels[i+1];
+      let blue = pixels[i+2];
+
+      let hsv = rgbToHsv(red, green, blue);
+      hsv[1] = contraste;
+      let rgb = hsvToRgb(hsv[0], hsv[1], hsv[2]);
+      
+      pixels[i] = rgb[0];
+      pixels[i+1] = rgb[1];
+      pixels[i+2] = rgb[2];
+  }
+  context.putImageData(imageData, 0, 0);
+}
+
+function filtroBrillo(brillo = 1){
+  let cimg = document.getElementById("canvas");
+  let context = cimg.getContext('2d');
+  let imageData = context.getImageData(0,0,cimg.width,cimg.height);
+  let pixels = imageData.data;
+
+  for (let i = 0; i < pixels.length; i += 4) {
+      let red = pixels[i];
+      let green = pixels[i+1];
+      let blue = pixels[i+2];
+
+      let hsv = rgbToHsv(red, green, blue);
+      hsv[2] = brillo;
+      let rgb = hsvToRgb(hsv[0], hsv[1], hsv[2]);
+      
+      pixels[i] = rgb[0];
+      pixels[i+1] = rgb[1];
+      pixels[i+2] = rgb[2];
+  }
+  context.putImageData(imageData, 0, 0);
+}
+
+function rgbToHsv(r, g, b) {
+  r /= 255, g /= 255, b /= 255;
+
+  var max = Math.max(r, g, b), min = Math.min(r, g, b);
+  var h, s, v = max;
+
+  var d = max - min;
+  s = max == 0 ? 0 : d / max;
+
+  if (max == min) {
+    h = 0; // achromatic
+  } else {
+    switch (max) {
+      case r: h = (g - b) / d + (g < b ? 6 : 0); break;
+      case g: h = (b - r) / d + 2; break;
+      case b: h = (r - g) / d + 4; break;
+    }
+
+    h /= 6;
+  }
+
+  return [ h, s, v ];
+}
+
+function hsvToRgb(h, s, v) {
+  var r, g, b;
+
+  var i = Math.floor(h * 6);
+  var f = h * 6 - i;
+  var p = v * (1 - s);
+  var q = v * (1 - f * s);
+  var t = v * (1 - (1 - f) * s);
+
+  switch (i % 6) {
+    case 0: r = v, g = t, b = p; break;
+    case 1: r = q, g = v, b = p; break;
+    case 2: r = p, g = v, b = t; break;
+    case 3: r = p, g = q, b = v; break;
+    case 4: r = t, g = p, b = v; break;
+    case 5: r = v, g = p, b = q; break;
+  }
+
+  return [ r * 255, g * 255, b * 255 ];
+}
