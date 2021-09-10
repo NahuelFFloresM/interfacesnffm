@@ -1,6 +1,10 @@
-let image;
+/**
+ * Configuracion y seteado en general.
+ */
+let image = null;
 let cimg = document.getElementById("canvas");
 let ctximg = cimg.getContext('2d');
+ctximg.lineCap = 'round'; 
 let dibujar = false;
 let configPincel = true;
 let configBorrado = false;
@@ -10,17 +14,23 @@ document.addEventListener("DOMContentLoaded", async function() {
   cimg.addEventListener('mousedown', function(evt) {
     dibujar = true;
     ctximg.beginPath();
-  
   }, false);
+
   cimg.addEventListener('mouseup', function(evt) {
     dibujar = false;
+    ctximg.closePath();
   }, false);
+  /**
+   * Deja de dibujar cuando te salis del canvas
+   */
   cimg.addEventListener("mouseout", function(evt) {
-      dibujar = false;
-    }, false);
+    dibujar = false;
+    ctximg.closePath();
+  }, false);
+
   cimg.addEventListener("mousemove", function(evt) {
     if (dibujar) {
-      var m = oMousePos(cimg, evt);
+      let m = oMousePos(cimg, evt);
       ctximg.lineTo(m.x, m.y);
       ctximg.stroke();
     }
@@ -28,7 +38,7 @@ document.addEventListener("DOMContentLoaded", async function() {
 });
 
 function oMousePos(canvas, evt) {
-  var ClientRect = canvas.getBoundingClientRect();
+  let ClientRect = canvas.getBoundingClientRect();
   return { 
     x: Math.round(evt.clientX - ClientRect.left),
     y: Math.round(evt.clientY - ClientRect.top)
@@ -48,25 +58,6 @@ function getBlue(imageData,x,y){
   let index = (x+y*imageData.width)*4;
   return imageData.data[index+2];
 }
-
-// function loadImage(path){
-//  // CARGADO DE IMAGEN
-//  image = new Image();
-//  image.src = path;
-//  let hRatio = canvas.width / image.width;
-//  let vRatio = canvas.height / image.height;
-//  let ratio  = Math.min ( hRatio, vRatio );
-//  if (image.width*ratio < canvas.width){
-//    ctximg.canvas.width = image.width*ratio;
-//  }
-//  if (image.width*ratio < canvas.width){
-//    ctximg.canvas.height = image.width*ratio;
-//  }
-
-//  image.onload = function(){
-//    ctximg.drawImage(this, 0, 0, image.width, image.height, 0, 0, image.width*ratio, image.height*ratio);
-//  }
-// }
 
 /**
  * Carga de imagen mediante funcion readAsDataURL
@@ -92,16 +83,20 @@ function loadImage() {
       image.onload = imageLoaded;
       image.src = fr.result;
   }
-
+  /**
+   * Calculo de ratio de la diferencia de tamaños entre canvas e Imagen a cargar.
+   * Si < 1 la imagen es muy grande, si > 1 la imagen es chica.
+   */
   function imageLoaded() {
     let hRatio = cimg.width / image.width;
     let vRatio = cimg.height / image.height;
     let ratio  = Math.min ( hRatio, vRatio );
-    if (image.width*ratio < cimg.width){
+    if (ratio > 1){
+      ctximg.canvas.width = image.width;
+      ctximg.canvas.height = image.height;
+    } else {
       ctximg.canvas.width = image.width*ratio;
-    }
-    if (image.width*ratio < cimg.width){
-      ctximg.canvas.height = image.width*ratio;
+      ctximg.canvas.height = image.height*ratio;
     }
     ctximg.drawImage(image,0,0,cimg.width,cimg.height);
   }
@@ -122,6 +117,7 @@ function toggleNavbar(){
 function nuevoCanvas(){
   ctximg.clearRect(0, 0, cimg.width, cimg.height);
   ctximg.fillRect(0, 0, cimg.width, cimg.height);
+  image = null;
   cimg.width = 1100;
   cimg.height = 550;
   toggleNavbar();
@@ -148,9 +144,13 @@ function setPincel(){
 function setBorrado(){
   ctximg.strokeStyle = "#FFFFFF";
 }
-
-function setStrokeWidth(){
-  ctximg.lineWidth = 1;
+/**
+ * Redibuja la ultima imagen cargada y salvada en la variable global "image"
+ */
+function resetImageLoaded(){
+  if (image){
+    ctximg.drawImage(image,0,0,cimg.width,cimg.height);
+  }
 }
 /**
  * Funcion para cambiar de color
@@ -160,3 +160,5 @@ function setStrokeColor(){
   let color = document.getElementById('color_picker').value;
   ctximg.strokeStyle = color;
 }
+
+
