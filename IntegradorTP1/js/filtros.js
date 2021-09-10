@@ -165,9 +165,10 @@ function filtroBinarizacion() {
     for (let y = 0; y < cimg.height; y++){
         let i = (x + y * imageData.width) * 4;
         let promedio = (getRed(imageData,x,y)+getBlue(imageData,x,y)+getGreen(imageData,x,y))/3
-        pixels[i] = promedio > 123 ? 255 : 0;
-        pixels[i+1] = promedio > 123 ? 255 : 0;
-        pixels[i+2] = promedio > 123 ? 255 : 0;
+        let color = promedio > 123 ? 255 : 0;
+        pixels[i] = color;
+        pixels[i+1] = color;
+        pixels[i+2] = color;
     }
   }
   ctximg.putImageData(imageData, 0, 0);
