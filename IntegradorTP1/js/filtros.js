@@ -156,25 +156,34 @@ function filtroBinarizacion() {
   let pixels = imageData.data;
 
   //A cada color si su valor esta encima de la media -> 255, sino 0
-  for (let i = 0; i < pixels.length; i += 4) {
-      pixels[i] = pixels[i] > 255/2 ? 255 : 0;
-      pixels[i+1] = pixels[i+1] > 255/2 ? 255 : 0;
-      pixels[i+2] = pixels[i+2] > 255/2 ? 255 : 0;
+  // for (let i = 0; i < pixels.length; i += 4) {
+  //     pixels[i] = pixels[i] > 255/2 ? 255 : 0;
+  //     pixels[i+1] = pixels[i+1] > 255/2 ? 255 : 0;
+  //     pixels[i+2] = pixels[i+2] > 255/2 ? 255 : 0;
+  // }
+  for (let x = 0; x < cimg.width; x++){
+    for (let y = 0; y < cimg.height; y++){
+        let i = (x + y * imageData.width) * 4;
+        let promedio = (getRed(imageData,x,y)+getBlue(imageData,x,y)+getGreen(imageData,x,y))/3
+        pixels[i] = promedio > 123 ? 255 : 0;
+        pixels[i+1] = promedio > 123 ? 255 : 0;
+        pixels[i+2] = promedio > 123 ? 255 : 0;
+    }
   }
   ctximg.putImageData(imageData, 0, 0);
 }
 
 function filtroEspejo(){
-
   let cimg = document.getElementById("canvas");
   let imageData = ctximg.getImageData(0,0,cimg.width,cimg.height);
   let pixels = imageData.data;
-
+  // Llego al a mitad de la imagen
   for (let x = 0; x < cimg.width/2; x++){
     for (let y = 0; y < cimg.height; y++){
         let i = (x + y * imageData.width) * 4;
+        // Otengo el opuesto al ancho de la imagen
         let j = ((cimg.width - x) + y * imageData.width) * 4;
-        //inicio
+        //inicio de la imagen
         let r = getRed(imageData,x,y);
         let g = getGreen(imageData,x,y);
         let b = getBlue(imageData,x,y);
@@ -186,6 +195,6 @@ function filtroEspejo(){
         pixels[j+1] = g
         pixels[j+2] = b
     }
-}
+  }
   ctximg.putImageData(imageData, 0, 0);
 }
