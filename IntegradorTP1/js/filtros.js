@@ -38,11 +38,11 @@ function filtroNegativo(){
   let ctximg = cimg.getContext('2d');
   let imageData = ctximg.getImageData(0, 0, cimg.width, cimg.height);
   let pixels = imageData.data;
-  //Al maximo del color le restamos lo que tiene actualmente el pixel
+  //Al valor maximo del color le restamos lo que tiene actualmente el pixel
   for (let i = 0; i < pixels.length; i += 4) {
-      pixels[i]   = 255 - pixels[i];   // red
-      pixels[i+1] = 255 - pixels[i+1]; // green
-      pixels[i+2] = 255 - pixels[i+2]; // blue
+      pixels[i]   = 255 - pixels[i];   // rojo
+      pixels[i+1] = 255 - pixels[i+1]; // verde
+      pixels[i+2] = 255 - pixels[i+2]; // azul
   }
 
   // Sobreescribe imagen original
@@ -190,21 +190,24 @@ function filtroEspejo(){
   ctximg.putImageData(imageData, 0, 0);
 }
 
-function filtroContraste(contraste = 1){
+function filtroSaturacion(saturacion = 1){
   let cimg = document.getElementById("canvas");
   let context = cimg.getContext('2d');
   let imageData = context.getImageData(0,0,cimg.width,cimg.height);
   let pixels = imageData.data;
 
   for (let i = 0; i < pixels.length; i += 4) {
+    //Asignamos los 3 colores del pixel
       let red = pixels[i];
       let green = pixels[i+1];
       let blue = pixels[i+2];
-
+      //invocamos la funcion para convertir de rgb a hsv
       let hsv = rgbToHsv(red, green, blue);
-      hsv[1] = contraste;
+      //cambiamos s al valor recibido por parametro
+      hsv[1] = saturacion;
+      //invocamos la funcion para convertir el hsv a rgb
       let rgb = hsvToRgb(hsv[0], hsv[1], hsv[2]);
-      
+      //asignamos los colores nuevos del arreglo recibido
       pixels[i] = rgb[0];
       pixels[i+1] = rgb[1];
       pixels[i+2] = rgb[2];
@@ -219,17 +222,11 @@ function filtroBrillo(brillo = 1){
   let pixels = imageData.data;
 
   for (let i = 0; i < pixels.length; i += 4) {
-      let red = pixels[i];
-      let green = pixels[i+1];
-      let blue = pixels[i+2];
-
-      let hsv = rgbToHsv(red, green, blue);
-      hsv[2] = brillo;
-      let rgb = hsvToRgb(hsv[0], hsv[1], hsv[2]);
-      
-      pixels[i] = rgb[0];
-      pixels[i+1] = rgb[1];
-      pixels[i+2] = rgb[2];
+    //Asignamos los 3 colores del pixel
+    
+    pixels[i] = (pixels[i] + pixels[i] * 0.5) > 255 ? 255 : pixels[i] + pixels[i] * 0.5;
+    pixels[i+1] = (pixels[i+1] + pixels[i+1] * 0.5) > 255 ? 255 : pixels[i+1] + pixels[i+1] * 0.5;
+    pixels[i+2] = (pixels[i+2] + pixels[i+2] * 0.5) > 255 ? 255 : pixels[i+2] + pixels[i+2] * 0.5;
   }
   context.putImageData(imageData, 0, 0);
 }
