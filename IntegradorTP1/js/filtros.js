@@ -83,8 +83,8 @@ function filtroBlur() {
   let copyPixels = Array.from(pixels);
 
   //carga tabla copia con promedio de alrededor
-  for (let x = 0; x < canvas.width; x++){
-      for (let y = 0; y < canvas.height; y++){
+  for (let x = 0; x < cimg.width; x++){
+      for (let y = 0; y < cimg.height; y++){
           let i = (x + y * imageData.width) * 4;
           copyPixels[i] = getPromedio(imageData, i); 
           copyPixels[i+1] = getPromedio(imageData, i+1);
@@ -161,5 +161,31 @@ function filtroBinarizacion() {
       pixels[i+1] = pixels[i+1] > 255/2 ? 255 : 0;
       pixels[i+2] = pixels[i+2] > 255/2 ? 255 : 0;
   }
+  ctximg.putImageData(imageData, 0, 0);
+}
+
+function filtroEspejo(){
+
+  let cimg = document.getElementById("canvas");
+  let imageData = ctximg.getImageData(0,0,cimg.width,cimg.height);
+  let pixels = imageData.data;
+
+  for (let x = 0; x < cimg.width/2; x++){
+    for (let y = 0; y < cimg.height; y++){
+        let i = (x + y * imageData.width) * 4;
+        let j = ((cimg.width - x) + y * imageData.width) * 4;
+        //inicio
+        let r = getRed(imageData,x,y);
+        let g = getGreen(imageData,x,y);
+        let b = getBlue(imageData,x,y);
+        pixels[i] = getRed(imageData , cimg.width-x , y); 
+        pixels[i+1] = getGreen(imageData , cimg.width-x , y);
+        pixels[i+2] = getBlue(imageData , cimg.width-x , y);
+        // opuesto
+        pixels[j] = r
+        pixels[j+1] = g
+        pixels[j+2] = b
+    }
+}
   ctximg.putImageData(imageData, 0, 0);
 }

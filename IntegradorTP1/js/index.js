@@ -94,13 +94,13 @@ function loadImage() {
   }
 
   function imageLoaded() {
-    let hRatio = canvas.width / image.width;
-    let vRatio = canvas.height / image.height;
+    let hRatio = cimg.width / image.width;
+    let vRatio = cimg.height / image.height;
     let ratio  = Math.min ( hRatio, vRatio );
-    if (image.width*ratio < canvas.width){
+    if (image.width*ratio < cimg.width){
       ctximg.canvas.width = image.width*ratio;
     }
-    if (image.width*ratio < canvas.width){
+    if (image.width*ratio < cimg.width){
       ctximg.canvas.height = image.width*ratio;
     }
     ctximg.drawImage(image,0,0,cimg.width,cimg.height);
