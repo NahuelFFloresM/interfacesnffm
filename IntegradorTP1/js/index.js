@@ -136,12 +136,14 @@ function guardarImagen(){
  * Funcion para setear la configuarcion del Pincel
  */
 function setPincel(){
+  ctximg.lineWidth = 2;
   ctximg.strokeStyle = "#000000";
 }
 /**
  * Funcion para setear la configuarcion de la goma de borrado
  */
 function setBorrado(){
+  ctximg.lineWidth = 20;
   ctximg.strokeStyle = "#FFFFFF";
 }
 /**
