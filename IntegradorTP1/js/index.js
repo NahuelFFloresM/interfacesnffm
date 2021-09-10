@@ -1,7 +1,7 @@
 /**
  * Configuracion y seteado en general.
  */
-let image;
+let image = null;
 let cimg = document.getElementById("canvas");
 let ctximg = cimg.getContext('2d');
 ctximg.lineCap = 'round'; 
@@ -59,25 +59,6 @@ function getBlue(imageData,x,y){
   return imageData.data[index+2];
 }
 
-// function loadImage(path){
-//  // CARGADO DE IMAGEN
-//  image = new Image();
-//  image.src = path;
-//  let hRatio = canvas.width / image.width;
-//  let vRatio = canvas.height / image.height;
-//  let ratio  = Math.min ( hRatio, vRatio );
-//  if (image.width*ratio < canvas.width){
-//    ctximg.canvas.width = image.width*ratio;
-//  }
-//  if (image.width*ratio < canvas.width){
-//    ctximg.canvas.height = image.width*ratio;
-//  }
-
-//  image.onload = function(){
-//    ctximg.drawImage(this, 0, 0, image.width, image.height, 0, 0, image.width*ratio, image.height*ratio);
-//  }
-// }
-
 /**
  * Carga de imagen mediante funcion readAsDataURL
  * @param file id myFile en html para tomar los datos de la imagen a cargar. NO SE RECIBE COMO PARAMETRO, se lo consigue desde
@@ -102,16 +83,20 @@ function loadImage() {
       image.onload = imageLoaded;
       image.src = fr.result;
   }
-
+  /**
+   * Calculo de ratio de la diferencia de tamaños entre canvas e Imagen a cargar.
+   * Si < 1 la imagen es muy grande, si > 1 la imagen es chica.
+   */
   function imageLoaded() {
     let hRatio = cimg.width / image.width;
     let vRatio = cimg.height / image.height;
     let ratio  = Math.min ( hRatio, vRatio );
-    if (image.width*ratio < cimg.width){
+    if (ratio > 1){
+      ctximg.canvas.width = image.width;
+      ctximg.canvas.height = image.height;
+    } else {
       ctximg.canvas.width = image.width*ratio;
-    }
-    if (image.width*ratio < cimg.width){
-      ctximg.canvas.height = image.width*ratio;
+      ctximg.canvas.height = image.height*ratio;
     }
     ctximg.drawImage(image,0,0,cimg.width,cimg.height);
   }
@@ -132,6 +117,7 @@ function toggleNavbar(){
 function nuevoCanvas(){
   ctximg.clearRect(0, 0, cimg.width, cimg.height);
   ctximg.fillRect(0, 0, cimg.width, cimg.height);
+  image = null;
   cimg.width = 1100;
   cimg.height = 550;
   toggleNavbar();
@@ -159,10 +145,12 @@ function setBorrado(){
   ctximg.strokeStyle = "#FFFFFF";
 }
 /**
- * Redibuja la ultima imagen cargada
+ * Redibuja la ultima imagen cargada y salvada en la variable global "image"
  */
 function resetImageLoaded(){
-  ctximg.drawImage(image,0,0,cimg.width,cimg.height);
+  if (image){
+    ctximg.drawImage(image,0,0,cimg.width,cimg.height);
+  }
 }
 /**
  * Funcion para cambiar de color

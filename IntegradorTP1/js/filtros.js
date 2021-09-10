@@ -20,18 +20,6 @@ function filtroGris(){
   ctximg.putImageData(data_image,0,0);
 }
 
-// function grayScale(context, canvas){
-//   let imageData = context.getImageData(0, 0, canvas.width, canvas.height);
-//   let pixels = imageData.data;
-//   for (var i = 0; i < pixels.length; i += 4) {
-//       let grayscale = (pixels[i] + pixels[i + 1] + pixels[i + 2]) / 3; //promedio de los 3 para aplicarles el mismo valor
-//       pixels[i] = grayscale; //red
-//       pixels[i + 1] = grayscale; //green
-//       pixels[i + 2] = grayscale; //blue
-//   }
-//   context.putImageData(imageData, 0, 0);
-// }
-
 function filtroNegativo(){
   //Aplicar efecto negativo al canvas
   let cimg = document.getElementById("canvas");
@@ -149,18 +137,13 @@ function getPromedio(imageData, index){
 
   return Math.floor(suma / contador);
 }
-
+/**
+ * Para asignar el color en el pixel calculca el promedio de rgb en el mismo y luego decide.
+ */
 function filtroBinarizacion() {
   //Aplicar efecto binarizacion al canvas
   let imageData = ctximg.getImageData(0,0,cimg.width,cimg.height);
   let pixels = imageData.data;
-
-  //A cada color si su valor esta encima de la media -> 255, sino 0
-  // for (let i = 0; i < pixels.length; i += 4) {
-  //     pixels[i] = pixels[i] > 255/2 ? 255 : 0;
-  //     pixels[i+1] = pixels[i+1] > 255/2 ? 255 : 0;
-  //     pixels[i+2] = pixels[i+2] > 255/2 ? 255 : 0;
-  // }
   for (let x = 0; x < cimg.width; x++){
     for (let y = 0; y < cimg.height; y++){
         let i = (x + y * imageData.width) * 4;
@@ -173,7 +156,10 @@ function filtroBinarizacion() {
   }
   ctximg.putImageData(imageData, 0, 0);
 }
-
+/**
+ * Recorre la data de la imagen y realiza un reemplazo de colores entre el pixel opuesto en el ancho
+ * "j" obtiene la posicion del pixel opuesto, restando el ancho menos la posicion actual de fila
+ */
 function filtroEspejo(){
   let cimg = document.getElementById("canvas");
   let imageData = ctximg.getImageData(0,0,cimg.width,cimg.height);
@@ -185,9 +171,9 @@ function filtroEspejo(){
         // Otengo el opuesto al ancho de la imagen
         let j = ((cimg.width - x) + y * imageData.width) * 4;
         //inicio de la imagen
-        let r = getRed(imageData,x,y);
-        let g = getGreen(imageData,x,y);
-        let b = getBlue(imageData,x,y);
+        let r = getRed(imageData,x,y); // R
+        let g = getGreen(imageData,x,y); // G
+        let b = getBlue(imageData,x,y); // B
         pixels[i] = getRed(imageData , cimg.width-x , y); 
         pixels[i+1] = getGreen(imageData , cimg.width-x , y);
         pixels[i+2] = getBlue(imageData , cimg.width-x , y);
