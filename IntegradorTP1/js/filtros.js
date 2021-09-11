@@ -186,11 +186,12 @@ function filtroEspejo(){
   ctximg.putImageData(imageData, 0, 0);
 }
 
-function filtroSaturacion(saturacion = 1){
+function filtroSaturacion(){
   let cimg = document.getElementById("canvas");
   let context = cimg.getContext('2d');
   let imageData = context.getImageData(0,0,cimg.width,cimg.height);
   let pixels = imageData.data;
+  let aumento = document.getElementById("aumento").value;
 
   for (let i = 0; i < pixels.length; i += 4) {
     //Asignamos los 3 colores del pixel
@@ -200,7 +201,13 @@ function filtroSaturacion(saturacion = 1){
       //invocamos la funcion para convertir de rgb a hsv
       let hsv = rgbToHsv(red, green, blue);
       //cambiamos s al valor recibido por parametro
-      hsv[1] = saturacion;
+      if (aumento == "mas"){
+        hsv[1] = (hsv[1] + hsv[1] * 0.15) > 1 ? 1 : hsv[1] + hsv[1] * 0.15;
+      }
+      else{
+        hsv[1] = (hsv[1] - hsv[1] * 0.15) < 0 ? 1 : hsv[1] - hsv[1] * 0.15;
+      }
+      
       //invocamos la funcion para convertir el hsv a rgb
       let rgb = hsvToRgb(hsv[0], hsv[1], hsv[2]);
       //asignamos los colores nuevos del arreglo recibido
@@ -211,18 +218,25 @@ function filtroSaturacion(saturacion = 1){
   context.putImageData(imageData, 0, 0);
 }
 
-function filtroBrillo(brillo = 1){
+function filtroBrillo(){
   let cimg = document.getElementById("canvas");
   let context = cimg.getContext('2d');
   let imageData = context.getImageData(0,0,cimg.width,cimg.height);
+  let aumento = document.getElementById("aumento").value;
   let pixels = imageData.data;
 
   for (let i = 0; i < pixels.length; i += 4) {
     //Asignamos los 3 colores del pixel
-    
-    pixels[i] = (pixels[i] + pixels[i] * 0.5) > 255 ? 255 : pixels[i] + pixels[i] * 0.5;
-    pixels[i+1] = (pixels[i+1] + pixels[i+1] * 0.5) > 255 ? 255 : pixels[i+1] + pixels[i+1] * 0.5;
-    pixels[i+2] = (pixels[i+2] + pixels[i+2] * 0.5) > 255 ? 255 : pixels[i+2] + pixels[i+2] * 0.5;
+    if (aumento == "mas"){
+      pixels[i] = (pixels[i] + pixels[i] * 0.15) > 255 ? 255 : pixels[i] + pixels[i] * 0.15;
+      pixels[i+1] = (pixels[i+1] + pixels[i+1] * 0.15) > 255 ? 255 : pixels[i+1] + pixels[i+1] * 0.15;
+      pixels[i+2] = (pixels[i+2] + pixels[i+2] * 0.15) > 255 ? 255 : pixels[i+2] + pixels[i+2] * 0.15;
+    }
+    else{
+      pixels[i] = (pixels[i] - pixels[i] * 0.15) < 0 ? 0 : pixels[i] - pixels[i] * 0.15;
+      pixels[i+1] = (pixels[i+1] - pixels[i+1] * 0.15) < 0 ? 0 : pixels[i+1] - pixels[i+1] * 0.15;
+      pixels[i+2] = (pixels[i+2] - pixels[i+2] * 0.15) < 0 ? 0 : pixels[i+2] - pixels[i+2] * 0.15;
+    }
   }
   context.putImageData(imageData, 0, 0);
 }
