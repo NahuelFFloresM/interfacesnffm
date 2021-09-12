@@ -1,4 +1,100 @@
 /** SECCCION DE FILTROS */
+
+/**
+ * Toma los datos de la imagen del canvas actual, aplica filtro gris y calcula los valores para realizar SOBEL.
+ * Luego segun el peso total de gx y gy setea el pixel new_data_imagen para finalmente mostrarlo en el canvas.
+ */
+function filtroSobel(){
+
+  // APLICADO DE FILTRO -> ESCALA GRISES
+  let cimg = document.getElementById("canvas");
+  let ctximg = cimg.getContext('2d');
+  let data_image = ctximg.getImageData(0,0,cimg.width,cimg.height);
+  let conv = 128;
+  filtroGris();
+
+  let new_data_image = ctximg.createImageData(cimg.width, cimg.height)
+
+  for (let x = 0; x < cimg.width; x++){ // columnas
+    for (let y = 0; y < cimg.height; y++){ // filas
+        let index = (x + y * data_image.width) * 4;
+        if (x == 0 || y == 0 || y == cimg.height || x == cimg.width){
+          setPixel(index,new_data_image,0);
+        } else {
+          let Gx = getSobelGx(x,y,data_image);
+          let Gy = getSobelGy(x,y,data_image);
+          let G = Math.sqrt(Math.pow(Gx,2)+Math.pow(Gy,2));
+          // console.log(G);
+          if (G > conv){
+            setPixel(index,new_data_image,255);
+          } else {
+            setPixel(index,new_data_image,0);
+          }
+        }
+    }
+  }
+  ctximg.putImageData(new_data_image,0,0);
+}
+/**
+ * 
+ * @param x posicion de la columna del pixel
+ * @param y posicion de la fila del pixel
+ * @param data_image referencia a la data de la imagen
+ * @returns integer valor de peso del pixel para determinar borde en X
+ */
+function getSobelGx(x,y,data_image){
+  let topr = ((x+1)+(y-1) * data_image.width) * 4;
+  let topl = ((x-1)+(y-1) * data_image.width) * 4;
+  let left = ((x-1)+y * data_image.width) * 4;
+  let right = ((x+1)+y * data_image.width) * 4;
+  let botr = ((x+1)+(y+1) * data_image.width) * 4;
+  let botl = ((x-1)+(y+1) * data_image.width) * 4;
+
+  let result = getPromedioRGB(topl,data_image)*-1+getPromedioRGB(left,data_image)*-2+getPromedioRGB(botl,data_image)*-1+getPromedioRGB(topr,data_image)*1+getPromedioRGB(right,data_image)*2+getPromedioRGB(botr,data_image)*1;
+  return result;
+}
+/**
+ * 
+ * @param x posicion de la columna del pixel
+ * @param y posicion de la fila del pixel
+ * @param data_image referencia a la data de la imagen
+ * @returns integer valor de peso del pixel para determinar borde en Y
+ */
+function getSobelGy(x,y,data_image){
+  let top = (x+(y-1) * data_image.width) * 4;
+  let topr = ((x+1)+(y-1) * data_image.width) * 4;
+  let topl = ((x-1)+(y-1) * data_image.width) * 4;
+  let bot = (x+(y+1) * data_image.width) * 4;
+  let botr = ((x+1)+(y+1) * data_image.width) * 4;
+  let botl = ((x-1)+(y+1) * data_image.width) * 4;
+
+  let result = getPromedioRGB(topl,data_image)*-1+getPromedioRGB(top,data_image)*-2+getPromedioRGB(topr,data_image)*-1+getPromedioRGB(botl,data_image)*1+getPromedioRGB(bot,data_image)*2+getPromedioRGB(botr,data_image)*1;
+  return result;
+}
+/**
+ * 
+ * @param index indice del arreglo de datos.
+ * @param data_image referencia a la data de la imagen
+ * @returns integer peso del pixel basado en la mezcla de colores
+ */
+function getPromedioRGB(index,data_image){
+  return ((data_image.data[index]+data_image.data[index+1]+data_image.data[index+2])/3);
+}
+/**
+ * 
+ * @param index int para indicar posicion en el arreglo de datos
+ * @param data_image referencia a la data de la imagen
+ * @param color dato a asigar al pixel
+ */
+function setPixel(index,data_image,color){
+  data_image.data[index]= color;
+  data_image.data[index+1]= color;
+  data_image.data[index+2]= color;
+  data_image.data[index+3] = 255;
+}
+
+
+
 function filtroGris(){
   // APLICADO DE FILTRO -> ESCALA GRISES
   let cimg = document.getElementById("canvas");
