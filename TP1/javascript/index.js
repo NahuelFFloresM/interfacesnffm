@@ -150,7 +150,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
   // CARGADO DE IMAGEN
   let image = new Image();
-  image.src = "../omnimon.jpg";
+  image.src = "./omnimon.jpg";
   let cimg = document.getElementById("cimg");
   let ctximg = cimg.getContext('2d');
   image.onload = function(){
