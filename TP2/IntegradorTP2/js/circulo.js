@@ -17,15 +17,17 @@ class Circulo extends Ficha{
   getRadius(){
     return this.#radius;
   }
+  getTamanio(){
+    return super.getTamanio();
+  }
 }
 
 Circulo.prototype.draw = function(){
   ctx_canvas.beginPath();
-    // ctx_canvas.arc(this.getPosx(), this.getPosy(), this.#radius, 0, 2 * Math.PI);
-    this.fillDraw();
-    ctx_canvas.arc(this.getPosx(), this.getPosy(), this.getRadius(), 0, 2 * Math.PI);
-    ctx_canvas.fill();
-    ctx_canvas.stroke();
+  this.fillDraw();
+  ctx_canvas.arc(this.getPosx(), this.getPosy(), this.getRadius(), 0, 2 * Math.PI);
+  ctx_canvas.fill();
+  ctx_canvas.stroke();
 }
 
 Circulo.prototype.reDraw = function(x,y){

@@ -1,13 +1,27 @@
 /**
  * Configuracion y seteado en general.
  */
- let image = null;
- let canvas= document.getElementById("canvas");
- let ctx_canvas = canvas.getContext('2d');
- let arrastrando = false;
- let ficha_p1 = new Circulo();
- ficha_p1.setPosition(50,50);
- ficha_p1.draw();
+
+/**
+ * GLOBALES
+ */
+let image = null;
+let canvas= document.getElementById("canvas");
+let ctx_canvas = canvas.getContext('2d');
+let arrastrando = false;
+/**
+* FICHAS
+*/
+let ficha_p1 = new Circulo();
+ficha_p1.setPosition(50,50);
+ficha_p1.draw();
+
+/**
+ * TABLERO
+ */
+let tablero = new Tablero(5);
+tablero.draw();
+
 
 
 document.addEventListener("DOMContentLoaded", function() {
@@ -50,8 +64,11 @@ document.addEventListener("DOMContentLoaded", function() {
   canvas.addEventListener("mousemove", function(evt) {
     if (arrastrando) {
       let m = oMousePos(canvas, evt);
-      let r = ficha_p1.getRadius()+5;
-      ctx_canvas.clearRect(ficha_p1.getPosx()-r,ficha_p1.getPosy()-r,ficha_p1.getPosx()+r,ficha_p1.getPosy()+r);
+      let r = ficha_p1.getRadius()+2;
+      let t = ficha_p1.getTamanio()+3;
+      // TO DO
+      // PREGUNTAR SI TOCA O NO POSICION DE TABLERO
+      ctx_canvas.clearRect(ficha_p1.getPosx()-r,ficha_p1.getPosy()-r,t,t);
       ficha_p1.reDraw(m.x,m.y);
     }
   }, false);

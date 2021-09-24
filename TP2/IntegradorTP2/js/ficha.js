@@ -2,9 +2,11 @@ class Ficha{
   #posX;
   #posY;
   #fill;
+  #tamanio;
 
   constructor(color){
     this.#fill = color;
+    this.#tamanio = 40;
     ctx_canvas.strokeStyle = color;
   }
 
@@ -33,10 +35,19 @@ class Ficha{
     this.#posY = y;
   }
 
-  fillDraw(){
-    // ctx_canvas.arc(this.#posX,this.#posY,this.#width,this.#height);
-    // ctx_canvas.arc(100, 75, 50, 0, 2 * Math.PI);
-    ctx_canvas.fillStyle = this.#fill;
-    // ctx_canvas.stroke();
+  getFill(){
+    return this.#fill;
   }
+
+  fillDraw(){
+    ctx_canvas.fillStyle = this.#fill;
+  }
+  
+  getTamanio(){
+    return this.#tamanio;
+  }
+}
+
+Ficha.prototype.fillDraw = function(){
+  ctx_canvas.fillStyle = this.getFill();
 }
