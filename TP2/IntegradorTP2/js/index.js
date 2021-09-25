@@ -19,7 +19,7 @@ ficha_p1.draw();
 /**
  * TABLERO
  */
-let tablero = new Tablero(5);
+let tablero = new Tablero(7,6);
 tablero.draw();
 
 
@@ -43,8 +43,7 @@ document.addEventListener("DOMContentLoaded", function() {
   canvas.addEventListener('mousedown', function(evt) {
     // LLAMAR A FUNCION PARA SELECCIONAR FICHA
     let m = oMousePos(canvas, evt);
-    if (punteroSobreFicha(evt)){
-      
+    if (punteroSobreFicha(evt)){      
       arrastrando = true;
     }
   }, false);
@@ -64,12 +63,14 @@ document.addEventListener("DOMContentLoaded", function() {
   canvas.addEventListener("mousemove", function(evt) {
     if (arrastrando) {
       let m = oMousePos(canvas, evt);
-      let r = ficha_p1.getRadius()+2;
-      let t = ficha_p1.getTamanio()+3;
-      // TO DO
-      // PREGUNTAR SI TOCA O NO POSICION DE TABLERO
-      ctx_canvas.clearRect(ficha_p1.getPosx()-r,ficha_p1.getPosy()-r,t,t);
-      ficha_p1.reDraw(m.x,m.y);
+      let r = ficha_p1.getRadius()+1;
+      let t = ficha_p1.getTamanio()*2+2;
+      // Chequeo Colision sobre tablero
+      // TO DO EJES e Identificacion de ficha jugando
+      if (!pisaTablero(m.x,m.y)){
+        ctx_canvas.clearRect(ficha_p1.getPosx()-r,ficha_p1.getPosy()-r,t,t);
+        ficha_p1.reDraw(m.x,m.y);
+      }
     }
   }, false);
 });
@@ -89,6 +90,19 @@ function punteroSobreFicha(evt){
     if (m.y > (ficha_p1.getPosy()-20) && m.y < (ficha_p1.getPosy()+20)){
       return true;
     }
+  }
+  return false;
+}
+
+function pisaTablero(x,y){
+  let posTableroy = tablero.getPosInicialy();
+  let posTablerox = tablero.getPosInicialx();
+  let r = ficha_p1.getRadius();
+  if ((y+r >= posTableroy) && (x+r >= posTablerox)){
+    return true;
+  }
+  if ((x+r >= posTablerox) && (y+r >= posTableroy)){
+    return true;
   }
   return false;
 }

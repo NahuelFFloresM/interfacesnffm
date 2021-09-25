@@ -46,6 +46,10 @@ class Ficha{
   getTamanio(){
     return this.#tamanio;
   }
+
+  setTamanio(tamanio){
+    this.#tamanio = tamanio;
+  }
 }
 
 Ficha.prototype.fillDraw = function(){

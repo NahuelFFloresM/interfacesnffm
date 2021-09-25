@@ -1,4 +1,4 @@
-class Tablero{
+class Tablero {
   #tablero=[];
   #tamanio;
   #pos_iniciox = 100;
