@@ -19,7 +19,7 @@ ficha_p1.draw();
 /**
  * TABLERO
  */
-let tablero = new Tablero(5);
+let tablero = new Tablero(7, 6);
 tablero.draw();
 
 

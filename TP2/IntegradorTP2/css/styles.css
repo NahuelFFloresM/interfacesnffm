@@ -1,18 +1,18 @@
 #element {
     position:absolute;
-    top:-75px;
+    top: 20px;
     border: solid 1px;
     width: 75px;
     height: 75px;
     border-radius: 100%;
-    left: 220px;
+    left: 305px;
     background-color:red;
-    animation: drop 2s ease forwards;
+    animation: drop 2000ms ease forwards;
     animation-iteration-count:infinite;
 }
 
 @keyframes drop{
     0%{opacity: 0}
-    70%{transform: translateY(560px)}
-    100%{transform: translateY(550px)}
+    70%{transform: translateY(665px)}
+    100%{transform: translateY(660px)}
   }
