@@ -1,23 +1,40 @@
 class Tablero {
   #tablero=[];
-  #tamanio;
+  #tamanioX;
+  #tamanioY;
   #pos_iniciox = 100;
   #pos_inicioy = 100;
 
-  constructor(tamanio){
-    this.#tamanio = tamanio;
-    for (let i = 0; i < tamanio; i++) {
-      this.#tablero[i] = new Array(tamanio);
+  constructor(tamanioX, tamanioY){
+    this.#tamanioX = tamanioX;
+    this.#tamanioY = tamanioY;
+    for (let i = 0; i < tamanioX; i++) {
+      this.#tablero[i] = new Array(tamanioY);
     }
-    this.#tablero = new Array(tamanio);
+    this.#tablero = new Array(tamanioX);
   }
 
-  getTamanio(){
-    return this.#tamanio;
+  getTamanioX(){
+    return this.#tamanioX;
   }
 
-  setTamanio(tamanio){
-    this.#tamanio = tamanio;
+  getTamanioY(){
+    return this.#tamanioY;
+  }
+
+  setTamanioY(tamanio){
+    this.#tamanioY = tamanio;
+  }
+
+  setTamanioX(tamanio){
+    this.#tamanioX = tamanio;
+  }
+
+  getPosInicialx(){
+    return this.#pos_iniciox;
+  }
+  getPosInicialy(){
+    return this.#pos_inicioy;
   }
 
   getPosInicialx(){
@@ -29,14 +46,18 @@ class Tablero {
 }
 
 Tablero.prototype.draw = function(){
+  console.log(canvas);
   ctx_canvas.beginPath();
   // Posicion tablero
   let x = this.getPosInicialx();
   let y = this.getPosInicialy();
-  for (let i = 1; i < this.getTamanio()+1; i++) {
-    for (let j = 1; j < this.getTamanio()+1; j++) {
+  for (let i = 0; i < this.getTamanioX(); i++) {
+    for (let j = 0; j < this.getTamanioY(); j++) {
       ctx_canvas.fillStyle = "green";
-      ctx_canvas.fillRect(i*x, j*y, 99, 99);
+      ctx_canvas.fillRect(x+i*100, y+j*100, 99, 99);
+      let circulo = new Circulo();
+      circulo.setPosition(x+i*100 + (x+i)/2, y+j*100 + (y+j)/2);
+      circulo.draw();
     }
   }
   ctx_canvas.stroke();
