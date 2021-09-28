@@ -4,6 +4,8 @@ class Tablero {
   #tamanioY;
   #pos_iniciox = 100;
   #pos_inicioy = 100;
+  #pos_finalx;
+  #pos_finaly;
 
   constructor(tamanioX, tamanioY){
     this.#tamanioX = tamanioX;
@@ -11,6 +13,8 @@ class Tablero {
     for (let i = 0; i < tamanioX; i++) {
       this.#tablero[i] = new Array(tamanioY);
     }
+    this.#pos_finalx = this.#pos_iniciox+tamanioX*100;
+    this.#pos_finaly = this.#pos_iniciox+tamanioX*100;
     this.#tablero = new Array(tamanioX);
   }
 

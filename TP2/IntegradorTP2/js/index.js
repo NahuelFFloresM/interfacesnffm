@@ -97,6 +97,8 @@ function punteroSobreFicha(evt){
 function pisaTablero(x,y){
   let posTableroy = tablero.getPosInicialy();
   let posTablerox = tablero.getPosInicialx();
+  let posTablerofinx = tablero.getTamanioX();
+  let posTablerofiny = tablero.getTamanioY();
   let r = ficha_p1.getRadius();
   if ((y+r >= posTableroy) && (x+r >= posTablerox)){
     return true;
