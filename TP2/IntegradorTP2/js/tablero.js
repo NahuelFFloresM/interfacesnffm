@@ -37,11 +37,11 @@ class Tablero {
     return this.#pos_inicioy;
   }
 
-  getPosInicialx(){
-    return this.#pos_iniciox;
+  getPosFinalX(){
+    return this.#pos_iniciox * (this.#tamanioX+1);
   }
-  getPosInicialy(){
-    return this.#pos_inicioy;
+  getPosFinalY(){
+    return this.#pos_inicioy * (this.#tamanioY+1);
   }
 }
 
