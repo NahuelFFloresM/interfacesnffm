@@ -50,6 +50,10 @@ document.addEventListener("DOMContentLoaded", function() {
 
   canvas.addEventListener('mouseup', function(evt) {
     arrastrando = false;
+    let m = oMousePos(canvas, evt);
+    if (punteroSobreFicha(evt) && punteroSobreTablero(evt)){
+      console.log("Correcto");
+    }
   }, false);
   /**
    * Deja de dibujar cuando te salis del canvas
@@ -84,12 +88,22 @@ function oMousePos(canvas, evt) {
   }
 }
 
+//Verifica si el puntero se encuentra dentro de la ficha
 function punteroSobreFicha(evt){
   let m = oMousePos(canvas, evt);
   if (m.x > (ficha_p1.getPosx()-20) && m.x < (ficha_p1.getPosx()+20)){
     if (m.y > (ficha_p1.getPosy()-20) && m.y < (ficha_p1.getPosy()+20)){
       return true;
     }
+  }
+  return false;
+}
+
+//Verifica si el puntero se encuentra entre el inicio y fin de la posicion X del tablero
+function punteroSobreTablero(evt){
+  let m = oMousePos(canvas, evt);
+  if (m.x > (tablero.getPosInicialx()) && m.x < (tablero.getPosFinalX())){
+    return true;
   }
   return false;
 }
