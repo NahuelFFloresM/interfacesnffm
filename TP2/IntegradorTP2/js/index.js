@@ -18,7 +18,7 @@ ficha_j1.setPosition(50,50);
 ficha_j1.draw();
 
 let ficha_j2 = new Circulo('Blue');
-ficha_j2.setPosition(50,100);
+ficha_j2.setPosition(850,50);
 ficha_j2.draw();
 
 /*
@@ -63,8 +63,20 @@ document.addEventListener("DOMContentLoaded", function() {
     arrastrando_ficha_j1 = false;
     arrastrando_ficha_j2 = false;
     let m = oMousePos(canvas, evt);
-    if ((punteroSobreFicha(evt,ficha_j1) ||punteroSobreFicha(evt,ficha_j2)) && punteroSobreTablero(evt)){
-      console.log("Correcto");
+    let columna;
+    if (punteroSobreFicha(evt,ficha_j1) && punteroSobreTablero(evt)){
+      console.log("Correcto - Ficha1");
+      //obtiene la columna en la que se esta intentando agregar la ficha
+      columna = tablero.getColumnaFicha(ficha_j1.getPosx());
+      //inserta la ficha en caso de tener disponibilidad. devulve boolean
+      console.log(tablero.insertarFicha(1, columna));
+    }
+    else if (punteroSobreFicha(evt,ficha_j2) && punteroSobreTablero(evt)){
+      console.log("Correcto - Ficha2");
+      //obtiene la columna en la que se esta intentando agregar la ficha
+      columna = tablero.getColumnaFicha(ficha_j2.getPosx());
+      //inserta la ficha en caso de tener disponibilidad. devulve boolean
+      console.log(tablero.insertarFicha(2, columna));
     }
   }, false);
   /**
