@@ -59,7 +59,7 @@ Tablero.prototype.draw = function(){
     for (let j = 0; j < this.getTamanioY(); j++) {
       ctx_canvas.fillStyle = "green";
       ctx_canvas.fillRect(x+i*100, y+j*100, 99, 99);
-      let circulo = new Circulo();
+      let circulo = new Circulo('white');
       circulo.setPosition(x+i*100 + (x+i)/2, y+j*100 + (y+j)/2);
       circulo.draw();
     }

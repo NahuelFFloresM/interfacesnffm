@@ -1,9 +1,8 @@
 class Circulo extends Ficha{
   #radius = 20;
 
-  constructor(){
-    super('red');
-    // super.setFill('red');
+  constructor(color){
+    super(color);
     super.setTamanio(this.#radius);
   }
 
