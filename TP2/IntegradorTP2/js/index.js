@@ -172,3 +172,8 @@ function posOriginalFicha(ficha,x,y){
   ctx_canvas.clearRect(ficha.getPosx()-r,ficha.getPosy()-r,t,t);
   ficha.reDraw(x,y);
 }
+
+function reiniciarJuego(){
+  juego = new Juego();
+  tablero = juego.getTablero();
+}
