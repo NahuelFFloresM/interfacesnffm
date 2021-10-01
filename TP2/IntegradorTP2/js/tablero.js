@@ -69,14 +69,14 @@ class Tablero {
   }
 
   //recibe numero de jugador y columna donde ingresar ficha. Chequea que pueda agregar la ficha y la agrega desde abajo
-  insertarFicha(ficha, columna) {
+  insertarFicha(jugador, columna) {
     console.log(this.#tablero[columna][0]);
     if (this.#tablero[columna][0] == 0){
       let fila = this.#tamanioY - 1;
       while (fila >= 0) {
         if (this.#tablero[columna][fila] == 0) {
-          this.#tablero[columna][fila] = ficha;
-          this.dibujarFicha(columna,fila,ficha);
+          this.#tablero[columna][fila] = jugador;
+          this.dibujarFicha(columna,fila,jugador);
           return true;
         }
         fila--;
@@ -85,9 +85,16 @@ class Tablero {
     return false;
   }
 
-  dibujarFicha(columna,fila,ficha){
+  /**
+   * Crea una nueva ficha a dibujar segun el jugador en turno. Rellena el color,setea posicion y dibuja.
+   * 
+   * @param columna 
+   * @param fila 
+   * @param jugador 
+   */
+  dibujarFicha(columna,fila,jugador){
     let fichaAcolocar = new Circulo('white');
-    if (ficha == 1){
+    if (jugador == 1){
       fichaAcolocar.setFill('red');
       // los "+50" son por el tamaño del bloque/2 en donde va la ficha
       fichaAcolocar.setPosition(this.#pos_iniciox+(columna*100)+50,this.#pos_inicioy+(fila*100)+50);
@@ -101,7 +108,6 @@ class Tablero {
 }
 
 Tablero.prototype.draw = function(){
-  console.log(canvas);
   ctx_canvas.beginPath();
   // Posicion tablero
   let x = this.getPosInicialx();
@@ -119,21 +125,3 @@ Tablero.prototype.draw = function(){
   }
   ctx_canvas.stroke();
 }
-
-/*Tablero.prototype.draw = function(){
-  console.log(canvas);
-  ctx_canvas.beginPath();
-  // Posicion tablero
-  let x = this.getPosFinalX();
-  let y = this.getPosFinalY();
-  for (let i = this.getTamanioX(); i > 0; i--) {
-    for (let j = this.getTamanioY(); j > 0 ; j--) {
-      ctx_canvas.fillStyle = "green";
-      ctx_canvas.fillRect(x-i*100, y-j*100, 99, 99);
-      let circulo = new Circulo('white');
-      circulo.setPosition(x-i*100 + 50, y-j*100 + 50);
-      circulo.draw();
-    }
-  }
-  ctx_canvas.stroke();
-}*/

@@ -64,20 +64,28 @@ document.addEventListener("DOMContentLoaded", function() {
     arrastrando_ficha_j2 = false;
     let m = oMousePos(canvas, evt);
     let columna;
+    //******************* SECCION PARA DETECTAR POSICION DE LA FICHA ARRASTRADA*************************************
     if (punteroSobreFicha(evt,ficha_j1) && punteroSobreTablero(evt)){
       console.log("Correcto - Ficha1");
       //obtiene la columna en la que se esta intentando agregar la ficha
       columna = tablero.getColumnaFicha(ficha_j1.getPosx());
       //inserta la ficha en caso de tener disponibilidad. devulve boolean
-      console.log(columna,tablero.insertarFicha(1, columna));
+      if (juego.insertarFicha(1,columna)){
+        juego.cambiarTurno();        
+      }
     }
     else if (punteroSobreFicha(evt,ficha_j2) && punteroSobreTablero(evt)){
       console.log("Correcto - Ficha2");
       //obtiene la columna en la que se esta intentando agregar la ficha
       columna = tablero.getColumnaFicha(ficha_j2.getPosx());
       //inserta la ficha en caso de tener disponibilidad. devulve boolean
-      console.log(tablero.insertarFicha(2, columna));
+      if (juego.insertarFicha(2,columna)){
+        juego.cambiarTurno();        
+      }
     }
+    // Reinicio de fichas a su posician actual
+    posOriginalFicha(ficha_j1,50,50);
+    posOriginalFicha(ficha_j2,850,50);
   }, false);
   /**
    * Deja de dibujar cuando te salis del canvas
@@ -85,13 +93,8 @@ document.addEventListener("DOMContentLoaded", function() {
    canvas.addEventListener("mouseout", function(evt) {
     arrastrando_ficha_j1 = false;
     arrastrando_ficha_j2 = false;
-    let r = ficha_j1.getRadius()+1;
-    let t = ficha_j1.getTamanio()*2+2;
-    ctx_canvas.clearRect(ficha_j1.getPosx()-r,ficha_j1.getPosy()-r,t,t);
-    ficha_j1.reDraw(50,50);
-    ctx_canvas.clearRect(ficha_j2.getPosx()-r,ficha_j2.getPosy()-r,t,t);
-    ficha_j2.reDraw(850,50);
-    // REINICIAR FICHAS
+    posOriginalFicha(ficha_j1,50,50);
+    posOriginalFicha(ficha_j2,850,50);
     ctx_canvas.closePath();
   }, false);
 
@@ -101,7 +104,6 @@ document.addEventListener("DOMContentLoaded", function() {
       let r = ficha_j1.getRadius()+1;
       let t = ficha_j1.getTamanio()*2+2;
       // Chequeo Colision sobre tablero
-      // TO DO EJES e Identificacion de ficha jugando
       if (!pisaTablero(m.x,m.y)){
         ctx_canvas.clearRect(ficha_j1.getPosx()-r,ficha_j1.getPosy()-r,t,t);
         ficha_j1.reDraw(m.x,m.y);
@@ -112,7 +114,6 @@ document.addEventListener("DOMContentLoaded", function() {
       let r = ficha_j2.getRadius()+1;
       let t = ficha_j2.getTamanio()*2+2;
       // Chequeo Colision sobre tablero
-      // TO DO EJES e Identificacion de ficha jugando
       if (!pisaTablero(m.x,m.y)){
         ctx_canvas.clearRect(ficha_j2.getPosx()-r,ficha_j2.getPosy()-r,t,t);
         ficha_j2.reDraw(m.x,m.y);
@@ -121,7 +122,7 @@ document.addEventListener("DOMContentLoaded", function() {
   }, false);
 });
 
-
+// Lectura de la psocicion del puntero del mouse
 function oMousePos(canvas, evt) {
   let ClientRect = canvas.getBoundingClientRect();
   return { 
@@ -162,4 +163,11 @@ function pisaTablero(x,y){
     return true;
   }
   return false;
+}
+
+function posOriginalFicha(ficha,x,y){
+  let r = ficha.getRadius()+1;
+  let t = ficha.getTamanio()*2+2;
+  ctx_canvas.clearRect(ficha.getPosx()-r,ficha.getPosy()-r,t,t);
+  ficha.reDraw(x,y);
 }
