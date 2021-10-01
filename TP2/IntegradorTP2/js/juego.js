@@ -4,6 +4,8 @@ class Juego{
   #turno_jugador;
   #tiempo_limite;
   #nIntervTimer;
+  #minutos = 59;
+  #segundos = 59;
   
   constructor(){
     this.#tablero = new Tablero(7,6);
@@ -19,18 +21,33 @@ class Juego{
     return this.#nIntervTimer;
   }
 
-  setInterval(){
-    this.getInterval = setInterval(function(){
-      console.log('tiempo');
-    }, 1000);
+  iniciarJuego(){
+    this.#nIntervTimer = setInterval(() => this.actualizarReloj(), 1000);
   }
 
-  stopInterval(){
+  actualizarReloj(){
+    if (this.#segundos == 0){
+      this.#minutos--;
+      this.#segundos = 60;
+    }
+    this.#segundos--;
+    document.getElementById('reloj_juego').innerHTML= this.#minutos+":"+this.#segundos;
+  }
+
+  pararJuego(){
     clearInterval(this.#nIntervTimer);
+    this.#minutos = 59;
+    this.#segundos = 59;
+    document.getElementById('reloj_juego').innerHTML= "--:--";
   }
 
   getTablero(){
     return this.#tablero;
+  }
+
+  setTiempoDeJuego(minutos){
+    this.#minutos = minutos;
+    this.#segundos = 60;
   }
 /**
  * 
@@ -46,13 +63,6 @@ class Juego{
       console.log('TURNO EQUIVOCADO');
     }
   }
-
-  elJugadorGano(){
-    //return this.#tablero.condicionFin();
-  }
-
-
-
 }
 
 // Juego.prototype.iniciarTiempo() = function(){
