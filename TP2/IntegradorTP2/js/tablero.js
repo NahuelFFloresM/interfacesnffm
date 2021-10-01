@@ -18,8 +18,8 @@ class Tablero {
         this.#tablero[i][j] = 0; 
       }
     }
-    this.#pos_finalx = this.#pos_iniciox+tamanioX*100;
-    this.#pos_finaly = this.#pos_iniciox+tamanioX*100;
+    this.#pos_finalx = this.#pos_iniciox+tamanioX*this.#pos_iniciox;
+    this.#pos_finaly = this.#pos_inicioy+tamanioY*this.#pos_inicioy;
   }
 
   getTamanioX(){
@@ -65,7 +65,7 @@ class Tablero {
     let i = 0;
     let x = this.getPosInicialx();
     while (i < this.getTamanioX()){
-      if (posX > x+i*100 && posX < x+(i+1)*100){
+      if (posX >= x+i*x && posX < x+(i+1)*x){
         return i;
       }
       i++; 
@@ -74,13 +74,14 @@ class Tablero {
   }
 
   //recibe numero de jugador y columna donde ingresar ficha. Chequea que pueda agregar la ficha y la agrega desde abajo
-  insertarFicha(jugador, columna) {
-    console.log(this.#tablero[columna][0]);
+  insertarFicha(ficha, columna, color) {
     if (this.#tablero[columna][0] == 0){
       let fila = this.#tamanioY - 1;
       while (fila >= 0) {
         if (this.#tablero[columna][fila] == 0) {
+          //asigna el numero correspondiente del jugador a la posicion de la matriz
           this.#tablero[columna][fila] = jugador;
+          //invoca para dibujar la ficha en el tablero
           this.dibujarFicha(columna,fila,jugador);
           this.#ultima_ficha_colocada.x = columna;
           this.#ultima_ficha_colocada.y = fila;
@@ -92,6 +93,15 @@ class Tablero {
     return false;
   }
 
+  //recibe fila, columna y color de ficha y la dibuja en la posicion dentro de la matriz
+  drawFicha(columna, fila, color) {
+    let circulo = new Circulo(color);
+    let x = this.#pos_iniciox;
+    let y = this.#pos_inicioy;
+    circulo.setPosition(x+columna*x + (x+columna)/2, y+fila*y + (y+fila)/2);
+    circulo.draw();
+  }
+  
   /**
    * Crea una nueva ficha a dibujar segun el jugador en turno. Rellena el color,setea posicion y dibuja.
    * 
@@ -122,8 +132,27 @@ Tablero.prototype.draw = function(){
   for (let i = 0; i < this.getTamanioX(); i++) {
     for (let j = 0; j < this.getTamanioY(); j++) {
       ctx_canvas.fillStyle = "green";
-      ctx_canvas.fillRect(x+i*100, y+j*100, 99, 99);
+      ctx_canvas.fillRect(x+i*x, y+j*y, x-1, y-1);
       let circulo = new Circulo('white');
+      circulo.setPosition(x+i*x + (x+i)/2, y+j*y + (y+j)/2);
+      circulo.draw();
+    }
+  }
+  ctx_canvas.stroke();
+}
+
+/*Tablero.prototype.draw = function(){
+  console.log(canvas);
+  ctx_canvas.beginPath();
+  // Posicion tablero
+  let x = this.getPosFinalX();
+  let y = this.getPosFinalY();
+  for (let i = this.getTamanioX(); i > 0; i--) {
+    for (let j = this.getTamanioY(); j > 0 ; j--) {
+      ctx_canvas.fillStyle = "green";
+      ctx_canvas.fillRect(x-i*100, y-j*100, 99, 99);
+      let circulo = new Circulo('white');
+      circulo.setPosition(x-i*100 + 50, y-j*100 + 50);
       // los "+50" son por el tamaño del bloque/2 en donde va la ficha
       circulo.setPosition(x+i*100 + 50, y+j*100 +50);
       // circulo.setPosition(x+i*100 + (x+i)/2, y+j*100 + (y+j)/2);
@@ -131,4 +160,4 @@ Tablero.prototype.draw = function(){
     }
   }
   ctx_canvas.stroke();
-}
+}*/
