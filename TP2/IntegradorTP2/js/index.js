@@ -86,6 +86,7 @@ document.addEventListener("DOMContentLoaded", function() {
     // Reinicio de fichas a su posician actual
     posOriginalFicha(ficha_j1,50,50);
     posOriginalFicha(ficha_j2,850,50);
+    juego.elJugadorGano();
   }, false);
   /**
    * Deja de dibujar cuando te salis del canvas

@@ -6,6 +6,7 @@ class Tablero {
   #pos_inicioy = 100;
   #pos_finalx;
   #pos_finaly;
+  #ultima_ficha_colocada = {};
 
   constructor(tamanioX, tamanioY){
     this.#tamanioX = tamanioX;
@@ -55,6 +56,10 @@ class Tablero {
     return this.#tablero;
   }
 
+  getUltimaFichaColocada(){
+    return this.#ultima_ficha_colocada;
+  }
+
   //recibe una posicion en X y devuelve a que columna corresponde
   getColumnaFicha(posX){
     let i = 0;
@@ -77,6 +82,8 @@ class Tablero {
         if (this.#tablero[columna][fila] == 0) {
           this.#tablero[columna][fila] = jugador;
           this.dibujarFicha(columna,fila,jugador);
+          this.#ultima_ficha_colocada.x = columna;
+          this.#ultima_ficha_colocada.y = fila;
           return true;
         }
         fila--;

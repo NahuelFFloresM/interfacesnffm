@@ -47,6 +47,12 @@ class Juego{
     }
   }
 
+  elJugadorGano(){
+    return this.#tablero.condicionFin();
+  }
+
+
+
 }
 
 // Juego.prototype.iniciarTiempo() = function(){
