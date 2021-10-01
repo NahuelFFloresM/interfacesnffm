@@ -76,12 +76,27 @@ class Tablero {
       while (fila >= 0) {
         if (this.#tablero[columna][fila] == 0) {
           this.#tablero[columna][fila] = ficha;
+          this.dibujarFicha(columna,fila,ficha);
           return true;
         }
         fila--;
       }
     }
     return false;
+  }
+
+  dibujarFicha(columna,fila,ficha){
+    let fichaAcolocar = new Circulo('white');
+    if (ficha == 1){
+      fichaAcolocar.setFill('red');
+      // los "+50" son por el tamaño del bloque/2 en donde va la ficha
+      fichaAcolocar.setPosition(this.#pos_iniciox+(columna*100)+50,this.#pos_inicioy+(fila*100)+50);
+      fichaAcolocar.draw();
+    } else {
+      fichaAcolocar.setFill('blue');
+      fichaAcolocar.setPosition(this.#pos_iniciox+(columna*100)+50,this.#pos_inicioy+(fila*100)+50);
+      fichaAcolocar.draw();
+    }
   }
 }
 
@@ -96,7 +111,9 @@ Tablero.prototype.draw = function(){
       ctx_canvas.fillStyle = "green";
       ctx_canvas.fillRect(x+i*100, y+j*100, 99, 99);
       let circulo = new Circulo('white');
-      circulo.setPosition(x+i*100 + (x+i)/2, y+j*100 + (y+j)/2);
+      // los "+50" son por el tamaño del bloque/2 en donde va la ficha
+      circulo.setPosition(x+i*100 + 50, y+j*100 +50);
+      // circulo.setPosition(x+i*100 + (x+i)/2, y+j*100 + (y+j)/2);
       circulo.draw();
     }
   }

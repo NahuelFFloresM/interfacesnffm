@@ -21,6 +21,10 @@ class Circulo extends Ficha{
   getTamanio(){
     return super.getTamanio();
   }
+
+  setFill(color){
+    super.setFill(color);
+  }
 }
 
 Circulo.prototype.draw = function(){

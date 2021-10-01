@@ -69,7 +69,7 @@ document.addEventListener("DOMContentLoaded", function() {
       //obtiene la columna en la que se esta intentando agregar la ficha
       columna = tablero.getColumnaFicha(ficha_j1.getPosx());
       //inserta la ficha en caso de tener disponibilidad. devulve boolean
-      console.log(tablero.insertarFicha(1, columna));
+      console.log(columna,tablero.insertarFicha(1, columna));
     }
     else if (punteroSobreFicha(evt,ficha_j2) && punteroSobreTablero(evt)){
       console.log("Correcto - Ficha2");
@@ -83,7 +83,14 @@ document.addEventListener("DOMContentLoaded", function() {
    * Deja de dibujar cuando te salis del canvas
    */
    canvas.addEventListener("mouseout", function(evt) {
-    arrastrando = false;
+    arrastrando_ficha_j1 = false;
+    arrastrando_ficha_j2 = false;
+    let r = ficha_j1.getRadius()+1;
+    let t = ficha_j1.getTamanio()*2+2;
+    ctx_canvas.clearRect(ficha_j1.getPosx()-r,ficha_j1.getPosy()-r,t,t);
+    ficha_j1.reDraw(50,50);
+    ctx_canvas.clearRect(ficha_j2.getPosx()-r,ficha_j2.getPosy()-r,t,t);
+    ficha_j2.reDraw(850,50);
     // REINICIAR FICHAS
     ctx_canvas.closePath();
   }, false);
