@@ -48,7 +48,7 @@ class Juego{
   }
 
   elJugadorGano(){
-    return this.#tablero.condicionFin();
+    //return this.#tablero.condicionFin();
   }
 
 

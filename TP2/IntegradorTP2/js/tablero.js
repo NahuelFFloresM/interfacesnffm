@@ -4,6 +4,7 @@ class Tablero {
   #tamanioY;
   #pos_iniciox = 100;
   #pos_inicioy = 100;
+  #tamanioCuadro = 100;
   #pos_finalx;
   #pos_finaly;
   #ultima_ficha_colocada = {};
@@ -60,6 +61,10 @@ class Tablero {
     return this.#ultima_ficha_colocada;
   }
 
+  getTamanioCubo(){
+    return this.#tamanioCuadro;
+  }
+
   //recibe una posicion en X y devuelve a que columna corresponde
   getColumnaFicha(posX){
     let i = 0;
@@ -74,7 +79,7 @@ class Tablero {
   }
 
   //recibe numero de jugador y columna donde ingresar ficha. Chequea que pueda agregar la ficha y la agrega desde abajo
-  insertarFicha(ficha, columna, color) {
+  insertarFicha(jugador, columna, color) {
     if (this.#tablero[columna][0] == 0){
       let fila = this.#tamanioY - 1;
       while (fila >= 0) {
@@ -132,9 +137,9 @@ Tablero.prototype.draw = function(){
   for (let i = 0; i < this.getTamanioX(); i++) {
     for (let j = 0; j < this.getTamanioY(); j++) {
       ctx_canvas.fillStyle = "green";
-      ctx_canvas.fillRect(x+i*x, y+j*y, x-1, y-1);
+      ctx_canvas.fillRect(x+i*this.getTamanioCubo(), y+j*this.getTamanioCubo(), this.getTamanioCubo()-1, this.getTamanioCubo()-1);
       let circulo = new Circulo('white');
-      circulo.setPosition(x+i*x + (x+i)/2, y+j*y + (y+j)/2);
+      circulo.setPosition(x+i*this.getTamanioCubo() + (this.getTamanioCubo()/2), y+j*this.getTamanioCubo() + (this.getTamanioCubo()/2));
       circulo.draw();
     }
   }
