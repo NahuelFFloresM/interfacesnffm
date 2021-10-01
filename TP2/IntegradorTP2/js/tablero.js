@@ -87,7 +87,7 @@ class Tablero {
           //asigna el numero correspondiente del jugador a la posicion de la matriz
           this.#tablero[columna][fila] = jugador;
           //invoca para dibujar la ficha en el tablero
-          this.dibujarFicha(columna,fila,jugador);
+          this.drawFicha(columna,fila,color);
           this.#ultima_ficha_colocada.x = columna;
           this.#ultima_ficha_colocada.y = fila;
           return true;
@@ -98,12 +98,18 @@ class Tablero {
     return false;
   }
 
-  //recibe fila, columna y color de ficha y la dibuja en la posicion dentro de la matriz
+  /**
+   * Crea una nueva ficha a dibujar. Rellena el color,setea posicion y dibuja.
+   * 
+   * @param columna 
+   * @param fila 
+   * @param color 
+   */
   drawFicha(columna, fila, color) {
     let circulo = new Circulo(color);
     let x = this.#pos_iniciox;
     let y = this.#pos_inicioy;
-    circulo.setPosition(x+columna*x + (x+columna)/2, y+fila*y + (y+fila)/2);
+    circulo.setPosition(x+columna*this.getTamanioCubo() + (this.getTamanioCubo())/2, y+fila*this.getTamanioCubo() + (this.getTamanioCubo())/2);
     circulo.draw();
   }
   
