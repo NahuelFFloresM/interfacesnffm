@@ -145,12 +145,12 @@ class Tablero {
     if (!gano) {
       gano = this.enLineaVertical(jugador);
     }
-    /*if (!gano) {
-      gano = this.enLineaDiagonalDerecha(jugador);
+    if (!gano) {
+      gano = this.enLineaDiagonalArriba(jugador);
     }
-    /*if (!gano) {
-      gano = enLineaDiagonalIzquierda(jugador);
-    }*/
+    if (!gano) {
+      gano = this.enLineaDiagonalAbajo(jugador);
+    }
     return gano;
   }
 
@@ -197,7 +197,7 @@ class Tablero {
     return contador == this.#cantLinea;
   }
 
-  enLineaDiagonalDerecha(jugador) {
+  enLineaDiagonalArriba(jugador) {
     let contador = 0;
     let corte = false;
     let posX = this.#ultima_ficha_colocada.x;
@@ -214,7 +214,7 @@ class Tablero {
     }
     corte = false;
     posX = this.#ultima_ficha_colocada.x - 1;
-    posY = this.#ultima_ficha_colocada.y - 1;
+    posY = this.#ultima_ficha_colocada.y + 1;
     while (posX >= 0 && posY < this.#tamanioY && !corte) {
       if (this.#tablero[posX][posY] == jugador) {
         contador++;
@@ -223,6 +223,37 @@ class Tablero {
         corte = true;
       }
       posX--;
+      posY++;
+    }
+    return contador == this.#cantLinea;
+  }
+
+  enLineaDiagonalAbajo(jugador) {
+    let contador = 0;
+    let corte = false;
+    let posX = this.#ultima_ficha_colocada.x;
+    let posY = this.#ultima_ficha_colocada.y;
+    while (posX >= 0 && posY >= 0 && !corte) {
+      if (this.#tablero[posX][posY] == jugador) {
+        contador++;
+      }
+      else {
+        corte = true;
+      }
+      posX--;
+      posY--;
+    }
+    corte = false;
+    posX = this.#ultima_ficha_colocada.x + 1;
+    posY = this.#ultima_ficha_colocada.y + 1;
+    while (posX < this.#tamanioX && posY < this.#tamanioY && !corte) {
+      if (this.#tablero[posX][posY] == jugador) {
+        contador++;
+      }
+      else {
+        corte = true;
+      }
+      posX++;
       posY++;
     }
     console.log(contador);
