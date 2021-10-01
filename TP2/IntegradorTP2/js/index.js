@@ -174,3 +174,17 @@ function posOriginalFicha(ficha,x,y){
   ctx_canvas.clearRect(ficha.getPosx()-r,ficha.getPosy()-r,t,t);
   ficha.reDraw(x,y);
 }
+
+function reiniciarJuego(){
+  juego.pararJuego();
+  juego = new Juego();
+  tablero = juego.getTablero();
+}
+
+function iniciarJuego(){
+  juego.iniciarJuego();
+}
+
+function setearTiempoJuego(){
+  juego.setTiempoDeJuego(document.getElementById('input_tiempo_juego').value-1);
+}
