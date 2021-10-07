@@ -15,6 +15,8 @@ let arrastrando_ficha_j2 = false;
 */
 let ficha_j1 = new Circulo('Red');
 ficha_j1.setPosition(50,50);
+ficha_j1.setFill('red');
+ficha_j1.setBackgroundImage('https://www.gravatar.com/avatar/4af2cdbaf02d97ba88d5d6daff94fbae/?default=&s=80');
 ficha_j1.draw();
 
 let ficha_j2 = new Circulo('Blue');
@@ -70,8 +72,8 @@ document.addEventListener("DOMContentLoaded", function() {
       //obtiene la columna en la que se esta intentando agregar la ficha
       columna = tablero.getColumnaFicha(ficha_j1.getPosx());
       //inserta la ficha en caso de tener disponibilidad. devulve boolean
-      if (juego.insertarFicha(1,columna)){
-        juego.cambiarTurno();        
+      if (juego.insertarFicha(1,ficha_j1,columna)){
+        juego.cambiarTurno();
       }
     }
     else if (punteroSobreFicha(evt,ficha_j2) && punteroSobreTablero(evt)){
@@ -79,7 +81,7 @@ document.addEventListener("DOMContentLoaded", function() {
       //obtiene la columna en la que se esta intentando agregar la ficha
       columna = tablero.getColumnaFicha(ficha_j2.getPosx());
       //inserta la ficha en caso de tener disponibilidad. devulve boolean
-      if (juego.insertarFicha(2,columna)){
+      if (juego.insertarFicha(2,ficha_j2,columna)){
         juego.cambiarTurno();        
       }
     }
@@ -175,11 +177,13 @@ function posOriginalFicha(ficha,x,y){
 function reiniciarJuego(){
   juego.pararJuego();
   juego = new Juego();
-  tablero = juego.getTablero();
+  tablero = juego.getTablero();  
+  document.getElementById('button_tiempo_juego').disabled = false;
 }
 
 function iniciarJuego(){
   juego.iniciarJuego();
+  document.getElementById('button_tiempo_juego').disabled = true;
 }
 
 function setearTiempoJuego(){

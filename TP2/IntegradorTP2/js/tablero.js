@@ -79,7 +79,7 @@ class Tablero {
   }
 
   //recibe numero de jugador y columna donde ingresar ficha. Chequea que pueda agregar la ficha y la agrega desde abajo
-  insertarFicha(jugador, columna, color) {
+  insertarFicha(jugador, columna, ficha) {
     if (this.#tablero[columna][0] == 0){
       let fila = this.#tamanioY - 1;
       while (fila >= 0) {
@@ -87,7 +87,12 @@ class Tablero {
           //asigna el numero correspondiente del jugador a la posicion de la matriz
           this.#tablero[columna][fila] = jugador;
           //invoca para dibujar la ficha en el tablero
-          this.drawFicha(columna,fila,color);
+          let ficha_a_colocar = ficha.devolverCopia();
+          ficha_a_colocar.setPosition(this.#pos_iniciox*(columna+1)+(this.getTamanioCubo()/2),this.#pos_inicioy*(fila+1)+(this.getTamanioCubo()/2));
+          // this.drawFicha(columna,fila,color);
+          console.log(columna,fila);
+          console.log(ficha_a_colocar);
+          ficha_a_colocar.draw();
           this.#ultima_ficha_colocada.x = columna;
           this.#ultima_ficha_colocada.y = fila;
           return true;

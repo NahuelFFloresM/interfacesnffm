@@ -15,6 +15,7 @@ class Juego{
 
   cambiarTurno(){
     this.#turno_jugador = this.#turno_jugador == 1 ? 2:1;
+    document.getElementById('turno_jugador').innerHTML = this.#turno_jugador;
   }
 
   getInterval(){
@@ -22,7 +23,8 @@ class Juego{
   }
 
   iniciarJuego(){
-    this.#nIntervTimer = setInterval(() => this.actualizarReloj(), 1000);
+    this.#nIntervTimer = setInterval(() => this.actualizarReloj(), 1000);    
+    document.getElementById('turno_jugador').innerHTML = 1;
   }
 
   actualizarReloj(){
@@ -55,10 +57,10 @@ class Juego{
  * @param columna 
  * @returns boolean si se coloco con exito
  */
-  insertarFicha(jugador,columna){
+  insertarFicha(jugador,ficha,columna){
     if (this.#turno_jugador == jugador){
       //inserta la ficha en caso de tener disponibilidad. devulve boolean
-      return this.#tablero.insertarFicha(jugador, columna);
+      return this.#tablero.insertarFicha(jugador, columna,ficha);
     } else{
       console.log('TURNO EQUIVOCADO');
     }
