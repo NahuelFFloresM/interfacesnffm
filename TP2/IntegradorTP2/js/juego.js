@@ -65,6 +65,13 @@ class Juego{
       console.log('TURNO EQUIVOCADO');
     }
   }
+
+  elJugadorGano(jugador){
+    return this.#tablero.condicionFin(jugador);
+  }
+
+
+
 }
 
 // Juego.prototype.iniciarTiempo() = function(){

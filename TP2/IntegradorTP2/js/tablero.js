@@ -5,6 +5,7 @@ class Tablero {
   #pos_iniciox = 100;
   #pos_inicioy = 100;
   #tamanioCuadro = 100;
+  #cantLinea = 4;
   #pos_finalx;
   #pos_finaly;
   #ultima_ficha_colocada = {};
@@ -21,6 +22,8 @@ class Tablero {
     }
     this.#pos_finalx = this.#pos_iniciox+tamanioX*this.#pos_iniciox;
     this.#pos_finaly = this.#pos_inicioy+tamanioY*this.#pos_inicioy;
+    this.#ultima_ficha_colocada.x = -1;
+    this.#ultima_ficha_colocada.y = -1;
   }
 
   getTamanioX(){
@@ -137,6 +140,129 @@ class Tablero {
       fichaAcolocar.setPosition(this.#pos_iniciox+(columna*100)+50,this.#pos_inicioy+(fila*100)+50);
       fichaAcolocar.draw();
     }
+  }
+
+  condicionFin(jugador) {
+    if (this.#ultima_ficha_colocada.x == -1) {
+      return false;
+    }
+    let gano = this.enLineaHorizontal(jugador);
+    if (!gano) {
+      gano = this.enLineaVertical(jugador);
+    }
+    if (!gano) {
+      gano = this.enLineaDiagonalArriba(jugador);
+    }
+    if (!gano) {
+      gano = this.enLineaDiagonalAbajo(jugador);
+    }
+    return gano;
+  }
+
+  enLineaHorizontal(jugador) {
+    let contador = 0;
+    let corte = false;
+    let pos = this.#ultima_ficha_colocada.x;
+    while (pos < this.#tamanioX && !corte) {
+      if (this.#tablero[pos][this.#ultima_ficha_colocada.y] == jugador) {
+        contador++;
+      }
+      else {
+        corte = true;
+      }
+      pos++;
+    }
+    corte = false;
+    pos = this.#ultima_ficha_colocada.x - 1;
+    while (pos >= 0 && !corte) {
+      if (this.#tablero[pos][this.#ultima_ficha_colocada.y] == jugador) {
+        contador++;
+      }
+      else {
+        corte = true;
+      }
+      pos--;
+    }
+    return contador == this.#cantLinea;
+  }
+
+  enLineaVertical(jugador) {
+    let contador = 0;
+    let corte = false;
+    let pos = this.#ultima_ficha_colocada.y;
+    while (pos < this.#tamanioY && !corte) {
+      if (this.#tablero[this.#ultima_ficha_colocada.x][pos] == jugador) {
+        contador++;
+      }
+      else {
+        corte = true;
+      }
+      pos++;
+    }
+    return contador == this.#cantLinea;
+  }
+
+  enLineaDiagonalArriba(jugador) {
+    let contador = 0;
+    let corte = false;
+    let posX = this.#ultima_ficha_colocada.x;
+    let posY = this.#ultima_ficha_colocada.y;
+    while (posX < this.#tamanioX && posY >= 0 && !corte) {
+      if (this.#tablero[posX][posY] == jugador) {
+        contador++;
+      }
+      else {
+        corte = true;
+      }
+      posX++;
+      posY--;
+    }
+    corte = false;
+    posX = this.#ultima_ficha_colocada.x - 1;
+    posY = this.#ultima_ficha_colocada.y + 1;
+    while (posX >= 0 && posY < this.#tamanioY && !corte) {
+      if (this.#tablero[posX][posY] == jugador) {
+        contador++;
+      }
+      else {
+        corte = true;
+      }
+      posX--;
+      posY++;
+    }
+    return contador == this.#cantLinea;
+  }
+
+  enLineaDiagonalAbajo(jugador) {
+    let contador = 0;
+    let corte = false;
+    let posX = this.#ultima_ficha_colocada.x;
+    let posY = this.#ultima_ficha_colocada.y;
+    while (posX >= 0 && posY >= 0 && !corte) {
+      if (this.#tablero[posX][posY] == jugador) {
+        contador++;
+      }
+      else {
+        corte = true;
+      }
+      posX--;
+      posY--;
+    }
+    corte = false;
+    posX = this.#ultima_ficha_colocada.x + 1;
+    posY = this.#ultima_ficha_colocada.y + 1;
+    while (posX < this.#tamanioX && posY < this.#tamanioY && !corte) {
+      if (this.#tablero[posX][posY] == jugador) {
+        contador++;
+      }
+      else {
+        corte = true;
+      }
+      posX++;
+      posY++;
+    }
+    console.log(contador);
+    return contador == this.#cantLinea;
   }
 }
 
