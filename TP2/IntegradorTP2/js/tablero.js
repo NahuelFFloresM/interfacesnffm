@@ -3,7 +3,7 @@ class Tablero {
   #tamanioX;
   #tamanioY;
   #pos_iniciox = 100;
-  #pos_inicioy = 100;
+  #pos_inicioy = 80;
   #tamanioCuadro = 100;
   #cantLinea = 4;
   #pos_finalx;
@@ -20,8 +20,9 @@ class Tablero {
         this.#tablero[i][j] = 0; 
       }
     }
-    this.#pos_finalx = this.#pos_iniciox+tamanioX*this.#pos_iniciox;
-    this.#pos_finaly = this.#pos_inicioy+tamanioY*this.#pos_inicioy;
+    this.#tamanioCuadro = 700/tamanioX;
+    this.#pos_finalx = this.#pos_iniciox+(tamanioX*(700/tamanioX));
+    this.#pos_finaly = this.#pos_inicioy+(tamanioY*(600/tamanioY));
     this.#ultima_ficha_colocada.x = -1;
     this.#ultima_ficha_colocada.y = -1;
   }
@@ -73,7 +74,7 @@ class Tablero {
     let i = 0;
     let x = this.getPosInicialx();
     while (i < this.getTamanioX()){
-      if (posX >= x+i*x && posX < x+(i+1)*x){
+      if (posX >= x+i*this.#tamanioCuadro && posX < x+(i+1)*this.#tamanioCuadro){
         return i;
       }
       i++; 
@@ -91,10 +92,10 @@ class Tablero {
           this.#tablero[columna][fila] = jugador;
           //invoca para dibujar la ficha en el tablero
           let ficha_a_colocar = ficha.devolverCopia();
-          ficha_a_colocar.setPosition(this.#pos_iniciox*(columna+1)+(this.getTamanioCubo()/2),this.#pos_inicioy*(fila+1)+(this.getTamanioCubo()/2));
-          // this.drawFicha(columna,fila,color);
-          console.log(columna,fila);
+          ficha_a_colocar.setPosition(this.#pos_iniciox+columna*(this.#tamanioCuadro)+(this.#tamanioCuadro/2),this.#pos_inicioy+fila*(this.#tamanioCuadro)+(this.#tamanioCuadro/2));
           console.log(ficha_a_colocar);
+          console.log(this.#pos_inicioy,fila+1,this.#tamanioCuadro/2);
+          // this.drawFicha(columna,fila,color);          
           ficha_a_colocar.draw();
           this.#ultima_ficha_colocada.x = columna;
           this.#ultima_ficha_colocada.y = fila;
@@ -117,29 +118,8 @@ class Tablero {
     let circulo = new Circulo(color);
     let x = this.#pos_iniciox;
     let y = this.#pos_inicioy;
-    circulo.setPosition(x+columna*this.getTamanioCubo() + (this.getTamanioCubo())/2, y+fila*this.getTamanioCubo() + (this.getTamanioCubo())/2);
+    circulo.setPosition(x+columna*this.#tamanioCuadro + (this.#tamanioCuadro)/2, y+fila*this.#tamanioCuadro + (this.#tamanioCuadro)/2);
     circulo.draw();
-  }
-  
-  /**
-   * Crea una nueva ficha a dibujar segun el jugador en turno. Rellena el color,setea posicion y dibuja.
-   * 
-   * @param columna 
-   * @param fila 
-   * @param jugador 
-   */
-  dibujarFicha(columna,fila,jugador){
-    let fichaAcolocar = new Circulo('white');
-    if (jugador == 1){
-      fichaAcolocar.setFill('red');
-      // los "+50" son por el tamaño del bloque/2 en donde va la ficha
-      fichaAcolocar.setPosition(this.#pos_iniciox+(columna*100)+50,this.#pos_inicioy+(fila*100)+50);
-      fichaAcolocar.draw();
-    } else {
-      fichaAcolocar.setFill('blue');
-      fichaAcolocar.setPosition(this.#pos_iniciox+(columna*100)+50,this.#pos_inicioy+(fila*100)+50);
-      fichaAcolocar.draw();
-    }
   }
 
   condicionFin(jugador) {
@@ -261,7 +241,6 @@ class Tablero {
       posX++;
       posY++;
     }
-    console.log(contador);
     return contador == this.#cantLinea;
   }
 }
@@ -274,7 +253,7 @@ Tablero.prototype.draw = function(){
   for (let i = 0; i < this.getTamanioX(); i++) {
     for (let j = 0; j < this.getTamanioY(); j++) {
       ctx_canvas.fillStyle = "green";
-      ctx_canvas.fillRect(x+i*this.getTamanioCubo(), y+j*this.getTamanioCubo(), this.getTamanioCubo()-1, this.getTamanioCubo()-1);
+      ctx_canvas.fillRect(x+i*this.getTamanioCubo(), y+j*this.getTamanioCubo(), this.getTamanioCubo(), this.getTamanioCubo());
       let circulo = new Circulo('white');
       circulo.setPosition(x+i*this.getTamanioCubo() + (this.getTamanioCubo()/2), y+j*this.getTamanioCubo() + (this.getTamanioCubo()/2));
       circulo.draw();

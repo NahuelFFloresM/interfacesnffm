@@ -19,6 +19,8 @@ ficha_j1.setFill('red');
 ficha_j1.setBackgroundImage('https://www.gravatar.com/avatar/4af2cdbaf02d97ba88d5d6daff94fbae/?default=&s=80');
 ficha_j1.draw();
 
+
+
 let ficha_j2 = new Circulo('Blue');
 ficha_j2.setPosition(850,50);
 ficha_j2.draw();
@@ -26,13 +28,18 @@ ficha_j2.draw();
 /*
  * JUEGO
  */
-let juego = new Juego();
+let juego = new Juego(7,6);
 // juego.setInterval();
 
 /**
  * TABLERO
  */
 let tablero = juego.getTablero();
+
+/***** FICHA AUXILIAR PARA PROBAR POSICIONES */
+// let ficha_aux = new Circulo('black');
+// ficha_aux.setPosition(150,530);
+// ficha_aux.draw();
 
 document.addEventListener("DOMContentLoaded", function() {
 
@@ -82,6 +89,8 @@ document.addEventListener("DOMContentLoaded", function() {
       columna = tablero.getColumnaFicha(ficha_j2.getPosx());
       //inserta la ficha en caso de tener disponibilidad. devulve boolean
       if (juego.insertarFicha(2,ficha_j2,columna) && !juego.elJugadorGano(2)){
+        juego.cambiarTurno();
+      }
     }
     // Reinicio de fichas a su posician actual
     posOriginalFicha(ficha_j1,50,50);
