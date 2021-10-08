@@ -10,6 +10,9 @@ let canvas= document.getElementById("canvas");
 let ctx_canvas = canvas.getContext('2d');
 let arrastrando_ficha_j1 = false;
 let arrastrando_ficha_j2 = false;
+// Variables para tener control en caso de que el usuario selecciono un tamanio de tablero
+let columnas_tablero = 0;
+let filas_tablero = 0;
 /**
 * FICHAS
 */
@@ -29,7 +32,6 @@ ficha_j2.draw();
  * JUEGO
  */
 let juego = new Juego(7,6);
-// juego.setInterval();
 
 /**
  * TABLERO
@@ -59,44 +61,55 @@ document.addEventListener("DOMContentLoaded", function() {
 
   canvas.addEventListener('mousedown', function(evt) {
     // LLAMAR A FUNCION PARA SELECCIONAR FICHA
-    let m = oMousePos(canvas, evt);
-    if (punteroSobreFicha(evt,ficha_j1)){      
-      arrastrando_ficha_j1 = true;
-    }
-    if (punteroSobreFicha(evt,ficha_j2)){
-      arrastrando_ficha_j2 = true;
+    if (juego.juegoIniciado()){
+      let m = oMousePos(canvas, evt);
+      if (punteroSobreFicha(evt,ficha_j1)){      
+        arrastrando_ficha_j1 = true;
+      }
+      if (punteroSobreFicha(evt,ficha_j2)){
+        arrastrando_ficha_j2 = true;
+      }
     }
   }, false);
 
   canvas.addEventListener('mouseup', function(evt) {
-    arrastrando_ficha_j1 = false;
-    arrastrando_ficha_j2 = false;
-    let m = oMousePos(canvas, evt);
-    let columna;
-    //******************* SECCION PARA DETECTAR POSICION DE LA FICHA ARRASTRADA*************************************
-    if (punteroSobreFicha(evt,ficha_j1) && punteroSobreTablero(evt)){
-      console.log("Correcto - Ficha1");
-      //obtiene la columna en la que se esta intentando agregar la ficha
-      columna = tablero.getColumnaFicha(ficha_j1.getPosx());
-      //inserta la ficha en caso de tener disponibilidad. devulve boolean
-      if (juego.insertarFicha(1,ficha_j1,columna) && !juego.elJugadorGano(1)){
-        juego.cambiarTurno();
+    if (juego.juegoIniciado()){
+      arrastrando_ficha_j1 = false;
+      arrastrando_ficha_j2 = false;
+      let m = oMousePos(canvas, evt);
+      let columna;
+      //******************* SECCION PARA DETECTAR POSICION DE LA FICHA ARRASTRADA*************************************
+      if (punteroSobreFicha(evt,ficha_j1) && punteroSobreTablero(evt)){
+        console.log("Correcto - Ficha1");
+        //obtiene la columna en la que se esta intentando agregar la ficha
+        columna = tablero.getColumnaFicha(ficha_j1.getPosx());
+        //inserta la ficha en caso de tener disponibilidad. devulve boolean
+        if (juego.insertarFicha(1,ficha_j1,columna) && !juego.elJugadorGano(1)){
+          juego.cambiarTurno();
+        }
       }
-    }
-    else if (punteroSobreFicha(evt,ficha_j2) && punteroSobreTablero(evt)){
-      console.log("Correcto - Ficha2");
-      //obtiene la columna en la que se esta intentando agregar la ficha
-      columna = tablero.getColumnaFicha(ficha_j2.getPosx());
-      //inserta la ficha en caso de tener disponibilidad. devulve boolean
-      if (juego.insertarFicha(2,ficha_j2,columna) && !juego.elJugadorGano(2)){
-        juego.cambiarTurno();
+      else if (punteroSobreFicha(evt,ficha_j2) && punteroSobreTablero(evt)){
+        console.log("Correcto - Ficha2");
+        //obtiene la columna en la que se esta intentando agregar la ficha
+        columna = tablero.getColumnaFicha(ficha_j2.getPosx());
+        //inserta la ficha en caso de tener disponibilidad. devulve boolean
+        if (juego.insertarFicha(2,ficha_j2,columna) && !juego.elJugadorGano(2)){
+          juego.cambiarTurno();
+        }
       }
-    }
-    // Reinicio de fichas a su posician actual
-    posOriginalFicha(ficha_j1,50,50);
-    posOriginalFicha(ficha_j2,850,50);
-    if (juego.elJugadorGano(1) || juego.elJugadorGano(2)) {
-      console.log("FIN DEL JUEGO");
+      // Reinicio de fichas a su posician actual
+      posOriginalFicha(ficha_j1,50,50);
+      posOriginalFicha(ficha_j2,850,50);
+      if (juego.elJugadorGano(1)) {
+        document.getElementById('message_label').innerHTML = "VICTORIA";
+        document.getElementById('message_body').innerHTML = "¡¡Felicidades Jugador "+1+ "!! GANASTE LA PARTIDA";
+        mostrarModal();
+      }
+      if (juego.elJugadorGano(2)){
+        document.getElementById('message_label').innerHTML = "VICTORIA";
+        document.getElementById('message_body').innerHTML = "¡¡Felicidades Jugador "+2+ "!! GANASTE LA PARTIDA";
+        mostrarModal();
+      }
     }
   }, false);
   /**
@@ -186,9 +199,16 @@ function posOriginalFicha(ficha,x,y){
 
 function reiniciarJuego(){
   juego.pararJuego();
-  juego = new Juego();
+  juego = new Juego(this.columnas_tablero,this.filas_tablero);
   tablero = juego.getTablero();  
-  document.getElementById('button_tiempo_juego').disabled = false;
+  document.getElementById('button_tiempo_juego').disabled = false;  
+}
+
+function mostrarModal(){
+  var myModal = new bootstrap.Modal(document.getElementById('message_modal'), {
+    keyboard: false
+  })
+  myModal.toggle();
 }
 
 function iniciarJuego(){
@@ -198,4 +218,12 @@ function iniciarJuego(){
 
 function setearTiempoJuego(){
   juego.setTiempoDeJuego(document.getElementById('input_tiempo_juego').value-1);
+}
+
+function setearTamanioTablero(x,y){
+  if (!juego.juegoIniciado()){
+    this.columnas_tablero = x;
+    this.filas_tablero = y;
+    reiniciarJuego(x,y)
+  }
 }
