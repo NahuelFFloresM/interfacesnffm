@@ -2,7 +2,6 @@ class Juego{
   #tablero;
   // 0 Turno J1, 1 Turno J2
   #turno_jugador;
-  #tiempo_limite;
   #juego_iniciado = false;
   #nIntervTimer;
   #minutos = 59;
@@ -24,9 +23,11 @@ class Juego{
   }
 
   iniciarJuego(){
-    this.#nIntervTimer = setInterval(() => this.actualizarReloj(), 1000);    
-    this.iniciarJuego = true;
-    document.getElementById('turno_jugador').innerHTML = 1;
+    if(!juego.juegoIniciado()){
+      this.#nIntervTimer = setInterval(() => this.actualizarReloj(), 1000);    
+      this.#juego_iniciado = true;
+      document.getElementById('turno_jugador').innerHTML = 1;
+    }
   }
 
   actualizarReloj(){
@@ -46,11 +47,17 @@ class Juego{
     clearInterval(this.#nIntervTimer);
     this.#minutos = 59;
     this.#segundos = 59;
+    this.#juego_iniciado = false;
     document.getElementById('reloj_juego').innerHTML= "--:--";
+    document.getElementById('turno_jugador').innerHTML = '>:D';
   }
 
   getTablero(){
     return this.#tablero;
+  }
+
+  juegoIniciado(){
+    return this.#juego_iniciado;
   }
 
   setTiempoDeJuego(minutos){

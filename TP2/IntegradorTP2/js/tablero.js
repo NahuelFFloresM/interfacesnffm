@@ -20,9 +20,9 @@ class Tablero {
         this.#tablero[i][j] = 0; 
       }
     }
-    this.#tamanioCuadro = 700/tamanioX;
+    this.#tamanioCuadro = 600/tamanioX;
     this.#pos_finalx = this.#pos_iniciox+(tamanioX*(700/tamanioX));
-    this.#pos_finaly = this.#pos_inicioy+(tamanioY*(600/tamanioY));
+    this.#pos_finaly = this.#pos_inicioy+(tamanioY*(500/tamanioY));
     this.#ultima_ficha_colocada.x = -1;
     this.#ultima_ficha_colocada.y = -1;
   }
