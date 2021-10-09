@@ -7,8 +7,8 @@ class Juego{
   #minutos = 59;
   #segundos = 59;
   
-  constructor(columnas,filas){
-    this.#tablero = new Tablero(columnas,filas);
+  constructor(columnas,filas,cantLineas){
+    this.#tablero = new Tablero(columnas,filas,cantLineas);
     this.#tablero.draw();
     this.#turno_jugador = 1;
   }

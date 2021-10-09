@@ -5,14 +5,15 @@ class Tablero {
   #pos_iniciox = 100;
   #pos_inicioy = 80;
   #tamanioCuadro = 100;
-  #cantLinea = 4;
+  #cantLinea;
   #pos_finalx;
   #pos_finaly;
   #ultima_ficha_colocada = {};
 
-  constructor(tamanioX, tamanioY){
+  constructor(tamanioX, tamanioY, cantLinea){
     this.#tamanioX = tamanioX;
     this.#tamanioY = tamanioY;
+    this.#cantLinea = cantLinea;
     this.#tablero = new Array(tamanioX);
     for (let i = 0; i < tamanioX; i++) {
       this.#tablero[i] = new Array(tamanioY);
