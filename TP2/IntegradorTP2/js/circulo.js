@@ -14,6 +14,14 @@ class Circulo extends Ficha{
     return super.getPosy();
   }
 
+  getPosxOriginal(){
+    return super.getPosxOriginal();
+  }
+
+  getPosyOriginal(){
+    return super.getPosyOriginal();
+  }
+
   getRadius(){
     return this.#radius;
   }

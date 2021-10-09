@@ -6,11 +6,42 @@ class Juego{
   #nIntervTimer;
   #minutos = 59;
   #segundos = 59;
+  #fichasJ1 = [];
+  #fichasJ2 = [];
   
   constructor(columnas,filas){
     this.#tablero = new Tablero(columnas,filas);
     this.#tablero.draw();
     this.#turno_jugador = 1;
+    let pos_inicio_fichaX_j1 = 25;
+    let pos_inicio_fichaY_j1 = 40;
+    let pos_inicio_fichaX_j2 = 850;
+    let pos_inicio_fichaY_j2 = 40;
+    let cant_fichas = (columnas*filas)/2
+    for(let i = 1; i <= cant_fichas;i++){
+      let new_ficha = new Circulo('red');
+      new_ficha.setPosition(pos_inicio_fichaX_j1,pos_inicio_fichaY_j1);
+      new_ficha.draw();
+      this.#fichasJ1.push(new_ficha);
+      if (i%3 > 0){
+        pos_inicio_fichaX_j1 += 50;
+      } else{
+        pos_inicio_fichaX_j1 = 25;
+        pos_inicio_fichaY_j1 += 50;
+      }
+    }
+    for(let i = 1; i <= cant_fichas;i++){
+      let new_ficha = new Circulo('blue');
+      new_ficha.setPosition(pos_inicio_fichaX_j2,pos_inicio_fichaY_j2);
+      new_ficha.draw();
+      this.#fichasJ2.push(new_ficha);
+      if (i%3 > 0){
+        pos_inicio_fichaX_j2 += 50;
+      } else{
+        pos_inicio_fichaX_j2 = 850;
+        pos_inicio_fichaY_j2 += 50;
+      }
+    }
   }
 
   cambiarTurno(){

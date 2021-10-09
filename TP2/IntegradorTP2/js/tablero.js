@@ -2,7 +2,7 @@ class Tablero {
   #tablero=[];
   #tamanioX;
   #tamanioY;
-  #pos_iniciox = 100;
+  #pos_iniciox = 175;
   #pos_inicioy = 80;
   #tamanioCuadro = 100;
   #cantLinea = 4;

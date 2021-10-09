@@ -3,6 +3,8 @@ class Ficha{
   #posY;
   #fill;
   #tamanio;
+  #posXOriginal;
+  #posYOriginal;
 
   constructor(color){
     this.#fill = color;
@@ -17,6 +19,8 @@ class Ficha{
   setPosition(x,y){
     this.#posX = x;
     this.#posY = y;
+    this.#posXOriginal = x;
+    this.#posYOriginal = y;
   }
 
   getPosx(){
@@ -25,6 +29,14 @@ class Ficha{
 
   getPosy(){
     return this.#posY;
+  }
+
+  getPosxOriginal(){
+    return this.#posXOriginal;
+  }
+
+  getPosyOriginal(){
+    return this.#posYOriginal;
   }
 
   setPosx(x){
