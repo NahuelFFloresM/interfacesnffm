@@ -31,6 +31,7 @@ class Juego{
   }
 
   actualizarReloj(){
+    
     if (this.#segundos == 0){
       this.#minutos--;
       this.#segundos = 60;
@@ -38,9 +39,17 @@ class Juego{
     this.#segundos--;
     document.getElementById('reloj_juego').innerHTML= this.#minutos+":"+this.#segundos;
     if (this.#segundos == 0 && this.#minutos == 0){
-      this.#juego_iniciado = false;
+      this.tiempoFuera();      
       // LLAMAR AFUNCION PARA MOSTRAR FIN DE JUEGO
     }
+  }
+
+  tiempoFuera(){
+    this.#juego_iniciado = false;
+    this.pararJuego();
+    document.getElementById('message_label').innerHTML = "TIEMPO FUERA";
+    document.getElementById('message_body').innerHTML = "Nadie gana, ¡intenten nuevamente! :D";
+    mostrarModal();
   }
 
   pararJuego(){
