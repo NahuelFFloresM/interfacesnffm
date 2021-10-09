@@ -9,8 +9,8 @@ class Juego{
   #fichasJ1 = [];
   #fichasJ2 = [];
   
-  constructor(columnas,filas){
-    this.#tablero = new Tablero(columnas,filas);
+  constructor(columnas,filas,cantLineas){
+    this.#tablero = new Tablero(columnas,filas,cantLineas);
     this.#tablero.draw();
     this.#turno_jugador = 1;
     let pos_inicio_fichaX_j1 = 25;

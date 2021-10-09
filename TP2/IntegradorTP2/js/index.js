@@ -13,6 +13,7 @@ let arrastrando_ficha_j2 = false;
 // Variables para tener control en caso de que el usuario selecciono un tamanio de tablero
 let columnas_tablero;
 let filas_tablero;
+let cant_lineas;
 /**
 * FICHAS
 */
@@ -35,7 +36,8 @@ ficha_j2.draw();
  */
 this.columnas_tablero = 7;
 this.filas_tablero = 6;
-let juego = new Juego(this.columnas_tablero, this.filas_tablero);
+this.cant_lineas = 4;
+let juego = new Juego(this.columnas_tablero, this.filas_tablero, this.cant_lineas);
 
 /**
  * TABLERO
@@ -204,7 +206,7 @@ function posOriginalFicha(ficha,x,y){
 function reiniciarJuego(){
   juego.pararJuego();
   ctx_canvas.clearRect(0, 0, canvas.width, canvas.height);
-  juego = new Juego(this.columnas_tablero,this.filas_tablero);
+  juego = new Juego(this.columnas_tablero,this.filas_tablero,this.cant_lineas);
   tablero = juego.getTablero();
   tablero.draw();
   ficha_j1.draw();
@@ -228,10 +230,11 @@ function setearTiempoJuego(){
   juego.setTiempoDeJuego(document.getElementById('input_tiempo_juego').value-1);
 }
 
-function setearTamanioTablero(x,y){
+function setearTamanioTablero(x,y,cantLineas){
   if (!juego.juegoIniciado()){
     this.columnas_tablero = x;
     this.filas_tablero = y;
-    reiniciarJuego(x,y)
+    this.cant_lineas = cantLineas;
+    reiniciarJuego(x,y,cantLineas);
   }
 }
