@@ -11,8 +11,8 @@ let ctx_canvas = canvas.getContext('2d');
 let arrastrando_ficha_j1 = false;
 let arrastrando_ficha_j2 = false;
 // Variables para tener control en caso de que el usuario selecciono un tamanio de tablero
-let columnas_tablero = 7;
-let filas_tablero = 6;
+let columnas_tablero;
+let filas_tablero;
 /**
 * FICHAS
 */
@@ -34,7 +34,9 @@ ficha_j2.draw();
 /*
  * JUEGO
  */
-let juego = new Juego(7,6);
+this.columnas_tablero = 7;
+this.filas_tablero = 6;
+let juego = new Juego(this.columnas_tablero, this.filas_tablero);
 
 /**
  * TABLERO
@@ -202,9 +204,10 @@ function posOriginalFicha(ficha,x,y){
 
 function reiniciarJuego(){
   juego.pararJuego();
-  ctx_canvas.clearRect(0, 0, canvas.width, canvas.height)
+  ctx_canvas.clearRect(0, 0, canvas.width, canvas.height);
   juego = new Juego(this.columnas_tablero,this.filas_tablero);
-  tablero = juego.getTablero(); 
+  tablero = juego.getTablero();
+  tablero.draw();
   ficha_j1.draw();
   ficha_j2.draw();
   document.getElementById('button_tiempo_juego').disabled = false;  
