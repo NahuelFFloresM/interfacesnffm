@@ -37,8 +37,6 @@ class Juego{
       this.#segundos = 60;
     }
     this.#segundos--;
-    this.#segundos = 0;
-    this.#minutos = 0;
     document.getElementById('reloj_juego').innerHTML= this.#minutos+":"+this.#segundos;
     if (this.#segundos == 0 && this.#minutos == 0){
       this.tiempoFuera();      
