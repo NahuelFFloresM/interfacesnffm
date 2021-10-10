@@ -85,19 +85,6 @@ class Circulo extends Ficha{
   }
 }
 
-// Circulo.prototype.draw = function(){
-//   ctx_canvas.beginPath();
-//   this.fillDraw();
-//   ctx_canvas.arc(this.getPosx(), this.getPosy(), this.getRadius(), 0, 2 * Math.PI);
-//   ctx_canvas.fill();
-//   base_image = new Image();
-//   base_image.src = 'https://www.gravatar.com/avatar/4af2cdbaf02d97ba88d5d6daff94fbae/?default=&s=80';
-//   base_image.onload = function() {
-//     ctx_canvas.drawImage(base_image, getPosx(), getPosy());
-//   }
-//   ctx_canvas.stroke();
-// }
-
 Circulo.prototype.reDraw = function(x,y){
   let r = this.getRadius()+1;
   let t = this.getTamanio()*2+2;
