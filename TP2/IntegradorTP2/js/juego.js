@@ -167,6 +167,22 @@ class Juego{
       }
     }
   }
+
+  redibujarFichas(ficha_actual,lado){
+    if (lado == 1){
+      for(let i = 0; i < this.#fichasJ1.length;i++){
+        if (this.#fichasJ1[i] != ficha_actual){
+          this.#fichasJ1[i].draw();
+        }
+      }
+    } else {
+      for(let i = 0; i < this.#fichasJ2.length;i++){
+        if (this.#fichasJ2[i] != ficha_actual){
+          this.#fichasJ2[i].draw();
+        }
+      }
+    }
+  }
 }
 
 // Juego.prototype.iniciarTiempo() = function(){
