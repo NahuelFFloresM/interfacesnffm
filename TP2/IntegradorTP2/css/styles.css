@@ -26,6 +26,9 @@ body{
     animation-iteration-count:infinite;
 }
 
+.grupo_ficha{
+  cursor: pointer;
+}
 @keyframes drop{
     0%{opacity: 0}
     70%{transform: translateY(665px)}
