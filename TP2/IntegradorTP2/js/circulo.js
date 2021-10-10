@@ -42,6 +42,12 @@ class Circulo extends Ficha{
     return this.#background_image;
   }
 
+  drawPosicionOriginal(){
+    let x = super.getPosxOriginal();
+    let y = super.getPosyOriginal();
+    this.reDraw(x,y)
+  }
+
   async draw(){
     if (this.#background_image != null){
       let image = document.createElement('img');
@@ -93,6 +99,9 @@ class Circulo extends Ficha{
 // }
 
 Circulo.prototype.reDraw = function(x,y){
+  let r = this.getRadius()+1;
+  let t = this.getTamanio()*2+2;
+  ctx_canvas.clearRect(this.getPosx()-r,this.getPosy()-r,t,t);
   this.setPosx(x);
   this.setPosy(y);
   this.draw();

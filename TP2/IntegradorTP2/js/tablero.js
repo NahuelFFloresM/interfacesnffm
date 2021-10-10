@@ -22,8 +22,8 @@ class Tablero {
       }
     }
     this.#tamanioCuadro = 600/tamanioX;
-    this.#pos_finalx = this.#pos_iniciox+(tamanioX*(700/tamanioX));
-    this.#pos_finaly = this.#pos_inicioy+(tamanioY*(500/tamanioY));
+    this.#pos_finalx = this.#pos_iniciox+(tamanioX*this.#tamanioCuadro);
+    this.#pos_finaly = this.#pos_inicioy+(tamanioY*this.#tamanioCuadro);
     this.#ultima_ficha_colocada.x = -1;
     this.#ultima_ficha_colocada.y = -1;
   }
@@ -52,10 +52,10 @@ class Tablero {
   }
 
   getPosFinalX(){
-    return this.#pos_iniciox * (this.#tamanioX+1);
+    return this.#pos_finalx;
   }
   getPosFinalY(){
-    return this.#pos_inicioy * (this.#tamanioY+1);
+    return this.#pos_finaly;
   }
 
   getTablero(){
@@ -92,12 +92,14 @@ class Tablero {
           //asigna el numero correspondiente del jugador a la posicion de la matriz
           this.#tablero[columna][fila] = jugador;
           //invoca para dibujar la ficha en el tablero
-          let ficha_a_colocar = ficha.devolverCopia();
-          ficha_a_colocar.setPosition(this.#pos_iniciox+columna*(this.#tamanioCuadro)+(this.#tamanioCuadro/2),this.#pos_inicioy+fila*(this.#tamanioCuadro)+(this.#tamanioCuadro/2));
-          console.log(ficha_a_colocar);
-          console.log(this.#pos_inicioy,fila+1,this.#tamanioCuadro/2);
+          // let ficha_a_colocar = ficha.devolverCopia();
+          // ficha.setPosition(this.#pos_iniciox+columna*(this.#tamanioCuadro)+(this.#tamanioCuadro/2),this.#pos_inicioy+fila*(this.#tamanioCuadro)+(this.#tamanioCuadro/2));
+          // ficha_a_colocar.setPosition(this.#pos_iniciox+columna*(this.#tamanioCuadro)+(this.#tamanioCuadro/2),this.#pos_inicioy+fila*(this.#tamanioCuadro)+(this.#tamanioCuadro/2));
+          // console.log(ficha_a_colocar);
+          // console.log(this.#pos_inicioy,fila+1,this.#tamanioCuadro/2);
           // this.drawFicha(columna,fila,color);          
-          ficha_a_colocar.draw();
+          // ficha_a_colocar.draw();
+          ficha.reDraw(this.#pos_iniciox+columna*(this.#tamanioCuadro)+(this.#tamanioCuadro/2),this.#pos_inicioy+fila*(this.#tamanioCuadro)+(this.#tamanioCuadro/2));
           this.#ultima_ficha_colocada.x = columna;
           this.#ultima_ficha_colocada.y = fila;
           return true;
