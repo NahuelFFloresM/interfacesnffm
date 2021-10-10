@@ -90,6 +90,8 @@ document.addEventListener("DOMContentLoaded", function() {
         }
       } else {
         ficha_seleccion.drawPosicionOriginal();
+        juego.redibujarFichas(ficha_seleccion,2);
+        juego.redibujarFichas(ficha_seleccion,1);
       }
       // else if (punteroSobreFicha(evt,ficha_j2) && punteroSobreTablero(evt)){
       //   console.log("Correcto - Ficha2");
@@ -112,7 +114,7 @@ document.addEventListener("DOMContentLoaded", function() {
         document.getElementById('message_label').innerHTML = "VICTORIA";
         document.getElementById('message_body').innerHTML = "¡¡Felicidades Jugador "+2+ "!! GANASTE LA PARTIDA";
         mostrarModal();
-      }      
+      }
       ficha_seleccion = null;
     }
   }, false);
@@ -120,7 +122,6 @@ document.addEventListener("DOMContentLoaded", function() {
    * Deja de dibujar cuando te salis del canvas
    */
    canvas.addEventListener("mouseout", function(evt) {
-    // arrastrando_ficha_j1 = false;
     // arrastrando_ficha_j2 = false;
     // posOriginalFicha(ficha_j1,50,50);
     // posOriginalFicha(ficha_j2,850,50);
@@ -132,6 +133,12 @@ document.addEventListener("DOMContentLoaded", function() {
       let m = oMousePos(canvas, evt);      
       // Chequeo Colision sobre tablero
       if (!pisaTablero(m.x,m.y)){
+        if (m.x < tablero.getPosInicialx()){
+          juego.redibujarFichas(ficha_seleccion,1);
+        }
+        if (m.x > tablero.getPosFinalX()){
+          juego.redibujarFichas(ficha_seleccion,2);
+        }
         ficha_seleccion.reDraw(m.x,m.y);
       }
     }
