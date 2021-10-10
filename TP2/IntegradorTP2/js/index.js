@@ -90,7 +90,7 @@ document.addEventListener("DOMContentLoaded", function() {
         //obtiene la columna en la que se esta intentando agregar la ficha
         columna = tablero.getColumnaFicha(ficha_j1.getPosx());
         //inserta la ficha en caso de tener disponibilidad. devulve boolean
-        if (juego.insertarFicha(1,ficha_j1,columna) && !juego.elJugadorGano(1)){
+        if (!juego.elJugadorGano(1) && juego.insertarFicha(1,ficha_j1,columna)){
           juego.cambiarTurno();
         }
       }
@@ -99,7 +99,7 @@ document.addEventListener("DOMContentLoaded", function() {
         //obtiene la columna en la que se esta intentando agregar la ficha
         columna = tablero.getColumnaFicha(ficha_j2.getPosx());
         //inserta la ficha en caso de tener disponibilidad. devulve boolean
-        if (juego.insertarFicha(2,ficha_j2,columna) && !juego.elJugadorGano(2)){
+        if (!juego.elJugadorGano(2) && juego.insertarFicha(2,ficha_j2,columna)){
           juego.cambiarTurno();
         }
       }
