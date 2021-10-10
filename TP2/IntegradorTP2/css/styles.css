@@ -7,7 +7,12 @@
     letter-spacing: 0;
     font-weight: 400;
   }
-
+canvas{
+  background-color: white;
+}
+body{
+  background-color: lightgoldenrodyellow;
+}
 #element {
     position:absolute;
     top: 20px;
