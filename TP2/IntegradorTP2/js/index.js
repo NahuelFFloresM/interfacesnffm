@@ -211,6 +211,7 @@ function posOriginalFicha(ficha,x,y){
   ficha.reDraw(x,y);
 }
 
+//reinicia el juego, limpia el canvas y redibuja el tablero con las fichas. Vuelve a habilitar los botones de la izquierda
 function reiniciarJuego(){
   juego.pararJuego();
   ctx_canvas.clearRect(0, 0, canvas.width, canvas.height);
@@ -219,7 +220,10 @@ function reiniciarJuego(){
   tablero.draw();
   // ficha_j1.draw();
   // ficha_j2.draw();
-  document.getElementById('button_tiempo_juego').disabled = false;  
+  let botones_tablero = document.getElementsByClassName('button_tiempo_juego');
+  for (let i = 0; i < botones_tablero.length; i++) {
+    botones_tablero[i].disabled = false;
+  } 
 }
 
 function mostrarModal(){
@@ -229,15 +233,21 @@ function mostrarModal(){
   myModal.toggle();
 }
 
+//inicia el juego y deshabilita los botones de la izquierda para no usarse durante la partida
 function iniciarJuego(){
   juego.iniciarJuego();
-  document.getElementById('button_tiempo_juego').disabled = true;
+  let botones_tablero = document.getElementsByClassName('button_tiempo_juego');
+  for (let i = 0; i < botones_tablero.length; i++) {
+    botones_tablero[i].disabled = true;
+  }
 }
 
 function setearTiempoJuego(){
   juego.setTiempoDeJuego(document.getElementById('input_tiempo_juego').value-1);
 }
 
+//actualiza los datos del tablero y lineas para ganar al nuevo indicado en caso que no haya partida iniciada.
+//reinicia el juego para actualizar visualizacion
 function setearTamanioTablero(x,y,cantLineas){
   if (!juego.juegoIniciado()){
     this.columnas_tablero = x;
