@@ -180,7 +180,8 @@ function mostrarModal(){
 }
 
 //inicia el juego y deshabilita los botones de la izquierda para no usarse durante la partida
-function iniciarJuego(){  
+function iniciarJuego(){
+  reiniciarJuego();
   juego.iniciarJuego();
   let botones_tablero = document.getElementsByClassName('button_tiempo_juego');
   for (let i = 0; i < botones_tablero.length; i++) {
