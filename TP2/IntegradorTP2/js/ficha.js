@@ -5,6 +5,7 @@ class Ficha{
   #tamanio;
   #posXOriginal;
   #posYOriginal;
+  #utilizada = false;
 
   constructor(color){
     this.#fill = color;
@@ -61,6 +62,14 @@ class Ficha{
 
   setTamanio(tamanio){
     this.#tamanio = tamanio;
+  }
+
+  setUtilizada(){
+    this.#utilizada = true;
+  }
+
+  getUtilizada(){
+    return this.#utilizada;
   }
 }
 

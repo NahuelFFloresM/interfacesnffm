@@ -7,6 +7,13 @@
  */
 let image = null;
 let canvas= document.getElementById("canvas");
+let clientHeight = document.getElementById('canvas_wrap').offsetHeight-20;
+let clientWidth = document.getElementById('canvas_wrap').offsetWidth-20;
+// let clientHeight = document.getElementById('canvas').offsetHeight;
+// let clientWidth = document.getElementById('canvas').offsetWidth;
+// console.log( document.getElementById('canvas_wrap').offsetHeight,document.getElementById('canvas_wrap').offsetWidth);
+canvas.width = clientHeight;
+canvas.width = clientWidth;
 let ctx_canvas = canvas.getContext('2d');
 // Variables para tener control en caso de que el usuario selecciono un tamanio de tablero
 let columnas_tablero;
@@ -47,19 +54,20 @@ document.addEventListener("DOMContentLoaded", function() {
       let m = oMousePos(canvas, evt);
       let columna;
       //******************* SECCION PARA DETECTAR POSICION DE LA FICHA ARRASTRADA*************************************
+      if (ficha_seleccion != null) ficha_seleccion.cleanBackGround();
       if ((ficha_seleccion != null) && punteroSobreTablero(evt)){
         //Chequea si hubo ganador para no aplicar accion sobre el tablero
-        if (juego.elJugadorGano(1) || juego.elJugadorGano(2)){
-          ficha_seleccion.drawPosicionOriginal();
-        }
-        else{
+        // if (juego.elJugadorGano(1) || juego.elJugadorGano(2)){
+        //   ficha_seleccion.drawPosicionOriginal();
+        // }
+        // else{
           columna = tablero.getColumnaFicha(ficha_seleccion.getPosx());
           //inserta la ficha en caso de tener disponibilidad. devuelve boolean y cambia el turno de jugador
           if (juego.insertarFicha(ficha_seleccion,columna)){
             juego.cambiarTurno();
           }
-        }
-      } else {
+        // }
+      } else {        
         ficha_seleccion.drawPosicionOriginal();
         juego.redibujarFichas(ficha_seleccion,2);
         juego.redibujarFichas(ficha_seleccion,1);
@@ -91,6 +99,7 @@ document.addEventListener("DOMContentLoaded", function() {
     if (ficha_seleccion != null) {
       let m = oMousePos(canvas, evt);      
       // Chequeo Colision sobre tablero
+      ficha_seleccion.cleanBackGround();
       if (!pisaTablero(m.x,m.y)){
         if (m.x < tablero.getPosInicialx()){
           juego.redibujarFichas(ficha_seleccion,1);

@@ -17,7 +17,7 @@
     <link rel="stylesheet" href="./css/styles.css" >
   </head>
   <body>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-success">
       <div class="container-fluid">
         <a class="navbar-brand" href="#">X-Lineas</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -80,7 +80,7 @@
             <button class="button_tiempo_juego" onclick="setearTamanioTablero(9,8,6)">6 en linea</button>
           </div>
         </div>
-        <div class="col-md-9">
+        <div class="col-md-9" id="canvas_wrap">
           <canvas id="canvas" class="border" width="1000" height="620">
             Tu navegador no admite el elemento &lt;canvas&gt;.
           </canvas>

@@ -83,12 +83,18 @@ class Circulo extends Ficha{
     copia.#background_image = this.getBackgroundImage();
     return copia;
   }
+
+  cleanBackGround(){
+    let r = this.getRadius()+1;
+    let t = this.getTamanio()*2+2;
+    ctx_canvas.beginPath();
+    ctx_canvas.clearRect(this.getPosx()-r,this.getPosy()-r,t,t);
+    ctx_canvas.stroke();
+    ctx_canvas.closePath();
+  }
 }
 
 Circulo.prototype.reDraw = function(x,y){
-  let r = this.getRadius()+1;
-  let t = this.getTamanio()*2+2;
-  ctx_canvas.clearRect(this.getPosx()-r,this.getPosy()-r,t,t);
   this.setPosx(x);
   this.setPosy(y);
   this.draw();

@@ -6,6 +6,10 @@
     font-size: 12px;
     letter-spacing: 0;
     font-weight: 400;
+    font-size: medium;
+  }
+  a{
+    color: black;
   }
 canvas{
   background-color: white;
