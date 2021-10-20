@@ -15,21 +15,29 @@
 
     <!-- Custom styles for this template -->
     <link rel="stylesheet" href="./css/styles.css" >
+    <link rel="stylesheet" href="./css/button.css" >
   </head>
   <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-success">
       <div class="container-fluid">
-        <a class="navbar-brand" href="#">X-Lineas</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav me-auto mb-2 mb-lg-0">
             <li class="nav-item">
-              <a class="nav-link active" onclick="iniciarJuego()"aria-current="page" href="#">Iniciar</a>
+              <!-- <a class="nav-link active" onclick="iniciarJuego()"aria-current="page" href="#">Iniciar</a> -->
+              <button class="big_button" onclick="iniciarJuego()">
+                Iniciar Juego
+                <span> ¡ X  en Linea!</span>
+              </button>
             </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#" onclick="reiniciarJuego()">Reiniciar</a>
+            <li class="nav-item ms-3">
+              <!-- <a class="nav-link" href="#" onclick="reiniciarJuego()">Reinicar Juego</a> -->
+              <button class="big_button" onclick="reiniciarJuego()">
+                Resetear
+                <span>Resetear</span>
+              </button>
             </li>
             <!-- <li class="nav-item">
               <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>

@@ -61,7 +61,8 @@ class Juego{
     }
   }
 
-  actualizarReloj(){    
+  actualizarReloj(){
+    console.log(this.#minutos,this.#segundos);
     if (this.#segundos == 0){
       this.#minutos--;
       this.#segundos = 60;
@@ -100,8 +101,9 @@ class Juego{
   }
 
   setTiempoDeJuego(minutos){
-    this.#minutos = minutos;
-    this.#segundos = 60;
+    if (minutos){
+      this.#minutos = minutos;
+    }
   }
 /**
  * 
@@ -113,9 +115,7 @@ class Juego{
     if (ficha != null){
       //inserta la ficha en caso de tener disponibilidad. devulve boolean
       let result = this.#tablero.insertarFicha(this.#turno_jugador,columna,ficha);
-      if (result){
-        this.removerFicha(ficha,this.#turno_jugador);
-      }
+      ficha.setUtilizada();
       return result;
     } else{
       console.log('TURNO EQUIVOCADO');
@@ -134,14 +134,14 @@ class Juego{
   detectarFichaSeleccionada(m){
     if (this.#turno_jugador == 1){
       for(let i = 0; i < this.#fichasJ1.length;i++){
-        if ((m.x-20 < this.#fichasJ1[i].getPosx() && m.x+20 > this.#fichasJ1[i].getPosx()) && (m.y-20 < this.#fichasJ1[i].getPosy()&& m.y+20 > this.#fichasJ1[i].getPosy())){
+        if ( !this.#fichasJ1[i].getUtilizada() && (m.x-20 < this.#fichasJ1[i].getPosx() && m.x+20 > this.#fichasJ1[i].getPosx()) && (m.y-20 < this.#fichasJ1[i].getPosy()&& m.y+20 > this.#fichasJ1[i].getPosy())){
           return this.#fichasJ1[i];
         }
       }
     }
     if (this.#turno_jugador == 2){
       for(let i = 0; i < this.#fichasJ2.length;i++){
-        if ((m.x-20 < this.#fichasJ2[i].getPosx() && m.x+20 > this.#fichasJ2[i].getPosx()) && (m.y-20 < this.#fichasJ2[i].getPosy()&& m.y+20 > this.#fichasJ2[i].getPosy())){
+        if ( !this.#fichasJ2[i].getUtilizada() && (m.x-20 < this.#fichasJ2[i].getPosx() && m.x+20 > this.#fichasJ2[i].getPosx()) && (m.y-20 < this.#fichasJ2[i].getPosy()&& m.y+20 > this.#fichasJ2[i].getPosy())){
           return this.#fichasJ2[i];
         }
       }
@@ -198,12 +198,14 @@ class Juego{
  */
   asignarFondoFichas(fondo_f1,fondo_f2){
     if (!juego.juegoIniciado()){
-      for(let i = 0; i < this.#fichasJ1.length;i++){
+      for(let i = 0; i < this.#fichasJ1.length;i++){        
         this.#fichasJ1[i].setBackgroundImage(fondo_f1);
+        this.#fichasJ1[i].cleanBackGround();
         this.#fichasJ1[i].drawPosicionOriginal();
       }
       for(let i = 0; i < this.#fichasJ2.length;i++){
         this.#fichasJ2[i].setBackgroundImage(fondo_f2);
+        this.#fichasJ2[i].cleanBackGround();
         this.#fichasJ2[i].drawPosicionOriginal();
       }
     }

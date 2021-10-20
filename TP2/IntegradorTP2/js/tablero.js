@@ -71,14 +71,17 @@ class Tablero {
   }
 
   //recibe una posicion en X y devuelve a que columna corresponde
-  getColumnaFicha(posX){
+  getColumnaFicha(ficha){
     let i = 0;
+    let posX = ficha.getPosx();
     let x = this.getPosInicialx();
-    while (i < this.getTamanioX()){
-      if (posX >= x+i*this.#tamanioCuadro && posX < x+(i+1)*this.#tamanioCuadro){
-        return i;
+    if ((ficha.getPosy()+ficha.getRadius() <= this.#pos_inicioy) && (posX > this.#pos_iniciox) && (posX <= this.#pos_finalx)){
+      while (i < this.getTamanioX()){
+        if (posX >= x+i*this.#tamanioCuadro && posX < x+(i+1)*this.#tamanioCuadro){
+          return i;
+        }
+        i++; 
       }
-      i++; 
     }
     return null;
   }
@@ -91,14 +94,6 @@ class Tablero {
         if (this.#tablero[columna][fila] == 0) {
           //asigna el numero correspondiente del jugador a la posicion de la matriz
           this.#tablero[columna][fila] = jugador;
-          //invoca para dibujar la ficha en el tablero
-          // let ficha_a_colocar = ficha.devolverCopia();
-          // ficha.setPosition(this.#pos_iniciox+columna*(this.#tamanioCuadro)+(this.#tamanioCuadro/2),this.#pos_inicioy+fila*(this.#tamanioCuadro)+(this.#tamanioCuadro/2));
-          // ficha_a_colocar.setPosition(this.#pos_iniciox+columna*(this.#tamanioCuadro)+(this.#tamanioCuadro/2),this.#pos_inicioy+fila*(this.#tamanioCuadro)+(this.#tamanioCuadro/2));
-          // console.log(ficha_a_colocar);
-          // console.log(this.#pos_inicioy,fila+1,this.#tamanioCuadro/2);
-          // this.drawFicha(columna,fila,color);          
-          // ficha_a_colocar.draw();
           ficha.reDraw(this.#pos_iniciox+columna*(this.#tamanioCuadro)+(this.#tamanioCuadro/2),this.#pos_inicioy+fila*(this.#tamanioCuadro)+(this.#tamanioCuadro/2));
           this.#ultima_ficha_colocada.x = columna;
           this.#ultima_ficha_colocada.y = fila;
@@ -264,24 +259,3 @@ Tablero.prototype.draw = function(){
   }
   ctx_canvas.stroke();
 }
-
-/*Tablero.prototype.draw = function(){
-  console.log(canvas);
-  ctx_canvas.beginPath();
-  // Posicion tablero
-  let x = this.getPosFinalX();
-  let y = this.getPosFinalY();
-  for (let i = this.getTamanioX(); i > 0; i--) {
-    for (let j = this.getTamanioY(); j > 0 ; j--) {
-      ctx_canvas.fillStyle = "green";
-      ctx_canvas.fillRect(x-i*100, y-j*100, 99, 99);
-      let circulo = new Circulo('white');
-      circulo.setPosition(x-i*100 + 50, y-j*100 + 50);
-      // los "+50" son por el tamaño del bloque/2 en donde va la ficha
-      circulo.setPosition(x+i*100 + 50, y+j*100 +50);
-      // circulo.setPosition(x+i*100 + (x+i)/2, y+j*100 + (y+j)/2);
-      circulo.draw();
-    }
-  }
-  ctx_canvas.stroke();
-}*/

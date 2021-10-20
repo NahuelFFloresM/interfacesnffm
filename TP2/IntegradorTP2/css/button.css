@@ -1,0 +1,47 @@
+.big_button {
+  --borderWidth: 5;
+  --boxShadowDepth: 8;
+  --buttonColor: #f00;
+  --fontSize: 3;
+  --horizontalPadding: 16;
+  --verticalPadding: 8;
+
+  background: transparent;
+  border: calc(var(--borderWidth) * 1px) solid var(--buttonColor);
+  color: var(--buttonColor);
+  cursor: pointer;
+  font-size: calc(var(--fontSize) * 0.5rem);
+  font-weight: bold;
+  outline: transparent;
+  padding: calc(var(--verticalPadding) * 1px) calc(var(--horizontalPadding) * 1px);
+  transition: box-shadow 0.15s ease;
+  background-color: white;
+  position: relative;
+}
+
+.big_button span {
+  background: var(--buttonColor);
+  border: calc(var(--borderWidth) * 1px) solid var(--buttonColor);
+  bottom: calc(var(--borderWidth) * -1px);
+  color: var(--bg, #fafafa);
+  left: calc(var(--borderWidth) * -1px);
+  padding: calc(var(--verticalPadding) * 1px) calc(var(--horizontalPadding) * 1px);
+  position: absolute;
+  right: calc(var(--borderWidth) * -1px);
+  top: calc(var(--borderWidth) * -1px);
+}
+
+.big_button span {
+  --clip: inset(0 100% 0 0);
+  -webkit-clip-path: var(--clip);
+  clip-path: var(--clip);
+  transition: clip-path 0.25s ease, -webkit-clip-path 0.25s ease;
+  font-size: calc(var(--fontSize) * 0.5rem);
+  font-weight: bold;
+  outline: transparent;
+  padding: calc(var(--verticalPadding) * 1px) calc(var(--horizontalPadding) * 1px);
+}
+
+.big_button:hover span {
+  --clip: inset(0 0 0 0);
+}
