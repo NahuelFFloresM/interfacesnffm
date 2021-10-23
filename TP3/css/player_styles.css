@@ -28,9 +28,9 @@
   background:url('../spritesheets/player_jump.png') repeat-x;
    width: 112px;
    height: 127px;
-   transition: bottom 0.5s;
+   transition: bottom 1s;
    /* Aplicamos la animación "walk": 0.8seg, 6 viñetas y repetimos infinitamente */
-   animation:jump 2s steps(4),gravity 1s linear;
+   animation:jump 1s steps(4),gravity 1s linear;
 }
 
 /* Animación de personaje caminando: Simplemente mueve el sprite sheet hacia la izquierda, realizando el movimiento. */
@@ -50,8 +50,8 @@
 
 @keyframes jump {
   0% { bottom: 8% }
-  25% {bottom: 15%}
-  50% {bottom: 30%}
-  75% { bottom: 15% }
+  25% {bottom: 29%}
+  50% {bottom: 50%}
+  75% { bottom: 29% }
   100% { bottom: 8% }
 }

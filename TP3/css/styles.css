@@ -9,6 +9,7 @@ body {
   background:url('../spritesheets/nfondo.jpg') center repeat-x;
   /* Posicionamos el mar, para que no solape al cielo */
   position:relative;
+  background-size: cover;
 }
 
 .bg-running{

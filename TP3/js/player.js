@@ -4,6 +4,6 @@ class Player{
     document.getElementById('player').classList = ('jumping');
     setTimeout(() => {
       document.getElementById('player').classList = ('running');
-    }, 2000);
+    }, 999,99);
   }
 }
