@@ -4,6 +4,7 @@ let player = new Player();
 
 let keydown = false;
 let typeKeyDown = '';
+let enemigos = [];
 
 function juego_start(){
   juego.iniciarJuego();  
@@ -23,4 +24,12 @@ let gameLoopInterval = setInterval( function(){
   if (typeKeyDown == ' '){
     player_jump();
   }
+  // console.log(enemigos[0]);
+  enemigos[0].move();
 },50);
+
+// let enemySpawnInterval = setInterval( function(){
+  let enemigo = new Enemy();
+  enemigo.spawn();
+  enemigos.push(enemigo);
+// },3000);
