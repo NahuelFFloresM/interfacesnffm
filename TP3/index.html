@@ -4,18 +4,16 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="./css/player_styles.css" >
   <link rel="stylesheet" href="./css/styles.css" >
   <title>TP3 Integrador</title>
 </head>
-<body>
-  <div id="sky">
-    <div id="sea">
-      <div id="bern"></div>
-    </div>
-  </div>
-  
-  <audio id="song">
-    <source src="https://scummbar.com/mi2/DOTT/03%20-%20Busting%20The%20Candy%20Machine.mp3">
-  </audio>
+<body id="background" class="stop">
+  <button onclick="player_jump()">saltar</button>
+  <button onclick="juego_start()">start</button>
+  <div id="player" class="stand"></div>
 </body>
+<script src="./js/juego.js"></script>
+<script src="./js/player.js"></script>
+<script src="./js/index.js"></script>
 </html>

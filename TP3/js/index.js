@@ -1,3 +1,11 @@
-/* Play only from CodePen */
-if (parent==top)	
-  document.getElementById('song').autoplay = true;
+
+let juego = new Juego();
+let player = new Player();
+
+function juego_start(){
+  juego.iniciarJuego();  
+}
+
+function player_jump(){
+  player.saltar();
+}

@@ -1,0 +1,57 @@
+/* Bernard Bernoulli: Animación del personaje */
+#player {
+  position:absolute;
+  /* Cómo hay establecido un tamaño, centramos con margin:auto */
+  margin-left:10%;
+  transform: scale(1.5);
+}
+
+.stand{
+  background:url('../spritesheets/player_stand.png');
+  width: 59px;
+  height: 116px;
+  bottom:9%;
+}
+
+.running{
+   /* Cargamos el sprite (el repeat-x se puede omitir, por defecto se repite) */
+   background:url('../spritesheets/player_run.png') repeat-x;
+   width: 95px;
+   height: 116px;
+   bottom:8%;
+   /* Aplicamos la animación "walk": 0.8seg, 6 viñetas y repetimos infinitamente */
+   animation:walk 1s steps(8) infinite;
+   /* Posicionamos el personaje sobre el camino de madera */
+}
+
+.jumping{
+  background:url('../spritesheets/player_jump.png') repeat-x;
+   width: 112px;
+   height: 127px;
+   transition: bottom 0.5s;
+   /* Aplicamos la animación "walk": 0.8seg, 6 viñetas y repetimos infinitamente */
+   animation:jump 2s steps(4),gravity 1s linear;
+}
+
+/* Animación de personaje caminando: Simplemente mueve el sprite sheet hacia la izquierda, realizando el movimiento. */
+@keyframes walk {
+  /* Partimos de la primera viñeta del sprite sheet */
+  0% { background-position: 0 }
+  /* El tamaño total de ancho del sprite. Es negativo para que no "camine" hacia atrás */
+  100% { background-position: -920px }
+}
+
+@keyframes jump {
+  /* Partimos de la primera viñeta del sprite sheet */
+  0% { background-position: 0 }
+  /* El tamaño total de ancho del sprite. Es negativo para que no "camine" hacia atrás */
+  100% { background-position: -456px }
+}
+
+@keyframes jump {
+  0% { bottom: 8% }
+  25% {bottom: 15%}
+  50% {bottom: 30%}
+  75% { bottom: 15% }
+  100% { bottom: 8% }
+}
