@@ -24,12 +24,13 @@ let gameLoopInterval = setInterval( function(){
   if (typeKeyDown == ' '){
     player_jump();
   }
-  // console.log(enemigos[0]);
+  player.checkCollision(enemigos);
+  // console.log(enemigos);
   enemigos[0].move();
 },50);
 
 // let enemySpawnInterval = setInterval( function(){
-  let enemigo = new Enemy();
+  let enemigo = new Enemy('100px','100px','20px','5%');
   enemigo.spawn();
   enemigos.push(enemigo);
 // },3000);
