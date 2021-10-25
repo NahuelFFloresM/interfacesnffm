@@ -13,7 +13,9 @@ function juego_start(){
 }
 
 function player_jump(){
-  player.saltar();
+  if (document.getElementById('player').classList == "running") {
+    player.saltar();
+  }
 }
 window.addEventListener('keydown',(event) => {
   typeKeyDown = event.key;
