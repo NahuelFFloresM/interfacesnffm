@@ -10,7 +10,7 @@
   background:url('../spritesheets/player_stand.png');
   width: 59px;
   height: 116px;
-  bottom:9%;
+  bottom: 8%;
 }
 
 .running{
@@ -18,7 +18,7 @@
    background:url('../spritesheets/player_run.png') repeat-x;
    width: 95px;
    height: 116px;
-   bottom:8%;
+   bottom: 6%;
    /* Aplicamos la animación "walk": 0.8seg, 6 viñetas y repetimos infinitamente */
    animation:walk 1s steps(8) infinite;
    /* Posicionamos el personaje sobre el camino de madera */
@@ -49,9 +49,9 @@
 }
 
 @keyframes jump {
-  0% { bottom: 8% }
+  0% { bottom: 6% }
   25% {bottom: 29%}
   50% {bottom: 50%}
   75% { bottom: 29% }
-  100% { bottom: 8% }
+  100% { bottom: 6% }
 }

@@ -1,7 +1,7 @@
 class Player{
 
   constructor(){}
-  
+
   saltar(){
     document.getElementById('player').classList = ('jumping');
     setTimeout(() => {
@@ -10,6 +10,6 @@ class Player{
   }
 
   checkCollision(enemigos){
-    console.log(enemigos[0]);
+    // console.log(enemigos[0]);
   }
 }

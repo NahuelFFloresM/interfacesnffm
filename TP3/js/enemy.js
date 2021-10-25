@@ -5,6 +5,7 @@ class Enemy{
   #right_pos;
   #bottom_pos;
   #div_item;
+  #id;
 
   constructor(w,h,bs,rp,bp){
     this.#width = w;
@@ -29,6 +30,8 @@ class Enemy{
     box.style.right = this.#right_pos;
     // box.style.bottom = '5%';
     box.style.bottom = this.#bottom_pos;
+    this.#id = 'enemy1';
+    box.id = this.#id;
     // ------------------------ DONDE LOS SPAWNEA EN LA VENTANA
     document.body.appendChild(box);
   }
@@ -39,6 +42,10 @@ class Enemy{
   move(){
     let posx = window.getComputedStyle(this.#div_item).right;
     this.#div_item.style.right = parseInt(posx)+13+"px";
+  }
+
+  getId(){
+    return this.#id;
   }
 
 }

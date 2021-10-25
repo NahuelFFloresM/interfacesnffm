@@ -5,9 +5,11 @@ let player = new Player();
 let keydown = false;
 let typeKeyDown = '';
 let enemigos = [];
+let colision_player = document.getElementById('player').offsetLeft + document.getElementById('player').offsetWidth;
 
 function juego_start(){
-  juego.iniciarJuego();  
+  document.getElementById('menu').style.visibility = "hidden";
+  juego.iniciarJuego();
 }
 
 function player_jump(){
@@ -24,7 +26,7 @@ let gameLoopInterval = setInterval( function(){
   if (typeKeyDown == ' '){
     player_jump();
   }
-  player.checkCollision(enemigos);
+  checkCollision(enemigos);
   // console.log(enemigos);
   enemigos[0].move();
 },50);
@@ -34,3 +36,13 @@ let gameLoopInterval = setInterval( function(){
   enemigo.spawn();
   enemigos.push(enemigo);
 // },3000);
+///// CALCULOS PARA LOCALIZAR SEGUN A LA IZQ
+// p1.offsetLeft + p1.offsetWidth
+
+function checkCollision(enemigos){
+  let e1 = enemigos[0];
+  
+  if (document.getElementById(e1.getId()).offsetLeft <= colision_player){
+    console.log('colision');
+  };
+}

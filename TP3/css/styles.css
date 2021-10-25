@@ -22,3 +22,46 @@ body {
   0% { background-position:1920px } 
   100% { background-position:0 }
 }
+
+.game_menu{
+  width: 45%;
+  height: 50%;
+  position: absolute;
+  top: 20%;
+  left: 30%;
+  margin-top: -50px;
+  margin-left: -50px;
+  background-color: rgba(255,255,255,.8);
+  border-radius: 20px;
+}
+
+li{
+  display: inline;
+}
+
+ul{
+  list-style-type: none;
+  padding: 0;
+}
+
+.player-selection li img {
+  margin-left: 20px;
+  cursor: pointer;
+}
+
+
+.d-flex-row-centered{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.d-flex-col-centered{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.text-centered{
+  text-align: center;
+}
