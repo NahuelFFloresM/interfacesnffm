@@ -7,12 +7,13 @@ class Enemy{
   #div_item;
   #id;
 
-  constructor(w,h,bs,rp,bp){
+  constructor(w,h,bs,rp,bp,id){
     this.#width = w;
     this.#height = h;
     this.#bottom_pos = bs;
     this.#right_pos = rp;
     this.#background_sprite = bp;
+    this.#id = id;
   }
   /**
    * Crea el div con sus parametros y hace "append" al documento
@@ -30,7 +31,6 @@ class Enemy{
     box.style.right = this.#right_pos;
     // box.style.bottom = '5%';
     box.style.bottom = this.#bottom_pos;
-    this.#id = 'enemy1';
     box.id = this.#id;
     // ------------------------ DONDE LOS SPAWNEA EN LA VENTANA
     document.body.appendChild(box);
