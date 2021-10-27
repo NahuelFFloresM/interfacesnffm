@@ -11,11 +11,12 @@ let gameLoopInterval = null;
 let enemySpawnInterval = null;
 
 function juego_start(){
+  juego.limpiarEnemigos();
   document.getElementById('menu').style.visibility = "hidden";
   if (document.getElementById("game_over").classList == "game_over"){
     document.getElementById("game_over").classList = "invisible";
   }
-  juego.iniciarJuego();
+  juego.iniciarBgParalax();
 
   gameLoopInterval = setInterval( function(){
     // DETECCION DE TIPO DE TECLA APRETADA
@@ -30,6 +31,7 @@ function juego_start(){
   
     // DETECCION DE COLISION
     checkCollision(enemigos);
+    
   },50);
 
 
@@ -52,7 +54,7 @@ function juego_start(){
     if (type_entity == 4){
       enemigo = new Enemy('50px','100px','5%','5%','',enemy_count++);
     }
-    console.log(type_entity);
+    // console.log(type_entity);
     enemigo.spawn();
     enemigos.push(enemigo);
   },3000);
@@ -77,10 +79,10 @@ window.addEventListener('keyup',() =>{typeKeyDown = '';});
 function checkCollision(enemigos){
   let position = 0;
   enemigos.forEach(element => {
-    position = document.getElementById(element.getId()).offsetLeft
+    console.log(element.getId());
+    position = document.getElementById(element.getId()).offsetLeft;
     // DETECTAR COLISION VERTICAL
     if (position <= colision_player){
-      console.log('colision');
       document.getElementById("game_over").classList = "game_over";
       juego.finJuego();
     };
