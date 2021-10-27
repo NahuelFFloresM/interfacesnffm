@@ -9,8 +9,12 @@ let colision_player = document.getElementById('player').offsetLeft + document.ge
 let enemy_count = 1;
 let gameLoopInterval = null;
 let enemySpawnInterval = null;
+
 function juego_start(){
   document.getElementById('menu').style.visibility = "hidden";
+  if (document.getElementById("game_over").classList == "game_over"){
+    document.getElementById("game_over").classList = "invisible";
+  }
   juego.iniciarJuego();
 
   gameLoopInterval = setInterval( function(){
@@ -77,6 +81,8 @@ function checkCollision(enemigos){
     // DETECTAR COLISION VERTICAL
     if (position <= colision_player){
       console.log('colision');
+      document.getElementById("game_over").classList = "game_over";
+      juego.finJuego();
     };
     if (position < -200){
       deleteEnemy();

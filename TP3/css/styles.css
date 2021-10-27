@@ -65,3 +65,63 @@ ul{
 .text-centered{
   text-align: center;
 }
+
+.game_over{
+  width: 45%;
+  height: 50%;
+  position: absolute;
+  top: 20%;
+  left: 30%;
+  margin-top: -50px;
+  margin-left: -50px;
+  background-color: rgba(0,0,0,.8);
+  border-radius: 20px;
+  /*transicion para aparicion de div de game over*/
+  animation: fadeIn 2s;
+  -webkit-animation: fadeIn 2s;
+  -moz-animation: fadeIn 2s;
+  -o-animation: fadeIn 2s;
+  -ms-animation: fadeIn 2s;
+}
+
+.invisible{
+  display: none;
+  visibility: hidden;
+}
+
+.game_over div div h1{
+  color: red;
+  font-family: "Lucida Handwriting", cursive;
+  font-size: 500%;
+  
+  animation: fadeIn 5s;
+  -webkit-animation: fadeIn 5s;
+  -moz-animation: fadeIn 5s;
+  -o-animation: fadeIn 5s;
+  -ms-animation: fadeIn 5s;
+}
+
+@keyframes fadeIn {
+  0% {opacity:0;}
+  100% {opacity:1;}
+}
+
+@-moz-keyframes fadeIn {
+  0% {opacity:0;}
+  100% {opacity:1;}
+}
+
+@-webkit-keyframes fadeIn {
+  0% {opacity:0;}
+  100% {opacity:1;}
+}
+
+@-o-keyframes fadeIn {
+  0% {opacity:0;}
+  100% {opacity:1;}
+}
+
+@-ms-keyframes fadeIn {
+  0% {opacity:0;}
+  100% {opacity:1;}
+}
