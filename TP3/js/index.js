@@ -45,6 +45,10 @@ function juego_start(){
     if (type_entity == 3){
       enemigo = new Enemy('50px','100px','5%','5%','',enemy_count++);
     }
+    if (type_entity == 4){
+      enemigo = new Enemy('50px','100px','5%','5%','',enemy_count++);
+    }
+    console.log(type_entity);
     enemigo.spawn();
     enemigos.push(enemigo);
   },3000);
