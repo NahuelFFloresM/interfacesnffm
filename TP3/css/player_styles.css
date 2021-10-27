@@ -13,6 +13,13 @@
   bottom: 9%;
 }
 
+.dead{
+  background:url('../spritesheets/player_dead.png');
+  width: 106px;
+  height: 102px;
+  bottom: 4%;
+}
+
 .running{
    /* Cargamos el sprite (el repeat-x se puede omitir, por defecto se repite) */
    background:url('../spritesheets/player_run.png') repeat-x;
