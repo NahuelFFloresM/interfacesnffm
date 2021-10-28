@@ -3,29 +3,28 @@
   position:absolute;
   /* Cómo hay establecido un tamaño, centramos con margin:auto */
   margin-left:10%;
-  transform: scale(1.5);
 }
 
 .stand{
   background:url('../spritesheets/player_stand.png');
   width: 59px;
   height: 116px;
-  bottom: 9%;
+  bottom: 30px;
 }
 
 .dead{
   background:url('../spritesheets/player_dead.png');
   width: 106px;
   height: 102px;
-  bottom: 4%;
+  bottom: 30px;
 }
 
 .running{
    /* Cargamos el sprite (el repeat-x se puede omitir, por defecto se repite) */
    background:url('../spritesheets/player_run.png') repeat-x;
    width: 95px;
-   height: 116px;
-   bottom: 7%;
+   height: 98px;
+   bottom: 30px;
    /* Aplicamos la animación "walk": 0.8seg, 6 viñetas y repetimos infinitamente */
    animation:walk 1s steps(8) infinite;
    /* Posicionamos el personaje sobre el camino de madera */

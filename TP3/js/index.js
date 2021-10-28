@@ -5,7 +5,6 @@ let player = new Player();
 let keydown = false;
 let typeKeyDown = '';
 let enemigos = [];
-let colision_player = document.getElementById('player').offsetLeft + document.getElementById('player').offsetWidth;
 let enemy_count = 1;
 let gameLoopInterval = null;
 let enemySpawnInterval = null;
@@ -19,6 +18,7 @@ function juego_start(){
   juego.iniciarBgParalax();
 
   gameLoopInterval = setInterval( function(){
+    player.renovarPosicion();
     // DETECCION DE TIPO DE TECLA APRETADA
     if (typeKeyDown == ' '){
       player_jump();
@@ -30,15 +30,15 @@ function juego_start(){
     });
   
     // DETECCION DE COLISION
-    checkCollision(enemigos);
-    
+    checkCollision();
+
   },50);
 
 
   /**
    * Intervalo para spawnear objetos en el suelo
    */
-  enemySpawnInterval = setInterval( function(){
+  // enemySpawnInterval = setInterval( function(){
     // 4 max, 1 min
     let type_entity = Math.round(Math.random() * (4 - 1) + 1);
     let enemigo;
@@ -57,7 +57,7 @@ function juego_start(){
     // console.log(type_entity);
     enemigo.spawn();
     enemigos.push(enemigo);
-  },3000);
+  // },3000);
 }
 
 function player_jump(){
@@ -76,21 +76,11 @@ window.addEventListener('keyup',() =>{typeKeyDown = '';});
 ///// CALCULOS PARA LOCALIZAR SEGUN A LA IZQ
 // p1.offsetLeft + p1.offsetWidth
 
-function checkCollision(enemigos){
-  let position = 0;
-  enemigos.forEach(element => {
-    console.log(element.getId());
-    position = document.getElementById(element.getId()).offsetLeft;
-    // DETECTAR COLISION VERTICAL
-    if (position <= colision_player){
-      document.getElementById("game_over").classList = "game_over";
-      juego.finJuego();
-    };
-    if (position < -200){
-      deleteEnemy();
-    }
-  });
-  
+function checkCollision(){
+  if (player.checkCollision(enemigos)){
+    document.getElementById("game_over").classList = "game_over";
+    juego.finJuego();
+  }
 }
 
 function deleteEnemy(){

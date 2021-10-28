@@ -9,11 +9,36 @@ body {
   background:url('../spritesheets/nfondo.jpg') center repeat-x;
   /* Posicionamos el mar, para que no solape al cielo */
   position:relative;
-  background-size: cover;
+  /* background-size: cover; */
+}
+
+#piso_paralax{
+  background:url('../spritesheets/piso_paralax.png') repeat-x;
+  /* Posicionamos el mar, para que no solape al cielo */
+  position:absolute;
+  bottom: 0;
+  width: 100%;
+  height: 30px;
+  background-size: contain;
 }
 
 .bg-running{
   animation: movebg 20s linear infinite;
+}
+.abs{
+  position: absolute;
+}
+
+.top-20{
+  top:20px;
+}
+
+.right-20{
+  right: 20px;
+}
+
+.left-20{
+  left: 20px;
 }
 
 
