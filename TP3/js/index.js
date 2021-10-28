@@ -44,16 +44,16 @@ function juego_start(){
     let enemigo;
     console.log(type_entity);
     if (type_entity == 1){
-      enemigo = new Enemy('100px','100px','5%','5%','',enemy_count++,"cactus");    
+      enemigo = new Enemy('155px','122px','1%','-20px','',enemy_count++,"cactus");    
     }
     if (type_entity == 2){
-      enemigo = new Enemy('50px','50px','45%','5%','',enemy_count++,"crow");
+      enemigo = new Enemy('178px','117px','45%','-20px','',enemy_count++,"crow");
     }
     if (type_entity == 3){
-      enemigo = new Enemy('100px','100px','5%','5%','',enemy_count++,"dragon");
+      enemigo = new Enemy('190px','121px','0%','-20px','',enemy_count++,"dragon");
     }
     if (type_entity == 4){
-      enemigo = new Enemy('50px','100px','1%','5%','',enemy_count++,"slime");
+      enemigo = new Enemy('128.16px','114px','0%','-20px','',enemy_count++,"slime");
     }
     enemigo.spawn();
     enemigos.push(enemigo);
