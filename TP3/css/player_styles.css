@@ -16,7 +16,7 @@
   background:url('../spritesheets/player_dead.png');
   width: 106px;
   height: 102px;
-  bottom: 30px;
+  bottom: 20px;
 }
 
 .running{
@@ -24,7 +24,7 @@
    background:url('../spritesheets/player_run.png') repeat-x;
    width: 95px;
    height: 98px;
-   bottom: 30px;
+   bottom: 25px;
    /* Aplicamos la animación "walk": 0.8seg, 6 viñetas y repetimos infinitamente */
    animation:walk 1s steps(8) infinite;
    /* Posicionamos el personaje sobre el camino de madera */
