@@ -66,7 +66,6 @@ function player_jump(){
 }
 window.addEventListener('keydown',(event) => {
   typeKeyDown = event.key;
-  keydown = true;
 });
 window.addEventListener('keyup',() =>{typeKeyDown = '';});
 
