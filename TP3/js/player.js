@@ -41,14 +41,14 @@ class Player{
       console.log(this.#colision_playerHeight, positionY+positionYheight);
       console.log(this.#colision_playerHeight+this.#height, positionY);
       console.log('////////////////////////');
-      if ((
-        (this.#colision_playerWidth <= positionX+positionXwidth)
+      if (
+        (this.#colision_playerHeight+this.#height >= positionY)
         &&
         (this.#colision_playerWidth+ this.#width >= positionX)
-        &&
-        (this.#colision_playerHeight <= positionY+positionYheight)
-        &&
-        (this.#colision_playerHeight+this.#height >= positionY))
+        // &&
+        // (this.#colision_playerHeight <= positionY+positionYheight)
+        // &&
+        // (this.#colision_playerHeight+this.#height >= positionY))
       ){
         respuesta = true;
       };

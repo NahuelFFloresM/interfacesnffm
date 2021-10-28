@@ -1,8 +1,7 @@
 .cactus{
     background:url('../spritesheets/enemy_cactus.png') repeat-x;
-    width: 155px;
-    height: 122px;
-    bottom: 9%;
+    width: 150px;
+    height: 116px;
     animation:mouth .5s steps(6) infinite;
 }
 
@@ -13,8 +12,8 @@
 
 .crow{
     background:url('../spritesheets/enemy_crow.png') repeat-x;
-    width: 178px;
-    height: 117px;
+    width: 176px;
+    height: 111px;
     animation:fly 1s steps(3) infinite;
 }
 
@@ -26,19 +25,19 @@
 .dragon{
     background:url('../spritesheets/enemy_dragon.png') repeat-x;
     width: 190px;
-    height: 121px;
-    animation:march 1s steps(3) infinite;
+    height: 110px;
+    animation:marchd 1s steps(3) infinite;
 }
 
-@keyframes march {
+@keyframes marchd {
     0% { background-position: 0 }
     100% { background-position: -575px }
 }
 
 .slime{
     background:url('../spritesheets/enemy_slime.png') repeat-x;
-    width: 128.16px;
-    height: 114px;
+    width: 120px;
+    height: 85px;
     animation:march 1s steps(6) infinite;
 }
 

@@ -42,18 +42,17 @@ function juego_start(){
     // 4 max, 1 min
     let type_entity = Math.floor(Math.random()*4) + 1;
     let enemigo;
-    console.log(type_entity);
     if (type_entity == 1){
-      enemigo = new Enemy('100px','100px','5%','5%','',enemy_count++,"cactus");    
+      enemigo = new Enemy('5%','30px',enemy_count++,"cactus");    
     }
     if (type_entity == 2){
-      enemigo = new Enemy('50px','50px','45%','5%','',enemy_count++,"crow");
+      enemigo = new Enemy('5%','300px',enemy_count++,"crow");
     }
     if (type_entity == 3){
-      enemigo = new Enemy('100px','100px','5%','5%','',enemy_count++,"dragon");
+      enemigo = new Enemy('5%','30px',enemy_count++,"dragon");
     }
     if (type_entity == 4){
-      enemigo = new Enemy('50px','100px','1%','5%','',enemy_count++,"slime");
+      enemigo = new Enemy('5%','30px',enemy_count++,"slime");
     }
     enemigo.spawn();
     enemigos.push(enemigo);
