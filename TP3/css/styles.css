@@ -91,6 +91,19 @@ ul{
   text-align: center;
 }
 
+.d-flex-row-right{
+  display: flex;
+  flex-direction: row;
+  justify-content: right;
+}
+
+#coin{
+  background:url('../spritesheets/coin.png') repeat-x;
+  width: 50px;
+  height: 50px;
+  animation:flip 1s steps(6) infinite;
+}
+
 .game_over{
   width: 45%;
   height: 50%;
@@ -149,4 +162,9 @@ ul{
 @-ms-keyframes fadeIn {
   0% {opacity:0;}
   100% {opacity:1;}
+}
+
+@keyframes flip {
+  0% { background-position: 0 }
+  100% { background-position: -300px }
 }

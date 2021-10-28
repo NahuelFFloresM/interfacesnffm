@@ -40,21 +40,21 @@ function juego_start(){
    */
   // enemySpawnInterval = setInterval( function(){
     // 4 max, 1 min
-    let type_entity = Math.round(Math.random() * (4 - 1) + 1);
+    let type_entity = Math.floor(Math.random()*4) + 1;
     let enemigo;
+    console.log(type_entity);
     if (type_entity == 1){
-      enemigo = new Enemy('100px','100px','5%','5%','',enemy_count++);    
+      enemigo = new Enemy('100px','100px','5%','5%','',enemy_count++,"cactus");    
     }
     if (type_entity == 2){
-      enemigo = new Enemy('50px','50px','200px','5%','',enemy_count++);
+      enemigo = new Enemy('50px','50px','45%','5%','',enemy_count++,"crow");
     }
     if (type_entity == 3){
-      enemigo = new Enemy('50px','100px','5%','5%','',enemy_count++);
+      enemigo = new Enemy('100px','100px','5%','5%','',enemy_count++,"dragon");
     }
     if (type_entity == 4){
-      enemigo = new Enemy('50px','100px','5%','5%','',enemy_count++);
+      enemigo = new Enemy('50px','100px','1%','5%','',enemy_count++,"slime");
     }
-    // console.log(type_entity);
     enemigo.spawn();
     enemigos.push(enemigo);
   // },3000);

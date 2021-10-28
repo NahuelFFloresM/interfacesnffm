@@ -1,0 +1,48 @@
+.cactus{
+    background:url('../spritesheets/enemy_cactus.png') repeat-x;
+    width: 155px;
+    height: 122px;
+    bottom: 9%;
+    animation:mouth .5s steps(6) infinite;
+}
+
+@keyframes mouth {
+    0% { background-position: 0 }
+    100% { background-position: -930px }
+}
+
+.crow{
+    background:url('../spritesheets/enemy_crow.png') repeat-x;
+    width: 178px;
+    height: 117px;
+    animation:fly 1s steps(3) infinite;
+}
+
+@keyframes fly {
+    0% { background-position: 0 }
+    100% { background-position: -534px }
+}
+
+.dragon{
+    background:url('../spritesheets/enemy_dragon.png') repeat-x;
+    width: 190px;
+    height: 121px;
+    animation:march 1s steps(3) infinite;
+}
+
+@keyframes march {
+    0% { background-position: 0 }
+    100% { background-position: -575px }
+}
+
+.slime{
+    background:url('../spritesheets/enemy_slime.png') repeat-x;
+    width: 128.16px;
+    height: 114px;
+    animation:march 1s steps(6) infinite;
+}
+
+@keyframes march {
+    0% { background-position: 0 }
+    100% { background-position: -769px }
+}
