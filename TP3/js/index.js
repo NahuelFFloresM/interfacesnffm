@@ -150,3 +150,32 @@ function sumScore(number = 1){
   //suma puntos al esquivar obstaculo. invoca autogeneracion de 0 para tener 4 digitos
   document.getElementById("points").innerHTML = pad_with_zeroes(points + number, 5);
 }
+
+function cambia_fondo(fondo){
+  //elimina las clases del fondo y piso para sustituir
+  document.getElementById('background').classList.remove(document.getElementById('background').classList[1]);
+  document.getElementById('piso_paralax').classList.remove(document.getElementById('piso_paralax').classList[1]);
+
+  switch (fondo) {
+    case 1:
+      document.getElementById('background').classList.add('fondo-default');
+      document.getElementById('piso_paralax').classList.add('piso-default');
+      break;
+    case 2:
+      document.getElementById('background').classList.add('fondo-city');
+      document.getElementById('piso_paralax').classList.add('piso-city');
+      break
+    case 3:
+      document.getElementById('background').classList.add('fondo-night');
+      document.getElementById('piso_paralax').classList.add('piso-night');
+      break
+    case 4:
+      document.getElementById('background').classList.add('fondo-mountain');
+      document.getElementById('piso_paralax').classList.add('piso-mountain');
+      break
+    case 5:
+      document.getElementById('background').classList.add('fondo-desert');
+      document.getElementById('piso_paralax').classList.add('piso-desert');
+      break
+  }
+}

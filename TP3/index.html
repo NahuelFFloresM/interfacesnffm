@@ -9,7 +9,7 @@
   <link rel="stylesheet" href="./css/enemy_styles.css" >
   <title>TP3 Integrador</title>
 </head>
-<body id="background" class="stop">
+<body id="background" class="stop fondo-default">
   <div>
     <div class="d-flex-row-right m-15">
       <div class="d-flex m-10">
@@ -29,6 +29,14 @@
         <ul>
           <li><button onclick="juego_start()">Start</button></li>
         </ul>
+        <h2>Fondo</h2>
+        <ul>
+          <li><button onclick="cambia_fondo(1)">Llanura</button></li>
+          <li><button onclick="cambia_fondo(2)">Ciudad</button></li>
+          <li><button onclick="cambia_fondo(3)">Noche</button></li>
+          <li><button onclick="cambia_fondo(4)">Montaña</button></li>
+          <li><button onclick="cambia_fondo(5)">Desierto</button></li>
+        </ul>
       </div>
     </div>
   </div>
@@ -43,7 +51,7 @@
     </div>
   </div>
   <div id="player" class="stand"></div>
-  <div id="piso_paralax" class="stop"></div>
+  <div id="piso_paralax" class="stop piso-default"></div>
 </body>
 <script src="./js/colectable.js"></script>
 <script src="./js/juego.js"></script>

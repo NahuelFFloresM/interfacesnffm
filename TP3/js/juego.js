@@ -5,14 +5,20 @@ class Juego{
   }
   iniciarBgParalax(){
     document.getElementById('player').classList = 'running';
+    // document.getElementById('background').classList = 'bg-running';
+    // document.getElementById('piso_paralax').classList = 'floor-running';
+    document.getElementById('background').classList.remove('stop');
     document.getElementById('background').classList = 'bg-running';
-    document.getElementById('piso_paralax').classList = 'floor-running';
+    document.getElementById('piso_paralax').classList.remove('stop');
+    document.getElementById('piso_paralax').classList.add('bg-running');
   }
 
   finJuego(){
     document.getElementById('player').classList = 'dead';
-    document.getElementById('background').classList = 'stop';
-    document.getElementById('piso_paralax').classList = 'stop';
+    document.getElementById('background').classList.remove('bg-running');
+    document.getElementById('background').classList.add('stop');
+    document.getElementById('piso_paralax').classList.remove('bg-running');
+    document.getElementById('piso_paralax').classList.add('stop');
     clearInterval(gameLoopInterval);
     clearInterval(enemySpawnInterval);
     clearInterval(enemySpawnInterval2);
