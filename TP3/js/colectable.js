@@ -31,7 +31,7 @@ class Collectable{
    */
   move(){
     let posx = window.getComputedStyle(this.#div_item).right;
-    if (posx < -200){
+    if (parseInt(posx) > 1400){
       deleteCoin(0);
     } else {
       this.#div_item.style.right = parseInt(posx)+2+"px";
