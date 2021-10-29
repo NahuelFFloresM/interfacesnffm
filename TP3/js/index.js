@@ -8,11 +8,12 @@ let enemigos = [];
 let enemy_count = 1;
 let gameLoopInterval = null;
 let enemySpawnInterval = null;
+let pointsInterval = null;
 
 function juego_start(){
   juego.limpiarEnemigos();
   document.getElementById('menu').style.visibility = "hidden";
-  document.getElementById("points").innerHTML = "0000";
+  document.getElementById("points").innerHTML = "00000";
   if (document.getElementById("game_over").classList == "game_over"){
     document.getElementById("game_over").classList = "invisible";
   }
@@ -35,6 +36,8 @@ function juego_start(){
 
   },10);
 
+  /** Suma de puntos por tiempo jugado */
+  pointsInterval = setInterval( () => sumScore(1),500);
 
   /**
    * Intervalo para spawnear objetos en el suelo
@@ -57,7 +60,7 @@ function juego_start(){
     }
     enemigo.spawn();
     enemigos.push(enemigo);
-  },3000);
+  },2000);
 }
 
 function player_jump(){
@@ -71,26 +74,16 @@ window.addEventListener('keydown',(event) => {
 window.addEventListener('keyup',() =>{typeKeyDown = '';});
 
 
-
-///// CALCULOS PARA LOCALIZAR SEGUN A LA IZQ
-// p1.offsetLeft + p1.offsetWidth
-
 function checkCollision(){
   if (player.checkCollision(enemigos)){
     document.getElementById("game_over").classList = "game_over";
     juego.finJuego();
-  }
-  else {
-    let points = parseInt(document.getElementById("points").innerHTML);
-    //suma puntos al esquivar obstaculo. invoca autogeneracion de 0 para tener 4 digitos
-    document.getElementById("points").innerHTML = pad_with_zeroes(points + 1, 4);
   }
 }
 
 function deleteEnemy(){
   let toDelete = enemigos.shift();
   document.body.removeChild(document.getElementById(toDelete.getId()));
-
 }
 
 function pad_with_zeroes(number, length) {
@@ -99,6 +92,11 @@ function pad_with_zeroes(number, length) {
   while (my_string.length < length) {
       my_string = '0' + my_string;
   }
-
   return my_string;
+}
+
+function sumScore(number = 1){
+  let points = parseInt(document.getElementById("points").innerHTML);
+  //suma puntos al esquivar obstaculo. invoca autogeneracion de 0 para tener 4 digitos
+  document.getElementById("points").innerHTML = pad_with_zeroes(points + number, 5);
 }

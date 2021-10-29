@@ -47,7 +47,9 @@ class Player{
       )){
         // Hay un margen de error dado la velocidad en la que se mueven los enemigos y el proximo movimiento
         if ((this.#colision_playerHeight+this.#height >= positionY) && (this.#colision_playerHeight < positionY) && (this.#colision_playerWidth+this.#width-30 > positionX)){
+
           deleteEnemy();
+          sumScore(50);
         } else {
           respuesta = true;
         }
