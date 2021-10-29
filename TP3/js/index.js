@@ -25,6 +25,7 @@ function juego_start(){
   if (document.getElementById("game_over").classList == "game_over"){
     document.getElementById("game_over").classList = "invisible";
   }
+  document.getElementById("game_victory").classList = "invisible";
   juego.iniciarBgParalax();
 
   /**
@@ -53,6 +54,8 @@ function juego_start(){
 
     // Deteccion de colision con las monedas;
     checkCoins();
+
+    checkWin();
 
   },10);
 
@@ -245,4 +248,11 @@ function back(){
 function juego_guide(){
   document.getElementById("menu").classList = "invisible";
   document.getElementById("howToPlay").classList = "game_menu";
+}
+
+function checkWin(){
+  if (parseInt(document.getElementById("points").innerHTML) >= 999){
+    document.getElementById("game_victory").classList = "game_victory";
+    juego.finJuego();
+  }
 }
