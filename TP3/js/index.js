@@ -12,6 +12,7 @@ let enemySpawnInterval = null;
 function juego_start(){
   juego.limpiarEnemigos();
   document.getElementById('menu').style.visibility = "hidden";
+  document.getElementById("points").innerHTML = "0000";
   if (document.getElementById("game_over").classList == "game_over"){
     document.getElementById("game_over").classList = "invisible";
   }
@@ -43,16 +44,16 @@ function juego_start(){
     let type_entity = Math.floor(Math.random()*4) + 1;
     let enemigo;
     if (type_entity == 1){
-      enemigo = new Enemy('5%','30px',enemy_count++,"cactus");    
+      enemigo = new Enemy('5%','15px',enemy_count++,"cactus");    
     }
     if (type_entity == 2){
       enemigo = new Enemy('5%','300px',enemy_count++,"crow");
     }
     if (type_entity == 3){
-      enemigo = new Enemy('5%','30px',enemy_count++,"dragon");
+      enemigo = new Enemy('5%','15px',enemy_count++,"dragon");
     }
     if (type_entity == 4){
-      enemigo = new Enemy('5%','30px',enemy_count++,"slime");
+      enemigo = new Enemy('5%','15px',enemy_count++,"slime");
     }
     enemigo.spawn();
     enemigos.push(enemigo);
@@ -79,10 +80,25 @@ function checkCollision(){
     document.getElementById("game_over").classList = "game_over";
     juego.finJuego();
   }
+  else {
+    let points = parseInt(document.getElementById("points").innerHTML);
+    //suma puntos al esquivar obstaculo. invoca autogeneracion de 0 para tener 4 digitos
+    document.getElementById("points").innerHTML = pad_with_zeroes(points + 1, 4);
+  }
 }
 
 function deleteEnemy(){
   let toDelete = enemigos.shift();
   document.body.removeChild(document.getElementById(toDelete.getId()));
 
+}
+
+function pad_with_zeroes(number, length) {
+
+  var my_string = '' + number;
+  while (my_string.length < length) {
+      my_string = '0' + my_string;
+  }
+
+  return my_string;
 }

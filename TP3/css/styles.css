@@ -103,8 +103,8 @@ ul{
 #coin{
   background:url('../spritesheets/coin.png') repeat-x;
   position: absolute;
-  top: 5px;
-  right: 130px;
+  top: 10px;
+  right: 100px;
   width: 50px;
   height: 50px;
   animation:flip 1s steps(6) infinite;
