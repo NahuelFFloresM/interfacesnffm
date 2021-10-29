@@ -76,10 +76,10 @@ function juego_start(){
       enemigo = new Enemy('5%','400px',enemy_count++,"crow");
     }
     if (type_entity == 3){
-      enemigo = new Enemy('5%','30px',enemy_count++,"dragon");
+      enemigo = new Enemy('5%','20px',enemy_count++,"dragon");
     }
     if (type_entity == 4){
-      enemigo = new Enemy('5%','30px',enemy_count++,"slime");
+      enemigo = new Enemy('5%','20px',enemy_count++,"slime");
     }
     enemigo.spawn();
     enemigos.push(enemigo);
@@ -99,10 +99,10 @@ function juego_start(){
       enemigo = new Enemy('5%','450px','enemy'+enemy_count++,"crow");
     }
     if (type_entity == 3){
-      enemigo = new Enemy('5%','30px','enemy'+enemy_count++,"dragon");
+      enemigo = new Enemy('5%','20px','enemy'+enemy_count++,"dragon");
     }
     if (type_entity == 4){
-      enemigo = new Enemy('5%','30px','enemy'+enemy_count++,"slime");
+      enemigo = new Enemy('5%','20px','enemy'+enemy_count++,"slime");
     }
     enemigo.spawn();
     enemigos.push(enemigo);
