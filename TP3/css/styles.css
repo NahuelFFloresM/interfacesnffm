@@ -162,6 +162,14 @@ ul{
   animation:flip 1s steps(6) infinite;
 }
 
+.grab{
+  background:url('../spritesheets/coin_effect.png') repeat-x;
+  width: 50px;
+  height: 50px;
+  animation-iteration-count: 1;
+  animation: shine .3s steps(2) infinite;
+}
+
 .game_over{
   width: 45%;
   height: 50%;
@@ -225,4 +233,9 @@ ul{
 @keyframes flip {
   0% { background-position: 0 }
   100% { background-position: -300px }
+}
+
+@keyframes shine {
+  0% { background-position: 0 }
+  100% { background-position: -100px }
 }

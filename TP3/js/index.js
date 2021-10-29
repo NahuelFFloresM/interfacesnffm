@@ -12,8 +12,11 @@ let gameLoopInterval = null;
 let enemySpawnInterval = null;
 let enemySpawnInterval2 = null;
 let pointsInterval = null;
+let cantidad_monedas = 0;
 function juego_start(){
   juego.limpiarEnemigos();
+  cantidad_monedas = 0;
+  document.getElementById('cant_monedas').innerHTML = cantidad_monedas + " X";
   document.getElementById('menu').style.visibility = "hidden";
   document.getElementById("points").innerHTML = "00000";
   if (document.getElementById("game_over").classList == "game_over"){
@@ -117,7 +120,7 @@ function checkCollision(){
 }
 
 function checkCoins(){
-  if (player.checkCollision(recoletables)){
+  if (player.checkCollisionCoin(recoletables)){
     deleteCoin(500);
   }
 }
@@ -132,7 +135,11 @@ function deleteEnemy( score = 0){
 function deleteCoin(score = 0){
   let toDelete = recoletables.shift();
   sumScore(score);
-  toDelete.delete();
+  document.getElementById('cant_monedas').innerHTML = ++cantidad_monedas + " X";
+  document.getElementById(toDelete.getId()).classList = 'grab';
+  setTimeout( function (){
+    toDelete.delete();
+  },300 );
   // document.body.removeChild(document.getElementById(toDelete.getId()));
 }
 
