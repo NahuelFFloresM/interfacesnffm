@@ -12,6 +12,7 @@ let enemySpawnInterval = null;
 function juego_start(){
   juego.limpiarEnemigos();
   document.getElementById('menu').style.visibility = "hidden";
+  document.getElementById("points").innerHTML = "0000";
   if (document.getElementById("game_over").classList == "game_over"){
     document.getElementById("game_over").classList = "invisible";
   }
@@ -79,10 +80,25 @@ function checkCollision(){
     document.getElementById("game_over").classList = "game_over";
     juego.finJuego();
   }
+  else {
+    let points = parseInt(document.getElementById("points").innerHTML);
+    //suma puntos al esquivar obstaculo. invoca autogeneracion de 0 para tener 4 digitos
+    document.getElementById("points").innerHTML = pad_with_zeroes(points + 1, 4);
+  }
 }
 
 function deleteEnemy(){
   let toDelete = enemigos.shift();
   document.body.removeChild(document.getElementById(toDelete.getId()));
 
+}
+
+function pad_with_zeroes(number, length) {
+
+  var my_string = '' + number;
+  while (my_string.length < length) {
+      my_string = '0' + my_string;
+  }
+
+  return my_string;
 }
