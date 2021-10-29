@@ -12,14 +12,53 @@ body {
   /* background-size: cover; */
 }
 
+.fondo-default {
+  background:url('../spritesheets/nfondo.jpg') center repeat-x;
+}
+
+.fondo-city {
+  background:url('../spritesheets/fondo_city.png') center repeat-x;
+}
+
+.fondo-night {
+  background:url('../spritesheets/fondo_night.png') center repeat-x;
+}
+
+.fondo-mountain {
+  background:url('../spritesheets/fondo_mountain.png') center repeat-x;
+}
+
+.fondo-desert {
+  background:url('../spritesheets/fondo_desert.png') center repeat-x;
+}
+
 #piso_paralax{
-  background:url('../spritesheets/piso_paralax.png') repeat-x;
   /* Posicionamos el mar, para que no solape al cielo */
   position:absolute;
   bottom: 0;
   width: 100%;
   height: 30px;
   background-size: contain;
+}
+
+.piso-default {
+  background:url('../spritesheets/piso_paralax.png') repeat-x;
+}
+
+.piso-city {
+  background:url('../spritesheets/piso_city.png') repeat-x;
+}
+
+.piso-night {
+  background:url('../spritesheets/piso_night.png') repeat-x;
+}
+
+.piso-mountain {
+  background:url('../spritesheets/piso_mountain.png') repeat-x;
+}
+
+.piso-desert {
+  background:url('../spritesheets/piso_desert.png') repeat-x;
 }
 
 .bg-running{
