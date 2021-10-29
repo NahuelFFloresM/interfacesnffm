@@ -8,6 +8,7 @@ let enemigos = [];
 let enemy_count = 1;
 let gameLoopInterval = null;
 let enemySpawnInterval = null;
+let enemySpawnInterval2 = null;
 let pointsInterval = null;
 
 function juego_start(){
@@ -50,7 +51,7 @@ function juego_start(){
       enemigo = new Enemy('5%','15px',enemy_count++,"cactus");    
     }
     if (type_entity == 2){
-      enemigo = new Enemy('5%','300px',enemy_count++,"crow");
+      enemigo = new Enemy('5%','400px',enemy_count++,"crow");
     }
     if (type_entity == 3){
       enemigo = new Enemy('5%','15px',enemy_count++,"dragon");
@@ -61,6 +62,30 @@ function juego_start(){
     enemigo.spawn();
     enemigos.push(enemigo);
   },2000);
+
+  enemySpawnInterval2 = setInterval( function(){
+    // 4 max, 1 min
+    let type_entity = Math.floor(Math.random()*4) + 1;
+    let enemigo;
+    if (type_entity == 1){
+      enemigo = new Enemy('5%','15px',enemy_count++,"cactus");    
+    }
+    if (type_entity == 2){
+      enemigo = new Enemy('5%','450px',enemy_count++,"crow");
+    }
+    if (type_entity == 3){
+      enemigo = new Enemy('5%','15px',enemy_count++,"dragon");
+    }
+    if (type_entity == 4){
+      enemigo = new Enemy('5%','15px',enemy_count++,"slime");
+    }
+    enemigo.spawn();
+    enemigos.push(enemigo);
+  },3000);
+
+  coinSpawnInterval = setInterval( function(){
+    
+  },3000);
 }
 
 function player_jump(){

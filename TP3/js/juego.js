@@ -15,6 +15,7 @@ class Juego{
     document.getElementById('piso_paralax').classList = 'stop';
     clearInterval(gameLoopInterval);
     clearInterval(enemySpawnInterval);
+    clearInterval(enemySpawnInterval2);
     clearInterval(pointsInterval);
     enemy_count = 1;
   }

@@ -29,6 +29,10 @@ body {
   position: absolute;
 }
 
+.m-10{
+  margin: 10px;
+}
+
 .m-15{
   margin: 15px;
 }
@@ -77,6 +81,10 @@ ul{
   cursor: pointer;
 }
 
+.d-flex{
+  display: flex;  
+}
+
 
 .d-flex-row-centered{
   display: flex;
@@ -97,12 +105,11 @@ ul{
 .d-flex-row-right{
   display: flex;
   flex-direction: row;
-  justify-content: right;
+  justify-content: space-between;
 }
 
 #coin{
   background:url('../spritesheets/coin.png') repeat-x;
-  position: absolute;
   top: 10px;
   right: 100px;
   width: 50px;

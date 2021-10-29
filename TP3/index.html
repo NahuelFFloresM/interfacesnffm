@@ -12,8 +12,11 @@
 <body id="background" class="stop">
   <div>
     <div class="d-flex-row-right m-15">
-      <div id="coin"></div>
-      <div><h1 id="points">00000</h1></div>
+      <div class="d-flex m-10">
+          <div id="cant_monedas"><h2>0x</h2></div>
+          <div id="coin"></div>
+      </div>
+      <div><h2 id="points">00000</h2></div>
     </div>
   </div>
   <div id="menu" class="game_menu">
@@ -23,12 +26,6 @@
         <ul>
           <li><button onclick="juego_start()">Start</button></li>
           <li><button>Como jugar</button></li>
-        </ul>
-        <ul class="player-selection">
-          <li><img src="./spritesheets/player_stand.png"></li>
-          <li><img src="./spritesheets/player_stand.png"></li>
-          <li><img src="./spritesheets/player_stand.png"></li>
-          <li><img src="./spritesheets/player_stand.png"></li>
         </ul>
       </div>
     </div>
