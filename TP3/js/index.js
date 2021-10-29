@@ -199,3 +199,13 @@ function changeTextColor(color){
     }
   }
 }
+
+function back(){
+  document.getElementById("howToPlay").classList = "invisible";
+  document.getElementById("menu").classList = "game_menu";
+}
+
+function juego_guide(){
+  document.getElementById("menu").classList = "invisible";
+  document.getElementById("howToPlay").classList = "game_menu";
+}
