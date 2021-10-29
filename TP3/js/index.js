@@ -55,16 +55,16 @@ function juego_start(){
     let type_entity = Math.floor(Math.random()*4) + 1;
     let enemigo;
     if (type_entity == 1){
-      enemigo = new Enemy('5%','15px',enemy_count++,"cactus");    
+      enemigo = new Enemy('5%','30px',enemy_count++,"cactus");    
     }
     if (type_entity == 2){
       enemigo = new Enemy('5%','400px',enemy_count++,"crow");
     }
     if (type_entity == 3){
-      enemigo = new Enemy('5%','15px',enemy_count++,"dragon");
+      enemigo = new Enemy('5%','30px',enemy_count++,"dragon");
     }
     if (type_entity == 4){
-      enemigo = new Enemy('5%','15px',enemy_count++,"slime");
+      enemigo = new Enemy('5%','30px',enemy_count++,"slime");
     }
     enemigo.spawn();
     enemigos.push(enemigo);
@@ -75,16 +75,16 @@ function juego_start(){
     let type_entity = Math.floor(Math.random()*4) + 1;
     let enemigo;
     if (type_entity == 1){
-      enemigo = new Enemy('5%','15px','enemy'+enemy_count++,"cactus");    
+      enemigo = new Enemy('5%','30px','enemy'+enemy_count++,"cactus");    
     }
     if (type_entity == 2){
       enemigo = new Enemy('5%','450px','enemy'+enemy_count++,"crow");
     }
     if (type_entity == 3){
-      enemigo = new Enemy('5%','15px','enemy'+enemy_count++,"dragon");
+      enemigo = new Enemy('5%','30px','enemy'+enemy_count++,"dragon");
     }
     if (type_entity == 4){
-      enemigo = new Enemy('5%','15px','enemy'+enemy_count++,"slime");
+      enemigo = new Enemy('5%','30px','enemy'+enemy_count++,"slime");
     }
     enemigo.spawn();
     enemigos.push(enemigo);

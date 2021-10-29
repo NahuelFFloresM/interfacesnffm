@@ -8,7 +8,7 @@ class Juego{
     // document.getElementById('background').classList = 'bg-running';
     // document.getElementById('piso_paralax').classList = 'floor-running';
     document.getElementById('background').classList.remove('stop');
-    document.getElementById('background').classList = 'bg-running';
+    document.getElementById('background').classList.add('bg-running');
     document.getElementById('piso_paralax').classList.remove('stop');
     document.getElementById('piso_paralax').classList.add('bg-running');
   }
