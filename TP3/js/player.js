@@ -23,11 +23,11 @@ class Player{
     let enemigo;
     let respuesta = false;
     enemigos.forEach(element => {
-      enemigo = document.getElementById(element.getId())
+      enemigo = document.getElementById(element.getId());
       positionX = enemigo.offsetLeft;
-      positionXwidth = positionX + enemigo.offsetWidth;
+      positionXwidth = enemigo.offsetWidth;
       positionY = enemigo.offsetTop;
-      positionYheight = positionY + enemigo.offsetHeight;
+      positionYheight = enemigo.offsetHeight;
       // BORRA ENEMIGO -------> CAMBIAR DE LUGAR
       if (positionX < -200){
         deleteEnemy();
@@ -36,21 +36,21 @@ class Player{
       // (positionX <= this.#colision_playerWidth + this.#width) && (positionY >= this.#colision_playerHeight+this.#height)
       // &&
       // (positionX+positionXwidth >= this.#colision_playerWidth) && (positionY >= this.#colision_playerHeight + this.#height)
-      console.log(this.#colision_playerWidth, positionX+positionXwidth);
-      console.log(this.#colision_playerWidth+ this.#width, positionX);
-      console.log(this.#colision_playerHeight, positionY+positionYheight);
-      console.log(this.#colision_playerHeight+this.#height, positionY);
-      console.log('////////////////////////');
-      if (
-        (this.#colision_playerHeight+this.#height >= positionY)
-        &&
-        (this.#colision_playerWidth+ this.#width >= positionX)
-        // &&
-        // (this.#colision_playerHeight <= positionY+positionYheight)
-        // &&
-        // (this.#colision_playerHeight+this.#height >= positionY))
-      ){
-        respuesta = true;
+      if (!(
+        (this.#colision_playerWidth > positionX+positionXwidth)
+        ||
+        (this.#colision_playerWidth+this.#width < positionX)
+        ||
+        (this.#colision_playerHeight > positionY+positionYheight)
+        ||
+        (this.#colision_playerHeight+this.#height < positionY)
+      )){
+        // Hay un margen de error dado la velocidad en la que se mueven los enemigos y el proximo movimiento
+        if ((this.#colision_playerHeight+this.#height >= positionY) && (this.#colision_playerHeight < positionY) && (this.#colision_playerWidth+this.#width-30 > positionX)){
+          deleteEnemy();
+        } else {
+          respuesta = true;
+        }
       };
       
       // console.log("x"+positionX,"xf"+positionXwidth,"y"+positionY,"yf"+positionYheight,'enemigo');

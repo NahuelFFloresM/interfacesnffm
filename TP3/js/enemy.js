@@ -31,7 +31,7 @@ class Enemy{
    */
   move(){
     let posx = window.getComputedStyle(this.#div_item).right;
-    this.#div_item.style.right = parseInt(posx)+13+"px";
+    this.#div_item.style.right = parseInt(posx)+5+"px";
   }
 
   getId(){

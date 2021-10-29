@@ -32,13 +32,13 @@ function juego_start(){
     // DETECCION DE COLISION
     checkCollision();
 
-  },50);
+  },10);
 
 
   /**
    * Intervalo para spawnear objetos en el suelo
    */
-  // enemySpawnInterval = setInterval( function(){
+  enemySpawnInterval = setInterval( function(){
     // 4 max, 1 min
     let type_entity = Math.floor(Math.random()*4) + 1;
     let enemigo;
@@ -56,7 +56,7 @@ function juego_start(){
     }
     enemigo.spawn();
     enemigos.push(enemigo);
-  // },3000);
+  },3000);
 }
 
 function player_jump(){
