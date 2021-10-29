@@ -13,8 +13,13 @@ class Juego{
     document.getElementById('piso_paralax').classList.add('bg-running');
   }
 
-  finJuego(){
-    document.getElementById('player').classList = 'dead';
+  finJuego(gano){
+    if (gano){
+      document.getElementById('player').classList = 'stand';
+    }
+    else{
+      document.getElementById('player').classList = 'dead';
+    }
     document.getElementById('background').classList.remove('bg-running');
     document.getElementById('background').classList.add('stop');
     document.getElementById('piso_paralax').classList.remove('bg-running');

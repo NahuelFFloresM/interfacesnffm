@@ -253,6 +253,7 @@ function juego_guide(){
 function checkWin(){
   if (parseInt(document.getElementById("points").innerHTML) >= 999){
     document.getElementById("game_victory").classList = "game_victory";
-    juego.finJuego();
+    juego.limpiarEnemigos();
+    juego.finJuego(true);
   }
 }
