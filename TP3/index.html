@@ -13,19 +13,21 @@
   <div>
     <div class="d-flex-row-right m-15">
       <div class="d-flex m-10">
-          <div id="cant_monedas"><h2>0x</h2></div>
-          <div id="coin"></div>
+          <div><h2 id="cant_monedas">0x</h2></div>
+          <div class="coin"></div>
       </div>
-      <div><h2 id="points">00000</h2></div>
+      <div class="d-flex ">
+        <h1 class="mr-10">Score</h1>
+        <h1 id="points">00000</h1>
+      </div>
     </div>
   </div>
   <div id="menu" class="game_menu">
     <div class="d-flex-row-centered">
       <div class="d-flex-col-centered text-centered">
-        <h1>GAME NAME</h1>
+        <h1>Runner Sin Camisa</h1>
         <ul>
           <li><button onclick="juego_start()">Start</button></li>
-          <li><button>Como jugar</button></li>
         </ul>
       </div>
     </div>
@@ -43,6 +45,7 @@
   <div id="player" class="stand"></div>
   <div id="piso_paralax" class="stop"></div>
 </body>
+<script src="./js/colectable.js"></script>
 <script src="./js/juego.js"></script>
 <script src="./js/enemy.js"></script>
 <script src="./js/player.js"></script>

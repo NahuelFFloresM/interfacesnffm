@@ -9,6 +9,7 @@ body {
   background:url('../spritesheets/nfondo.jpg') center repeat-x;
   /* Posicionamos el mar, para que no solape al cielo */
   position:relative;
+  overflow: hidden;
   /* background-size: cover; */
 }
 
@@ -25,12 +26,19 @@ body {
 .bg-running{
   animation: movebg 20s linear infinite;
 }
+
+.floor-running{
+  animation: movebg 10s linear infinite;
+}
 .abs{
   position: absolute;
 }
 
 .m-10{
   margin: 10px;
+}
+.mr-10{
+  margin-right: 10px;
 }
 
 .m-15{
@@ -108,10 +116,8 @@ ul{
   justify-content: space-between;
 }
 
-#coin{
+.coin{
   background:url('../spritesheets/coin.png') repeat-x;
-  top: 10px;
-  right: 100px;
   width: 50px;
   height: 50px;
   animation:flip 1s steps(6) infinite;
