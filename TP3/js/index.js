@@ -13,6 +13,9 @@ let enemySpawnInterval = null;
 let enemySpawnInterval2 = null;
 let pointsInterval = null;
 let cantidad_monedas = 0;
+/**
+ * Inicializacion de los valores usados durante el juego y comienzo a los intervalos de los enemigos y monedas, adema de los movimientos del jugador
+ */
 function juego_start(){
   juego.limpiarEnemigos();
   cantidad_monedas = 0;
@@ -24,9 +27,13 @@ function juego_start(){
   }
   juego.iniciarBgParalax();
 
+  /**
+   *  Intervalo para detectar el estado de las entidades
+   */
   gameLoopInterval = setInterval( function(){
+    /** Actualizacion de posicion del jugador */
     player.renovarPosicion();
-    // DETECCION DE TIPO DE TECLA APRETADA
+    /**Deteccion de la tecla apretada, se busca la barra de espacio y no cualquier otra */
     if (typeKeyDown == ' '){
       player_jump();
     }
@@ -36,13 +43,15 @@ function juego_start(){
       element.move();
     });
 
+    /// Movimiento de las monedas
     recoletables.forEach(element => {
       element.move();
     })
   
-    // DETECCION DE COLISION
+    // Deteccion de colision con los enemigos
     checkCollision();
-    // Deteccion de monedas;
+
+    // Deteccion de colision con las monedas;
     checkCoins();
 
   },10);
@@ -51,7 +60,7 @@ function juego_start(){
   pointsInterval = setInterval( () => sumScore(1),500);
 
   /**
-   * Intervalo para spawnear objetos en el suelo
+   * Intervalo para spawnear enemigos
    */
   enemySpawnInterval = setInterval( function(){
     // 4 max, 1 min
@@ -73,6 +82,9 @@ function juego_start(){
     enemigos.push(enemigo);
   },2000);
 
+  /**
+   * Intervalo2 para spawnear enemigos
+   */
   enemySpawnInterval2 = setInterval( function(){
     // 4 max, 1 min
     let type_entity = Math.floor(Math.random()*4) + 1;
@@ -93,6 +105,9 @@ function juego_start(){
     enemigos.push(enemigo);
   },3000);
 
+  /**
+   * Intervalo para crear monedas
+   */
   coinSpawnInterval = setInterval( function(){
     let item;
     item = new Collectable('5%',(Math.floor(Math.random()*300) + 30)+'px','coin'+collectable_count++);
@@ -106,25 +121,36 @@ function player_jump(){
     player.saltar();
   }
 }
+/**
+ * Deteccion de la tecla apretada
+ */
 window.addEventListener('keydown',(event) => {
   typeKeyDown = event.key;
 });
 window.addEventListener('keyup',() =>{typeKeyDown = '';});
 
-
+/**
+ * Cheque de colision del player con lso enemigos
+ */
 function checkCollision(){
   if (player.checkCollision(enemigos)){
     document.getElementById("game_over").classList = "game_over";
     juego.finJuego();
   }
 }
-
+/**
+ * Chequeo de colison del player con las monedas
+ */
 function checkCoins(){
   if (player.checkCollisionCoin(recoletables)){
     deleteCoin(500);
   }
 }
-
+/**
+ * Borra el enemigo del arreglo y suma el valor correspondiente al puntaje
+ * 
+ * @param {B} score int con el valor a aumentar el score
+ */
 function deleteEnemy( score = 0){
   let toDelete = enemigos.shift();
   sumScore(score);
@@ -132,6 +158,11 @@ function deleteEnemy( score = 0){
   // document.body.removeChild(document.getElementById(toDelete.getId()));
 }
 
+/**
+ * Borra la moneda y suma el valor al puntaje, en caso de pasarla de largo, el puntase a sumar es 0;
+ * 
+ * @param {*} score int con valor a aumentar el score
+ */
 function deleteCoin(score = 0){
   let toDelete = recoletables.shift();
   sumScore(score);
@@ -140,7 +171,6 @@ function deleteCoin(score = 0){
   setTimeout( function (){
     toDelete.delete();
   },300 );
-  // document.body.removeChild(document.getElementById(toDelete.getId()));
 }
 
 function pad_with_zeroes(number, length) {
