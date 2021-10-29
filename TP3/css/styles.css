@@ -197,6 +197,14 @@ ul{
   -ms-animation: fadeIn 5s;
 }
 
+.color-black{
+  color: black;
+}
+
+.color-white{
+  color: white;
+}
+
 @keyframes fadeIn {
   0% {opacity:0;}
   100% {opacity:1;}

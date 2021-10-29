@@ -160,22 +160,42 @@ function cambia_fondo(fondo){
     case 1:
       document.getElementById('background').classList.add('fondo-default');
       document.getElementById('piso_paralax').classList.add('piso-default');
+      changeTextColor(1);
       break;
     case 2:
       document.getElementById('background').classList.add('fondo-city');
       document.getElementById('piso_paralax').classList.add('piso-city');
+      changeTextColor(1);
       break
     case 3:
       document.getElementById('background').classList.add('fondo-night');
       document.getElementById('piso_paralax').classList.add('piso-night');
+      changeTextColor(2);
       break
     case 4:
       document.getElementById('background').classList.add('fondo-mountain');
       document.getElementById('piso_paralax').classList.add('piso-mountain');
+      changeTextColor(1);
       break
     case 5:
       document.getElementById('background').classList.add('fondo-desert');
       document.getElementById('piso_paralax').classList.add('piso-desert');
+      changeTextColor(1);
       break
+  }
+}
+
+function changeTextColor(color){
+  if (color == 1) {
+    let whiteElements = document.querySelectorAll(".color-white");
+    for (let i = 0; i < whiteElements.length; i++) {
+      whiteElements[i].classList.replace("color-white", "color-black");
+    }
+  }
+  if (color == 2) {
+    let blackElements = document.querySelectorAll(".color-black");
+    for (let i = 0; i < blackElements.length; i++) {
+      blackElements[i].classList.replace("color-black", "color-white");
+    }
   }
 }
