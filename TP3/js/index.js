@@ -139,7 +139,7 @@ window.addEventListener('keyup',() =>{typeKeyDown = '';});
 function checkCollision(){
   if (player.checkCollision(enemigos)){
     document.getElementById("game_over").classList = "game_over";
-    juego.finJuego();
+    juego.finJuego(false);
   }
 }
 /**
@@ -266,6 +266,7 @@ function checkWin(){
   if (parseInt(document.getElementById("points").innerHTML) >= 999){
     document.getElementById("game_victory").classList = "game_victory";
     juego.limpiarEnemigos();
+    juego.limpiarCoins();
     juego.finJuego(true);
   }
 }
