@@ -38,4 +38,10 @@ class Juego{
     });
     enemigos = [];
   }
+
+  limpiarCoins(){
+    recoletables.forEach(item => {
+      document.getElementById(item.getId()).remove();
+    })
+  }
 }

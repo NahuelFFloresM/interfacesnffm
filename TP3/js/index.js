@@ -18,6 +18,7 @@ let cantidad_monedas = 0;
  */
 function juego_start(){
   juego.limpiarEnemigos();
+  juego.limpiarCoins();
   cantidad_monedas = 0;
   document.getElementById('cant_monedas').innerHTML = cantidad_monedas + " X";
   document.getElementById('menu').style.visibility = "hidden";
