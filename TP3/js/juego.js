@@ -43,5 +43,6 @@ class Juego{
     recoletables.forEach(item => {
       document.getElementById(item.getId()).remove();
     })
+    recoletables = [];
   }
 }

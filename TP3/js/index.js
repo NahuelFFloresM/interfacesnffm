@@ -170,11 +170,16 @@ function deleteEnemy( score = 0){
 function deleteCoin(score = 0){
   let toDelete = recoletables.shift();
   sumScore(score);
-  document.getElementById('cant_monedas').innerHTML = ++cantidad_monedas + " X";
-  document.getElementById(toDelete.getId()).classList = 'grab';
-  setTimeout( function (){
+  console.log(score);
+  if (score > 0){
+    document.getElementById('cant_monedas').innerHTML = ++cantidad_monedas + " X";
+    document.getElementById(toDelete.getId()).classList = 'grab';
+    setTimeout( function (){
+      toDelete.delete();
+    },300 );
+  } else {
     toDelete.delete();
-  },300 );
+  }
 }
 
 //obtiene un entero y le agrega 0 adelante hasta formar la longitud deseada para el string
