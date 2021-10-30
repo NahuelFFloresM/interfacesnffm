@@ -146,6 +146,7 @@ function checkCollision(){
  * Chequeo de colison del player con las monedas
  */
 function checkCoins(){
+  console.log(window.innerWidth);
   if (player.checkCollisionCoin(recoletables)){
     deleteCoin(500);
   }
