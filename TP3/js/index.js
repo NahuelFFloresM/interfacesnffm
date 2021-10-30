@@ -107,7 +107,7 @@ function juego_start(){
     }
     enemigo.spawn();
     enemigos.push(enemigo);
-  },3000);
+  },7000);
 
   /**
    * Intervalo para crear monedas
@@ -177,6 +177,7 @@ function deleteCoin(score = 0){
   },300 );
 }
 
+//obtiene un entero y le agrega 0 adelante hasta formar la longitud deseada para el string
 function pad_with_zeroes(number, length) {
 
   var my_string = '' + number;
@@ -197,6 +198,7 @@ function cambia_fondo(fondo){
   document.getElementById('background').classList.remove(document.getElementById('background').classList[1]);
   document.getElementById('piso_paralax').classList.remove(document.getElementById('piso_paralax').classList[1]);
 
+  //aplica las clases del piso y fondo de acuerdo al recibido
   switch (fondo) {
     case 1:
       document.getElementById('background').classList.add('fondo-default');
@@ -226,6 +228,7 @@ function cambia_fondo(fondo){
   }
 }
 
+//obtiene los elementos que tengan la clase white o black y las convierte al otro tipo
 function changeTextColor(color){
   if (color == 1) {
     let whiteElements = document.querySelectorAll(".color-white");
@@ -241,16 +244,19 @@ function changeTextColor(color){
   }
 }
 
+//vuelve invisible la guia de como jugar y activa el menu principal
 function back(){
   document.getElementById("howToPlay").classList = "invisible";
   document.getElementById("menu").classList = "game_menu";
 }
 
+//vuelve invisible el menu y activa la guia de como jugar
 function juego_guide(){
   document.getElementById("menu").classList = "invisible";
   document.getElementById("howToPlay").classList = "game_menu";
 }
 
+//verifica si el puntaje es 999 o superior. Muestra el cartel de victoria, para el juego y limpia los enemigos
 function checkWin(){
   if (parseInt(document.getElementById("points").innerHTML) >= 999){
     document.getElementById("game_victory").classList = "game_victory";
