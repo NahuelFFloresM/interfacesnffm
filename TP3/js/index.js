@@ -25,6 +25,7 @@ function juego_start(){
   if (document.getElementById("game_over").classList == "game_over"){
     document.getElementById("game_over").classList = "invisible";
   }
+  document.getElementById("game_victory").classList = "invisible";
   juego.iniciarBgParalax();
 
   /**
@@ -54,6 +55,8 @@ function juego_start(){
     // Deteccion de colision con las monedas;
     checkCoins();
 
+    checkWin();
+
   },10);
 
   /** Suma de puntos por tiempo jugado */
@@ -73,10 +76,10 @@ function juego_start(){
       enemigo = new Enemy('5%','400px',enemy_count++,"crow");
     }
     if (type_entity == 3){
-      enemigo = new Enemy('5%','30px',enemy_count++,"dragon");
+      enemigo = new Enemy('5%','20px',enemy_count++,"dragon");
     }
     if (type_entity == 4){
-      enemigo = new Enemy('5%','30px',enemy_count++,"slime");
+      enemigo = new Enemy('5%','20px',enemy_count++,"slime");
     }
     enemigo.spawn();
     enemigos.push(enemigo);
@@ -96,10 +99,10 @@ function juego_start(){
       enemigo = new Enemy('5%','450px','enemy'+enemy_count++,"crow");
     }
     if (type_entity == 3){
-      enemigo = new Enemy('5%','30px','enemy'+enemy_count++,"dragon");
+      enemigo = new Enemy('5%','20px','enemy'+enemy_count++,"dragon");
     }
     if (type_entity == 4){
-      enemigo = new Enemy('5%','30px','enemy'+enemy_count++,"slime");
+      enemigo = new Enemy('5%','20px','enemy'+enemy_count++,"slime");
     }
     enemigo.spawn();
     enemigos.push(enemigo);
@@ -245,4 +248,12 @@ function back(){
 function juego_guide(){
   document.getElementById("menu").classList = "invisible";
   document.getElementById("howToPlay").classList = "game_menu";
+}
+
+function checkWin(){
+  if (parseInt(document.getElementById("points").innerHTML) >= 999){
+    document.getElementById("game_victory").classList = "game_victory";
+    juego.limpiarEnemigos();
+    juego.finJuego(true);
+  }
 }
