@@ -1,8 +1,34 @@
+body{
+  font-family: Roboto;
+  font-style: normal;
+  font-size: 20px;
+  line-height: 23px;
+}
+
+.btn{
+  border-radius: 25px;
+}
+.font-20{
+  font-size: 20px;
+}
+
+*{
+  font-size: 20px;
+}
+
 .color-principal{
-  background-color:#09D035;
+  color:#09D035;
+}
+
+.color-principal-bg{
+  background-color: #09D035;
 }
 
 .color-principal-suave{
+  color:#54DE73;
+}
+
+.color-principal-suave-bg{
   background-color:#54DE73;
 }
 
@@ -26,6 +52,14 @@
   background-color: #E4E4E4;
 }
 
+.color-rojo{
+  color:red;
+}
+
+.color-rojo-bg{
+  background-color: red;
+}
+
 
 .borderer{
   border-radius: 15px;
@@ -40,8 +74,23 @@ input{
   height: 40px;
 }
 
+.btn{
+  color: white;
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 24.0217px;
+  line-height: 28px;
+  font-feature-settings: 'liga' off;
+  mix-blend-mode: normal;
+}
+
 .search-input{
   text-indent: 10%;
+}
+
+.post p{
+  font-size: 17px;
 }
 
 .post input{
@@ -58,7 +107,8 @@ ul{
 }
 
 .emoji-list, li svg{
-  font-size:20px
+  font-size:20px;
+  cursor: pointer;
 }
 
 .list-nav svg{
@@ -70,24 +120,26 @@ ul{
   height: 50px;
 }
 
-.banner-user{
-  height: 61px;
-}
-
 /* .banner-post{
   height: 15px;
 } */
 
-.banner-user svg, .search-bar svg, .banner-post svg, .list-nav svg{
+.search-bar svg, .banner-post svg, .list-nav svg{
   height: auto;
+}
+
+.banner-user svg{
+  height: 47px;
+}
+
+.banner-user svg.exit-logo{
+  height: 35px;
+  margin-top: 3%;
+  margin-bottom: 3%;
 }
 
 .banner-post svg{
   width: 20px;
-}
-
-.banner-user svg{
-  width: 61px;
 }
 
 .search-bar svg{
@@ -103,4 +155,18 @@ ul{
 
 .list-nav li{
   margin-bottom: 15px;
+}
+
+.list-nav li span{
+  cursor:pointer;
+}
+.p-7-px{
+  padding:7px
+}
+
+.updownvote{
+  height: auto;
+  width: 25px;
+  margin-bottom: 5px;
+  cursor: pointer;
 }
