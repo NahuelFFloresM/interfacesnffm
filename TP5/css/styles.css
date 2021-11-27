@@ -170,3 +170,7 @@ ul{
   margin-bottom: 5px;
   cursor: pointer;
 }
+
+.font-bold{
+  font-weight: bold;
+}
