@@ -3,6 +3,32 @@ body{
   font-style: normal;
   font-size: 20px;
   line-height: 23px;
+  overflow-y: hidden;
+  overflow-x: hidden;
+}
+
+a{
+  text-decoration: none;
+  color: inherit;
+  cursor: pointer;
+}
+
+a:hover{
+  color: #B908F8;
+}
+
+#colLeft{
+  padding: 0;
+}
+
+#colMid{
+  overflow-y: scroll;
+  max-height: 100vh;
+  -ms-overflow-style: none;
+  scrollbar-width: none;  
+}
+#colMid::-webkit-scrollbar {
+  display: none;
 }
 
 .btn{
@@ -87,6 +113,10 @@ input{
 
 .search-input{
   text-indent: 10%;
+}
+
+.post{
+  margin-bottom: 15px;
 }
 
 .post p{
