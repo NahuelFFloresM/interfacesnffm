@@ -21,13 +21,13 @@ a:hover{
   padding: 0;
 }
 
-#colMid{
+.post-section{
   overflow-y: scroll;
   max-height: 100vh;
   -ms-overflow-style: none;
   scrollbar-width: none;  
 }
-#colMid::-webkit-scrollbar {
+.post-section::-webkit-scrollbar {
   display: none;
 }
 
@@ -178,6 +178,12 @@ ul{
   margin-left: 3%;
 }
 
+.dropdown-menu{
+  max-height: 40vh;
+  overflow: scroll;
+  overflow-x: hidden;
+  z-index: 3;
+}
 .banner-user span{
   margin-top: auto;
   margin-bottom: auto;
