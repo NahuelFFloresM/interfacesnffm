@@ -31,9 +31,14 @@ a:hover{
   display: none;
 }
 
-.post-options{
+.post-options,.group-options{
   margin-top: auto;
   margin-bottom: auto;
+}
+
+.group-options svg{
+  width: 22px;
+  height: auto;
 }
 
 .btn{
@@ -165,11 +170,12 @@ ul{
 }
 
 .banner-user svg{
-  height: 47px;
+  width: 22px;
+  margin-left: 10px;
 }
 
 .banner-user svg.exit-logo{
-  height: 35px;
+  width: 35px;
   margin-top: 3%;
   margin-bottom: 3%;
 }
@@ -205,6 +211,11 @@ ul{
   height: 61px;
 }
 
+.banner-img-group{
+  width: 44px;
+  height: auto;
+}
+
 .list-nav li{
   margin-bottom: 15px;
 }
@@ -225,4 +236,20 @@ ul{
 
 .font-bold{
   font-weight: bold;
+}
+
+.user-group{
+  background: #E2E2E2;
+  border: 1px solid #E2E2E2;
+  box-sizing: border-box;
+  max-height: 30vh;
+  /* border: 1px solid #E2E2E2; */
+  border-radius: 10px;
+  overflow-y: scroll;
+  -ms-overflow-style: none;
+  scrollbar-width: none; 
+}
+
+.user-group::-webkit-scrollbar {
+  display: none;
 }
