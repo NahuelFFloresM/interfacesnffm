@@ -31,8 +31,14 @@ a:hover{
   display: none;
 }
 
+.post-options{
+  margin-top: auto;
+  margin-bottom: auto;
+}
+
 .btn{
   border-radius: 25px;
+  box-shadow: 4.80435px 9.6087px 19.2174px rgba(0, 0, 0, 0.25);
 }
 .font-20{
   font-size: 20px;
@@ -149,13 +155,13 @@ ul{
   width: 50px;
   height: 50px;
 }
-
-/* .banner-post{
-  height: 15px;
-} */
-
 .search-bar svg, .banner-post svg, .list-nav svg{
   height: auto;
+}
+
+.banner-user{
+  background: #FFFFFF;
+  box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.25);
 }
 
 .banner-user svg{
@@ -169,7 +175,7 @@ ul{
 }
 
 .banner-post svg{
-  width: 20px;
+  width: 35px;
 }
 
 .search-bar svg{
@@ -187,6 +193,16 @@ ul{
 .banner-user span{
   margin-top: auto;
   margin-bottom: auto;
+}
+
+.banner-img-user{
+  width: 47px;
+  height: auto;
+}
+
+.banner-img-post{
+  width: 61px;
+  height: 61px;
 }
 
 .list-nav li{
