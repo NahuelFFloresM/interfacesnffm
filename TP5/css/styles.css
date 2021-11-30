@@ -36,6 +36,11 @@ a:hover{
   margin-bottom: auto;
 }
 
+.post-options svg:hover{
+  color: #0e4a80;
+  cursor: pointer;
+}
+
 .group-options svg{
   width: 22px;
   height: auto;
@@ -213,7 +218,7 @@ ul{
 
 .banner-img-group{
   width: 44px;
-  height: auto;
+  height: 44px;
 }
 
 .list-nav li{
@@ -252,4 +257,32 @@ ul{
 
 .user-group::-webkit-scrollbar {
   display: none;
+}
+
+.long-text{
+  max-width: 100px;
+}
+.section-anuncios{
+  overflow-y: scroll;
+  -ms-overflow-style: none;
+  scrollbar-width: none;  
+}
+
+.section-anuncios::-webkit-scrollbar {
+  display: none;
+}
+
+.images-container{
+  padding: auto;
+}
+
+.images-container img{
+  max-width: 250px;
+  max-height: auto;
+  margin-right: 5px;
+  margin-bottom: 5px;
+}
+
+.modal-body{
+  padding: 0;
 }
