@@ -14,4 +14,7 @@ document.addEventListener("DOMContentLoaded", function() {
   document.querySelector('.upvote').addEventListener('click',function(){
     this.classList.toggle('color-principal');
   });
+
+  setTimeout(function(){ document.querySelector('.loading-screen').style.opacity = 0; }, 2000);
+  setTimeout(function(){ let elem = document.querySelector('.loading-screen'); elem.parentNode.removeChild(elem); }, 4000);
 })

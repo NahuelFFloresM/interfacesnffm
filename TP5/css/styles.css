@@ -306,12 +306,61 @@ ul{
   cursor: pointer;
 }
 
+.img-crop{
+  width: 250px;
+  height: 200px;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: 300px;
+  margin: 5px;
+}
+
+.loading-screen{
+  position: absolute;
+  background-color: white;
+  z-index: 5;
+  transition-duration: 0.5s;
+  opacity: 1;
+}
+
+.load-container{
+  position: absolute;
+  width: 200px;
+  height: 200px;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+  -webkit-animation:spin 4s linear infinite;
+  -moz-animation:spin 4s linear infinite;
+  animation:spin 4s linear infinite;
+}
+
+.load-container .spinner-grow{
+  position: absolute;
+}
+
+@-moz-keyframes spin { 
+  100% { -moz-transform: rotate(360deg); } 
+}
+@-webkit-keyframes spin { 
+  100% { -webkit-transform: rotate(360deg); } 
+}
+@keyframes spin { 
+  100% { 
+      -webkit-transform: rotate(360deg); 
+      transform:rotate(360deg); 
+  } 
+}
+
 .messages-section{
   overflow-y: scroll;
   max-height: 85vh;
   -ms-overflow-style: none;
   scrollbar-width: none;  
 }
+
 .messages-section::-webkit-scrollbar {
   display: none;
 }
