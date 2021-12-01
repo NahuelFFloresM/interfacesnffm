@@ -102,6 +102,10 @@ a:hover, .modal-footer svg:hover{
   background-color: red;
 }
 
+.link {
+  color: rgba(29, 155, 240, 1);
+  text-decoration-line: underline;
+}
 
 .borderer{
   border-radius: 15px;
@@ -317,4 +321,18 @@ ul{
   height: 100%;
   background-color: white;
   z-index: 5;
+}
+.messages-section{
+  overflow-y: scroll;
+  max-height: 100vh;
+  -ms-overflow-style: none;
+  scrollbar-width: none;  
+}
+.messages-section::-webkit-scrollbar {
+  display: none;
+}
+
+.message-contacts:hover{
+  background-color: lightgrey;
+  cursor: pointer;
 }
