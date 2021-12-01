@@ -305,3 +305,18 @@ ul{
   height: auto;
   cursor: pointer;
 }
+
+.messages-section{
+  overflow-y: scroll;
+  max-height: 100vh;
+  -ms-overflow-style: none;
+  scrollbar-width: none;  
+}
+.messages-section::-webkit-scrollbar {
+  display: none;
+}
+
+.message-contacts:hover{
+  background-color: lightgrey;
+  cursor: pointer;
+}
