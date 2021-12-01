@@ -140,7 +140,8 @@ input{
 }
 
 .post{
-  margin-bottom: 15px;
+  padding-bottom: 15px;
+  border-bottom: 1px solid #DD7BFF;
 }
 
 .post p{
@@ -173,6 +174,12 @@ ul{
   width: 50px;
   height: 50px;
 }
+
+.search-bar{
+  border-bottom: 1px solid #B908F8;
+
+}
+
 .search-bar svg, .banner-post svg, .list-nav svg{
   height: auto;
 }
@@ -194,7 +201,7 @@ ul{
 }
 
 .banner-post svg{
-  width: 35px;
+  width: 18px;
 }
 
 .search-bar svg{
@@ -296,7 +303,6 @@ ul{
   padding: 0;
 }
 
-
 .modal-body form{
   padding: 10px;
 }
@@ -307,7 +313,7 @@ ul{
 }
 
 .modal-footer svg{
-  width: 40px;
+  width: 20px;
   height: auto;
   cursor: pointer;
 }
