@@ -13,7 +13,7 @@ a{
   cursor: pointer;
 }
 
-a:hover{
+a:hover, .modal-footer svg:hover{
   color: #B908F8;
 }
 
@@ -285,4 +285,19 @@ ul{
 
 .modal-body{
   padding: 0;
+}
+
+.modal-body form{
+  padding: 10px;
+}
+.modal-body .close-icon{
+  position: absolute;
+  right: -30px;
+  top: -30px;
+}
+
+.modal-footer svg{
+  width: 40px;
+  height: auto;
+  cursor: pointer;
 }
