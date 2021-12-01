@@ -301,3 +301,12 @@ ul{
   height: auto;
   cursor: pointer;
 }
+
+.img-crop{
+  width: 250px;
+  height: 200px;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: 300px;
+  margin: 5px;
+}
