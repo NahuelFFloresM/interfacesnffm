@@ -16,5 +16,5 @@ document.addEventListener("DOMContentLoaded", function() {
   });
 
   setTimeout(function(){ document.querySelector('.loading-screen').style.opacity = 0; }, 2000);
-  setTimeout(function(){ let elem = document.querySelector('.loading-screen'); elem.parentNode.removeChild(elem); }, 4000);
+  setTimeout(function(){ let elem = document.querySelector('.loading-screen'); elem.parentNode.removeChild(elem); }, 2500);
 })

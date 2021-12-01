@@ -90,6 +90,10 @@ a:hover, .modal-footer svg:hover{
   color: #E4E4E4;
 }
 
+.color-gris-suave{
+  color: #6D6D6D;
+}
+
 .bg-gris{
   background-color: #E4E4E4;
 }
@@ -212,7 +216,7 @@ ul{
 
 .banner-img-user{
   width: 47px;
-  height: auto;
+  height: 47px;
 }
 
 .banner-img-post{
@@ -269,7 +273,8 @@ ul{
 .section-anuncios{
   overflow-y: scroll;
   -ms-overflow-style: none;
-  scrollbar-width: none;  
+  scrollbar-width: none;
+  height: 300px;
 }
 
 .section-anuncios::-webkit-scrollbar {
@@ -290,6 +295,7 @@ ul{
 .modal-body{
   padding: 0;
 }
+
 
 .modal-body form{
   padding: 10px;
