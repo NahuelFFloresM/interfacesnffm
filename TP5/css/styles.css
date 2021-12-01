@@ -308,7 +308,7 @@ ul{
 
 .messages-section{
   overflow-y: scroll;
-  max-height: 100vh;
+  max-height: 85vh;
   -ms-overflow-style: none;
   scrollbar-width: none;  
 }
