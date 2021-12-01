@@ -102,6 +102,10 @@ a:hover, .modal-footer svg:hover{
   background-color: red;
 }
 
+.link {
+  color: rgba(29, 155, 240, 1);
+  text-decoration-line: underline;
+}
 
 .borderer{
   border-radius: 15px;
