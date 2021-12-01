@@ -316,7 +316,40 @@ ul{
   display: none;
 }
 
+.chat-section{
+  overflow-y: scroll;
+  max-height: 95vh;
+  -ms-overflow-style: none;
+  scrollbar-width: none;  
+}
+.chat-section::-webkit-scrollbar {
+  display: none;
+}
+
 .message-contacts:hover{
   background-color: lightgrey;
+  cursor: pointer;
+}
+
+.text-align-right{
+  text-align: right;
+}
+
+.chat-box{
+  position: fixed;
+  bottom: 0;
+  padding-bottom: 1%;
+  background: #FFFFFF;
+  width: 40%;
+}
+
+.selectable{
+  background-color: lightgrey;
+}
+
+.emoticon-chat{
+  position: absolute;
+  top: 15px;
+  right: 1%;
   cursor: pointer;
 }
