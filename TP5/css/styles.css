@@ -149,7 +149,13 @@ input{
 
 .post{
   padding-bottom: 15px;
-  /* border-bottom: 1px solid #DD7BFF; */
+  border-bottom: 1px solid #DD7BFF;
+  padding: 10px;
+}
+
+.post:hover{
+  background-color: #F8F1FA;
+  border-radius: 5px;
 }
 
 .texto-fecha{
