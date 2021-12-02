@@ -11,21 +11,24 @@
 </head>
 <body>
   <div class="row">
-    <div class="col-sm-6">
-      <img src="./assets/AppLogo.png" alt="" class="logo">
+    <div class="col-sm-6" id="sign-animation-container">
+      <div class="bg-image-gradient"></div>
+      <h1 class="sign-bg-text" id="sign-bg-text-1">La red social</h1>
+      <h1 class="sign-bg-text" id="sign-bg-text-2">para mascotas</h1>
     </div>
     <div class="col-sm-6 form-container">
       <form class="sign-form">
-        <div class="mb-3 sign-group">
+        <div class="sign-group">
           <label for="exampleInputEmail1" class="form-label">Email</label>
           <input type="email" class="form-input" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Ingrese su correo electrónico">
-          <!-- <div id="emailHelp" class="form-text"></div> -->
+          <div id="emailHelp" class="form-text hidden">El campo debe ser completado</div>
         </div>
-        <div class="mb-3 sign-group">
+        <div class="sign-group">
           <label for="exampleInputPassword1" class="form-label">Contraseña</label>
           <input type="password" class="form-input" id="exampleInputPassword1" placeholder="Ingrese su contraseña">
+          <div class="form-text hidden">El campo debe ser completado</div>
         </div>
-        <button type="submit" class="sign-btn color-principal-bg">Iniciar sessión</button>
+        <button type="button" class="mt-3 sign-btn color-principal-bg" id="sign-in-btn">Iniciar sessión</button>
         <a href="" class="sign-link link">¿Olvidaste tu contraseña?</a>
         <div class="bar"></div>
         <button type="button" id="register-btn" class="sign-btn register-btn">Registrarse</button>

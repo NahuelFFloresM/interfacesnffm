@@ -17,6 +17,14 @@ a:hover, .modal-footer svg:hover{
   color: #B908F8;
 }
 
+.modal-footer svg:first-of-type {
+  margin-right: 20px;
+}
+
+#logo:hover {
+  cursor: pointer;
+}
+
 #colLeft{
   padding: 0;
 }
@@ -141,7 +149,7 @@ input{
 
 .post{
   padding-bottom: 15px;
-  border-bottom: 1px solid #DD7BFF;
+  /* border-bottom: 1px solid #DD7BFF; */
 }
 
 .texto-fecha{
@@ -421,4 +429,22 @@ ul{
   top: 15px;
   right: 1%;
   cursor: pointer;
+}
+
+.emoticon-list ul{
+  margin-bottom: 3px;
+  margin-left: 3px;
+  position: fixed;
+  bottom: 5%;
+  padding-bottom: 1%;
+}
+
+.emoticon-list ul li{
+  padding-bottom: 10px;
+  cursor: pointer;
+}
+
+.invisible{
+  display: none;
+  visibility: hidden;
 }

@@ -61,10 +61,14 @@
     font-size: 22px;
     font-weight: bold;
     width: 100%;
+    max-height: 30px;
+    margin-bottom: 0;
 }
 .profesion, .fecha-de-creacion {
     width: 50%;
     margin-top: 5px;
+    margin-bottom: 0;
+    max-height: 30px;
 }
 .fecha-de-creacion {
     font-size: 18px;
@@ -95,9 +99,9 @@
     border-radius: 10px;
     padding: 10px;
 }
-.create-post svg:first-of-type {
+/* .modal-footer svg:first-of-type {
     margin-right: 20px;
-}
+} */
 .post {
     border-top: 1px solid #DD7BFF;
     padding: 50px 0;
@@ -106,12 +110,18 @@
 }
 
 @media screen and (min-width: 1500px) {
+    .profile-container {
+        height: 53vh;
+    }
     .foto-perfil {
         width: 210px;
         height: 210px;
         top: calc(30vh - 105px);
         border-radius: 210px;
         border: 5px solid white;
+    }
+    .datos-principales-perfil {
+        height: calc(23vh - 105px);
     }
 }
 
