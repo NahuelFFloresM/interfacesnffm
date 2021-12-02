@@ -11,29 +11,34 @@
 </head>
 <body>
   <div class="row">
-    <div class="col-sm-6">
-      <img src="./assets/AppLogo.png" alt="" class="logo">
+    <div class="col-sm-6" id="sign-animation-container">
+      <div class="bg-image-gradient"></div>
+      <h1 class="sign-bg-text" id="sign-bg-text-1">La red social</h1>
+      <h1 class="sign-bg-text" id="sign-bg-text-2">para mascotas</h1>
     </div>
     <div class="col-sm-6 form-container">
       <form class="sign-form">
-        <div class="mb-3 sign-group">
+        <div class=" sign-group">
           <label for="email" class="form-label">Email</label>
           <input type="email" class="form-input" id="email" aria-describedby="emailHelp" placeholder="Ingrese su correo electrónico">
-          <!-- <div id="emailHelp" class="form-text"></div> -->
+          <div id="emailHelp" class="form-text hidden">El campo debe ser completado</div>
         </div>
-        <div class="mb-3 sign-group">
+        <div class=" sign-group">
           <label for="username" class="form-label">Nombre de usuario</label>
           <input type="text" class="form-input" id="username" placeholder="Ingrese su nombre de usuario">
+          <div class="form-text hidden">El campo debe ser completado</div>
         </div>
-        <div class="mb-3 sign-group">
+        <div class=" sign-group">
             <label for="password" class="form-label">Contraseña</label>
             <input type="password" class="form-input" id="password" placeholder="Ingrese su contraseña">
+            <div class="form-text hidden">El campo debe ser completado</div>
         </div>
-        <div class="mb-3 sign-group">
+        <div class=" sign-group">
             <label for="confirm-password" class="form-label">Confirmar contraseña</label>
             <input type="password" class="form-input" id="confirm-password" placeholder="Ingrese su contraseña">
+            <div class="form-text hidden">El campo debe ser completado</div>
         </div>
-        <button type="submit" class="sign-btn register-btn">Registrarse</button>
+        <button type="button" class="mt-3 sign-btn register-btn" id="register-btn">Registrarse</button>
         <div class="login-link-container">
             <p>¿Ya tienes cuenta?</p>
             <a id="login-link" class="sign-link link">Inicia sesión</a>

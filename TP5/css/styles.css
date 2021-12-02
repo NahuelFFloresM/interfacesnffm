@@ -21,6 +21,10 @@ a:hover, .modal-footer svg:hover{
   margin-right: 20px;
 }
 
+#logo:hover {
+  cursor: pointer;
+}
+
 #colLeft{
   padding: 0;
 }
@@ -145,7 +149,7 @@ input{
 
 .post{
   padding-bottom: 15px;
-  border-bottom: 1px solid #DD7BFF;
+  /* border-bottom: 1px solid #DD7BFF; */
 }
 
 .texto-fecha{
