@@ -144,6 +144,10 @@ input{
   border-bottom: 1px solid #DD7BFF;
 }
 
+.texto-fecha{
+  font-size: 13px;
+}
+
 .post p{
   font-size: 17px;
 }
@@ -262,12 +266,16 @@ ul{
   background: #E2E2E2;
   border: 1px solid #E2E2E2;
   box-sizing: border-box;
-  max-height: 30vh;
+  max-height: 40vh;
   /* border: 1px solid #E2E2E2; */
   border-radius: 10px;
   overflow-y: scroll;
   -ms-overflow-style: none;
   scrollbar-width: none; 
+}
+
+.sub-title-section{
+  font-size: 15px;
 }
 
 .user-group::-webkit-scrollbar {
