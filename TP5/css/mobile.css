@@ -34,5 +34,20 @@
   z-index: 10;
   right: 0;
   margin: 5%;
+}
 
+.list-inline-item{
+  margin:0;
+}
+.list-inline-item:not(:last-child){
+  margin:0;
+}
+
+.navbar-bottom{
+  height: 50px;
+}
+
+.navbar-bottom a svg{
+  height: auto;
+  width: 25px;
 }
