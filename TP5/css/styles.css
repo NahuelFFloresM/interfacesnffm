@@ -401,7 +401,7 @@ ul{
 
 .chat-section{
   overflow-y: scroll;
-  max-height: 95vh;
+  max-height: 85vh;
   -ms-overflow-style: none;
   scrollbar-width: none;  
 }
@@ -485,4 +485,8 @@ ul{
   display: inline-flex;
   justify-content: start;
   flex-direction: row;
+}
+
+.hora{
+  font-size: 12px;
 }
