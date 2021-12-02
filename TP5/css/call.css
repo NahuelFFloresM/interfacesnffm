@@ -1,6 +1,9 @@
 
 
-.header { grid-area: header; }
+.header {
+    grid-area: header;
+    background-color: black;
+}
 .menu { grid-area: menu; }
 
 .grid-container {
@@ -10,11 +13,9 @@
     'menu menu menu menu menu menu';
   grid-gap: 10px;
   background-color: grey;
-  padding: 10px;
 }
 
 .grid-container > div {
-  background-color: rgba(255, 255, 255, 0.8);
   text-align: center;
   padding: 20px 0;
   font-size: 30px;
