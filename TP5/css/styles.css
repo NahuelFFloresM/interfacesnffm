@@ -17,6 +17,10 @@ a:hover, .modal-footer svg:hover{
   color: #B908F8;
 }
 
+.modal-footer svg:first-of-type {
+  margin-right: 20px;
+}
+
 #colLeft{
   padding: 0;
 }
