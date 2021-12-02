@@ -1,5 +1,4 @@
-header{
-  padding: 10px;
+.navbar{
   border-bottom: 1px solid grey;
 }
 
@@ -8,3 +7,32 @@ header{
   height: auto;
 }
 
+/* .navbar-icon{
+  margin:3%;
+} */
+
+.bi-search{
+  color: black;
+}
+
+.btn svg{
+  width: 20px;
+  height: auto;
+}
+
+.modal{
+  margin-top: 20%;
+}
+
+.modal svg{
+  position: absolute;
+  color: white;
+  background-color: violet;
+  border-radius: 25px;
+  height: auto;
+  width: 40px;
+  z-index: 10;
+  right: 0;
+  margin: 5%;
+
+}
