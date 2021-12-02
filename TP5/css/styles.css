@@ -430,3 +430,21 @@ ul{
   right: 1%;
   cursor: pointer;
 }
+
+.emoticon-list ul{
+  margin-bottom: 3px;
+  margin-left: 3px;
+  position: fixed;
+  bottom: 5%;
+  padding-bottom: 1%;
+}
+
+.emoticon-list ul li{
+  padding-bottom: 10px;
+  cursor: pointer;
+}
+
+.invisible{
+  display: none;
+  visibility: hidden;
+}
