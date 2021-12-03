@@ -12,3 +12,6 @@ function showEmojis(){
     emojiElement.classList.add("invisible");
   }
 }
+
+var messageBody = document.querySelector('#chat-section');
+messageBody.scrollTop = messageBody.scrollHeight - messageBody.clientHeight;
