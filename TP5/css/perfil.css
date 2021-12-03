@@ -90,9 +90,12 @@
 .create-post {
     width: 80%;
     margin: 50px auto;
-    border-radius: 15px;
-    padding: 10px;
-    padding-top: 25px;
+    border-radius: 10px;
+    padding: 0;
+}
+.create-post form {
+    padding: 20px 15px 0 15px;
+
 }
 #message-text {
     font-size: 16px;
@@ -100,25 +103,6 @@
     border-radius: 10px;
     padding: 10px;
 }
-/* .modal-footer svg:first-of-type {
-    margin-right: 20px;
-} */
-.post {
-    /* border-top: 1px solid #DD7BFF; */
-    /* padding: 50px 0; */
-    width: 90%;
-    margin: auto;
-}
-
-/* @media screen and (min-width: 1800px) {
-    .foto-perfil {
-        width: 210px;
-        height: 210px;
-        top: calc(30vh - 105px);
-        border-radius: 210px;
-        border: 5px solid white;
-    }
-} */
 
 @media screen and (min-height: 700px) and (min-width: 1300px) {
     .profile-container {
