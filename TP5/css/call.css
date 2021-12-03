@@ -83,3 +83,11 @@ html,body,#wrapper {
   @keyframes beat{
 	to { transform: scale(0.85); }
 }
+
+#time{
+    position: absolute;
+    margin-top: 2.8%;
+    margin-left: 63%;
+    margin-right: auto;
+    color: white;
+}
