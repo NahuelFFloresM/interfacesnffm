@@ -1,0 +1,76 @@
+html,body,#wrapper {
+    height:100%;
+    margin:0;
+    padding:0;
+}
+#wrapper {
+    position:relative;
+}
+
+#top, #middle {
+    position:absolute;
+}
+
+#top {
+    height:75px;
+    width:100%;
+    background:grey;
+}
+#middle {
+    top:75px;
+    bottom:0;
+    width:100%;
+    background:black;
+}
+
+.own-contact{
+    width: 60px;
+    height: 60px;
+    margin-top: 5px;
+    margin-right: 15px;
+    float: right;
+}
+
+.user-contact{
+    margin-top: 2%;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 30%;
+}
+
+#mic,#micMute{
+    position: absolute;
+    margin-top: 2%;
+    margin-left: 48%;
+    margin-right: auto;
+    cursor: pointer;
+}
+
+#cam,#camOff{
+    position: absolute;
+    margin-top: 2%;
+    margin-left: 40%;
+    margin-right: auto;
+    cursor: pointer;
+}
+
+.invisible{
+    display: none;
+    visibility: hidden;
+  }
+
+  #webCam{
+    position: absolute;
+    right: 0;
+    width: 20%;
+    bottom: 0;
+  }
+
+  .bi-telephone-x{
+    position: absolute;
+    margin-top: 2%;
+    margin-left: 56%;
+    margin-right: auto;
+    cursor: pointer;
+  }
