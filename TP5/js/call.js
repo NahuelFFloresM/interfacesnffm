@@ -1,3 +1,7 @@
+setTimeout(function(){ 
+    document.getElementById("beater").classList.remove("beat");
+}, 5000);
+
 function activeMic(){
   let micElement = document.getElementById("mic");
   let micMuteElement = document.getElementById("micMute");
