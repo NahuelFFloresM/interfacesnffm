@@ -1,7 +1,9 @@
 .profile-container {
-    width: 100%;
+    width: 90%;
+    margin: auto;
     height: 65vh;
     position: relative;
+    border-bottom: 1px solid #DD7BFF;
 }
 
 .foto-portada {
@@ -14,11 +16,11 @@
 .foto-perfil {
     position: absolute;
     border: 4px white solid;
-    width: 158px;
-    height: 158px;
-    border-radius: 158px;
+    width: 148px;
+    height: 148px;
+    border-radius: 148px;
     left: 5%;
-    top: calc(30vh - 80px);
+    top: calc(30vh - 75px);
     background-image: url("../assets/fotoperfil7.jpg");
     background-size: cover;
 }
@@ -28,18 +30,16 @@
     font-size: 18px;
     right: 5%;
     top: calc(30vh + 5%);
-    background-color: rgba(78, 75, 245, 1);
+    background-color: rgba(78, 75, 245, 0.9);
     color: white;
     border: none;
     border-radius: 25px;
-    min-height: 35px;
-    min-width: 130px;
-    transition: ease-in-out 0.2s;
+    height: 35px;
+    width: 130px;
 }
 #edit-profile-btn:hover {
     cursor: pointer;
     background-color: rgba(78, 75, 245, 1);
-    color: black;
 }
 .datos-principales-perfil {
     padding: 5px 5px 20px 5px;
@@ -50,7 +50,7 @@
     left: 5%;
     position: absolute;
     bottom: 0;
-    border-bottom: 1px solid #DD7BFF;
+    /* border-bottom: 1px solid #DD7BFF; */
 }
 .nombre, .fecha-de-creacion, .profesion {
     overflow: hidden;
@@ -84,14 +84,18 @@
 .follows-followers {
     margin-right: 30px;
     font-size: 16px;
+    margin-bottom: 0;
 }
 
 .create-post {
     width: 80%;
     margin: 50px auto;
-    border-radius: 15px;
-    padding: 10px;
-    padding-top: 25px;
+    border-radius: 10px;
+    padding: 0;
+}
+.create-post form {
+    padding: 20px 15px 0 15px;
+
 }
 #message-text {
     font-size: 16px;
@@ -99,19 +103,10 @@
     border-radius: 10px;
     padding: 10px;
 }
-/* .modal-footer svg:first-of-type {
-    margin-right: 20px;
-} */
-.post {
-    border-top: 1px solid #DD7BFF;
-    padding: 50px 0;
-    width: 90%;
-    margin: auto;
-}
 
-@media screen and (min-width: 1500px) {
+@media screen and (min-height: 700px) and (min-width: 1300px) {
     .profile-container {
-        height: 53vh;
+        height: 60vh;
     }
     .foto-perfil {
         width: 210px;
@@ -121,11 +116,20 @@
         border: 5px solid white;
     }
     .datos-principales-perfil {
-        height: calc(23vh - 105px);
+        height: calc(30vh - 105px);
     }
 }
 
-@media screen and (min-width: 700px) and (max-width: 1100px) {
+@media screen and (min-height: 900px) {
+    .profile-container {
+        height: 50vh;
+    }
+    .datos-principales-perfil {
+        height: calc(20vh - 105px);
+    }
+}
+
+@media screen and (min-width: 900px) and (max-width: 1100px) and (min-height: 700px) and (max-height: 800px) {
     .profile-container {
         height: 40vh;
     }
@@ -138,7 +142,28 @@
         top: calc(20vh - 59px);
         border-radius: 118px;
     }
+    .datos-principales-perfil {
+        height: calc(20vh - 59px);
+    }
+    .nombre {
+        font-size: 18px;
+        height: 20px;
+    }
+    .follows-followers, strong {
+        font-size: 12px;
+        height: 15px;
+    }
+    .fecha-de-creacion {
+        font-size: 14px;
+        height: 16px;
+    }
+    .profesion {
+        font-size: 14px;
+    }
     #edit-profile-btn {
         top: calc(20vh + 4%);
+        font-size: 16px;
+        width: 100px;
+        height: 25px;
     }
 }
