@@ -198,6 +198,10 @@ ul{
   cursor: pointer;
 }
 
+.emojis-chat{
+  padding:5px;
+}
+
 .list-nav svg{
   width: 33px;
 }
@@ -462,12 +466,17 @@ ul{
   cursor: pointer;
 }
 
+.emoji-chat{
+  background-color: #F0F0F0;
+  padding: 3px;
+  border-radius: 15px;
+}
+
 .emoticon-list ul{
   position: absolute;
   bottom: 65%;
   left: -3%;
   right: 5%;
-  background-color: lightgrey;
 }
 
 .emoticon-list ul li{
