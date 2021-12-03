@@ -41,12 +41,12 @@ function activeCam(){
   let activeCamera = document.getElementById("webCam");
   if (camElement.classList.contains("invisible")){
     camElement.classList.remove("invisible");
-    activeCamera.classList.add("invisible");
+    activeCamera.classList.remove("invisible");
     camOffElement.classList.add("invisible");
   }
   else{
     camOffElement.classList.remove("invisible");
     camElement.classList.add("invisible");
-    activeCamera.classList.remove("invisible");
+    activeCamera.classList.add("invisible");
   }
 }
