@@ -463,11 +463,11 @@ ul{
 }
 
 .emoticon-list ul{
-  margin-bottom: 3px;
-  margin-left: 3px;
-  position: fixed;
-  bottom: 5%;
-  padding-bottom: 1%;
+  position: absolute;
+  bottom: 65%;
+  left: -3%;
+  right: 5%;
+  background-color: lightgrey;
 }
 
 .emoticon-list ul li{
